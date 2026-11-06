@@ -1,0 +1,6 @@
+{
+  "schema_version": "demo-reduced-policies.v1",
+  "no_mileage_operators": [],
+  "permanent_closures": [],
+  "temporary_suspensions": []
+}

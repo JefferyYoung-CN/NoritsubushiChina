@@ -1,0 +1,3 @@
+# Internal demo build: search engines must not index this deployment.
+User-agent: *
+Disallow: /

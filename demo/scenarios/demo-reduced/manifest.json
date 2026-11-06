@@ -1,0 +1,30 @@
+{
+  "schema_version": "guangfo-reduced-scenario.v1",
+  "source_status": "simulated",
+  "release_ready": false,
+  "snapshot_id": "simulated-demo-0001",
+  "snapshot_as_of": "2024-06-01",
+  "knowledge_through": "2030-12-31",
+  "coverage_from": "2024-06-01",
+  "coverage_to": "2030-12-31",
+  "synthetic": true,
+  "notice": "Synthetic demo dataset; see demo/README.md. No real data is included.",
+  "files": {
+    "source-use.json": {
+      "bytes": 578,
+      "sha256": "04e7ad48f111747a77b2c9994f6e6dc6d1f590062df7f587268d03cb97a31457"
+    },
+    "policies.json": {
+      "bytes": 139,
+      "sha256": "397df35f61ddf7b7de411a9122f9f4c816ce2dd82533c85cb2e0814c34521e2b"
+    },
+    "reader-payload.json": {
+      "bytes": 14487,
+      "sha256": "e12f6ebb5df24dd7853b9b8757887b092943dd725de9f82a893d3aee90fe4434"
+    },
+    "LICENSE-OSM.md": {
+      "bytes": 531,
+      "sha256": "a1518802882daa176f9b29a1d5a5eae61ae4339940adc793b34e6d064c1c7cda"
+    }
+  }
+}

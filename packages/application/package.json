@@ -1,0 +1,24 @@
+{
+  "name": "@noritsubushi/application",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "exports": {
+    "./backup": { "types": "./backup.d.mts", "import": "./backup.mjs" },
+    "./completion": { "types": "./completion.d.mts", "import": "./completion.mjs" },
+    "./date-view": { "types": "./date-view.d.mts", "import": "./date-view.mjs" },
+    "./development-input": { "types": "./development-input.d.mts", "import": "./development-input.mjs" },
+    "./direction-plan": { "types": "./direction-plan.d.mts", "import": "./direction-plan.mjs" },
+    "./direction-source": { "types": "./direction-source.d.mts", "import": "./direction-source.mjs" },
+    "./folded-loop": { "types": "./folded-loop.d.mts", "import": "./folded-loop.mjs" },
+    "./history-snapshots": { "types": "./history-snapshots.d.mts", "import": "./history-snapshots.mjs" },
+    "./image-export": { "import": "./image-export.mjs" },
+    "./reader": { "types": "./reader.d.mts", "import": "./reader.mjs" },
+    "./records": { "types": "./records.d.mts", "import": "./records.mjs" },
+    "./reduced-input": { "types": "./reduced-input.d.mts", "import": "./reduced-input.mjs" },
+    "./service-alignment": { "import": "./service-alignment.mjs" },
+    "./simple-cycle": { "types": "./simple-cycle.d.mts", "import": "./simple-cycle.mjs" },
+    "./topology-mapping": { "types": "./topology-mapping.d.mts", "import": "./topology-mapping.mjs" },
+    "./validation": { "types": "./validation.d.mts", "import": "./validation.mjs" }
+  }
+}

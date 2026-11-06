@@ -1,0 +1,580 @@
+{
+  "schema_version": "phase1.transit-reader.v1",
+  "snapshot_id": "simulated-demo-0001",
+  "source_status": "simulated",
+  "as_of": "2024-06-01",
+  "entities": {
+    "cities": [
+      {
+        "id": "demo-city",
+        "name": "示例城"
+      }
+    ],
+    "operators": [
+      {
+        "id": "demo-op",
+        "name": "示例轨道交通",
+        "type": "metro_company",
+        "city_id": "demo-city"
+      }
+    ],
+    "stations": [
+      {
+        "id": "demo-s01",
+        "station_code": "D01",
+        "name": "青松",
+        "city_id": "demo-city",
+        "lat": 31.201,
+        "lng": 121.401
+      },
+      {
+        "id": "demo-s02",
+        "station_code": "D02",
+        "name": "云岭",
+        "city_id": "demo-city",
+        "lat": 31.206,
+        "lng": 121.405
+      },
+      {
+        "id": "demo-s03",
+        "station_code": "D03",
+        "name": "石桥",
+        "city_id": "demo-city",
+        "lat": 31.212,
+        "lng": 121.409
+      },
+      {
+        "id": "demo-s04",
+        "station_code": "D04",
+        "name": "河湾",
+        "city_id": "demo-city",
+        "lat": 31.218,
+        "lng": 121.414
+      },
+      {
+        "id": "demo-s05",
+        "station_code": "D05",
+        "name": "白鹭",
+        "city_id": "demo-city",
+        "lat": 31.224,
+        "lng": 121.419
+      },
+      {
+        "id": "demo-s06",
+        "station_code": "D06",
+        "name": "东浦",
+        "city_id": "demo-city",
+        "lat": 31.23,
+        "lng": 121.424
+      },
+      {
+        "id": "demo-s07",
+        "station_code": "D07",
+        "name": "松林",
+        "city_id": "demo-city",
+        "lat": 31.236,
+        "lng": 121.429
+      },
+      {
+        "id": "demo-s08",
+        "station_code": "D08",
+        "name": "望江",
+        "city_id": "demo-city",
+        "lat": 31.242,
+        "lng": 121.434
+      },
+      {
+        "id": "demo-s09",
+        "station_code": "D09",
+        "name": "枫岸",
+        "city_id": "demo-city",
+        "lat": 31.222,
+        "lng": 121.421
+      },
+      {
+        "id": "demo-s10",
+        "station_code": "D10",
+        "name": "芦滩",
+        "city_id": "demo-city",
+        "lat": 31.226,
+        "lng": 121.428
+      },
+      {
+        "id": "demo-s11",
+        "station_code": "D11",
+        "name": "潮汐",
+        "city_id": "demo-city",
+        "lat": 31.23,
+        "lng": 121.435
+      },
+      {
+        "id": "demo-s12",
+        "station_code": "D12",
+        "name": "灯塔",
+        "city_id": "demo-city",
+        "lat": 31.234,
+        "lng": 121.442
+      },
+      {
+        "id": "demo-s13",
+        "station_code": "D13",
+        "name": "沙洲",
+        "city_id": "demo-city",
+        "lat": 31.238,
+        "lng": 121.449
+      }
+    ],
+    "physical_lines": [
+      {
+        "id": "demo-line-1",
+        "name": "一号线",
+        "valid_from": "2018-01-01",
+        "valid_to": null,
+        "is_loop": false,
+        "loop_fold_station_id": null,
+        "direction_labels": [
+          {
+            "label": "青松 → 望江",
+            "from_station_id": "demo-s01",
+            "to_station_id": null
+          },
+          {
+            "label": "望江 → 青松",
+            "from_station_id": "demo-s08",
+            "to_station_id": null
+          }
+        ]
+      },
+      {
+        "id": "demo-line-2",
+        "name": "二号线",
+        "valid_from": "2018-01-01",
+        "valid_to": null,
+        "is_loop": false,
+        "loop_fold_station_id": null,
+        "direction_labels": [
+          {
+            "label": "河湾 → 沙洲",
+            "from_station_id": "demo-s04",
+            "to_station_id": null
+          },
+          {
+            "label": "沙洲 → 河湾",
+            "from_station_id": "demo-s13",
+            "to_station_id": null
+          }
+        ]
+      }
+    ],
+    "physical_sections": [
+      {
+        "id": "demo-l1-s01",
+        "physical_line_id": "demo-line-1",
+        "from_station_id": "demo-s01",
+        "to_station_id": "demo-s02",
+        "valid_from": "2018-01-01",
+        "valid_to": null,
+        "length_m": 1200,
+        "length_source": "demo-synthetic"
+      },
+      {
+        "id": "demo-l1-s02",
+        "physical_line_id": "demo-line-1",
+        "from_station_id": "demo-s02",
+        "to_station_id": "demo-s03",
+        "valid_from": "2018-01-01",
+        "valid_to": null,
+        "length_m": 1300,
+        "length_source": "demo-synthetic"
+      },
+      {
+        "id": "demo-l1-s03",
+        "physical_line_id": "demo-line-1",
+        "from_station_id": "demo-s03",
+        "to_station_id": "demo-s04",
+        "valid_from": "2018-01-01",
+        "valid_to": null,
+        "length_m": 1400,
+        "length_source": "demo-synthetic"
+      },
+      {
+        "id": "demo-l1-s04",
+        "physical_line_id": "demo-line-1",
+        "from_station_id": "demo-s04",
+        "to_station_id": "demo-s05",
+        "valid_from": "2018-01-01",
+        "valid_to": null,
+        "length_m": 1500,
+        "length_source": "demo-synthetic"
+      },
+      {
+        "id": "demo-l1-s05",
+        "physical_line_id": "demo-line-1",
+        "from_station_id": "demo-s05",
+        "to_station_id": "demo-s06",
+        "valid_from": "2018-01-01",
+        "valid_to": null,
+        "length_m": 1600,
+        "length_source": "demo-synthetic"
+      },
+      {
+        "id": "demo-l1-s06",
+        "physical_line_id": "demo-line-1",
+        "from_station_id": "demo-s06",
+        "to_station_id": "demo-s07",
+        "valid_from": "2018-01-01",
+        "valid_to": null,
+        "length_m": 1700,
+        "length_source": "demo-synthetic"
+      },
+      {
+        "id": "demo-l1-s07",
+        "physical_line_id": "demo-line-1",
+        "from_station_id": "demo-s07",
+        "to_station_id": "demo-s08",
+        "valid_from": "2018-01-01",
+        "valid_to": null,
+        "length_m": 1800,
+        "length_source": "demo-synthetic"
+      },
+      {
+        "id": "demo-l2-s01",
+        "physical_line_id": "demo-line-2",
+        "from_station_id": "demo-s04",
+        "to_station_id": "demo-s09",
+        "valid_from": "2018-01-01",
+        "valid_to": null,
+        "length_m": 1400,
+        "length_source": "demo-synthetic"
+      },
+      {
+        "id": "demo-l2-s02",
+        "physical_line_id": "demo-line-2",
+        "from_station_id": "demo-s09",
+        "to_station_id": "demo-s10",
+        "valid_from": "2018-01-01",
+        "valid_to": null,
+        "length_m": 1500,
+        "length_source": "demo-synthetic"
+      },
+      {
+        "id": "demo-l2-s03",
+        "physical_line_id": "demo-line-2",
+        "from_station_id": "demo-s10",
+        "to_station_id": "demo-s11",
+        "valid_from": "2018-01-01",
+        "valid_to": null,
+        "length_m": 1600,
+        "length_source": "demo-synthetic"
+      },
+      {
+        "id": "demo-l2-s04",
+        "physical_line_id": "demo-line-2",
+        "from_station_id": "demo-s11",
+        "to_station_id": "demo-s12",
+        "valid_from": "2018-01-01",
+        "valid_to": null,
+        "length_m": 1700,
+        "length_source": "demo-synthetic"
+      },
+      {
+        "id": "demo-l2-s05",
+        "physical_line_id": "demo-line-2",
+        "from_station_id": "demo-s12",
+        "to_station_id": "demo-s13",
+        "valid_from": "2018-01-01",
+        "valid_to": null,
+        "length_m": 1800,
+        "length_source": "demo-synthetic"
+      }
+    ],
+    "service_lines": [
+      {
+        "id": "demo-service-1",
+        "name": "一号线",
+        "operator_id": "demo-op",
+        "valid_from": "2018-01-01",
+        "valid_to": null,
+        "direction_labels": [
+          {
+            "label": "青松 → 望江",
+            "from_station_id": "demo-s01",
+            "to_station_id": null
+          },
+          {
+            "label": "望江 → 青松",
+            "from_station_id": "demo-s08",
+            "to_station_id": null
+          }
+        ]
+      },
+      {
+        "id": "demo-service-2",
+        "name": "二号线",
+        "operator_id": "demo-op",
+        "valid_from": "2018-01-01",
+        "valid_to": null,
+        "direction_labels": [
+          {
+            "label": "河湾 → 沙洲",
+            "from_station_id": "demo-s04",
+            "to_station_id": null
+          },
+          {
+            "label": "沙洲 → 河湾",
+            "from_station_id": "demo-s13",
+            "to_station_id": null
+          }
+        ]
+      }
+    ],
+    "service_line_sections": [
+      {
+        "service_line_id": "demo-service-1",
+        "physical_section_id": "demo-l1-s01",
+        "seq": 0,
+        "valid_from": "2018-01-01",
+        "valid_to": null
+      },
+      {
+        "service_line_id": "demo-service-1",
+        "physical_section_id": "demo-l1-s02",
+        "seq": 1,
+        "valid_from": "2018-01-01",
+        "valid_to": null
+      },
+      {
+        "service_line_id": "demo-service-1",
+        "physical_section_id": "demo-l1-s03",
+        "seq": 2,
+        "valid_from": "2018-01-01",
+        "valid_to": null
+      },
+      {
+        "service_line_id": "demo-service-1",
+        "physical_section_id": "demo-l1-s04",
+        "seq": 3,
+        "valid_from": "2018-01-01",
+        "valid_to": null
+      },
+      {
+        "service_line_id": "demo-service-1",
+        "physical_section_id": "demo-l1-s05",
+        "seq": 4,
+        "valid_from": "2018-01-01",
+        "valid_to": null
+      },
+      {
+        "service_line_id": "demo-service-1",
+        "physical_section_id": "demo-l1-s06",
+        "seq": 5,
+        "valid_from": "2018-01-01",
+        "valid_to": null
+      },
+      {
+        "service_line_id": "demo-service-1",
+        "physical_section_id": "demo-l1-s07",
+        "seq": 6,
+        "valid_from": "2018-01-01",
+        "valid_to": null
+      },
+      {
+        "service_line_id": "demo-service-2",
+        "physical_section_id": "demo-l2-s01",
+        "seq": 0,
+        "valid_from": "2018-01-01",
+        "valid_to": null
+      },
+      {
+        "service_line_id": "demo-service-2",
+        "physical_section_id": "demo-l2-s02",
+        "seq": 1,
+        "valid_from": "2018-01-01",
+        "valid_to": null
+      },
+      {
+        "service_line_id": "demo-service-2",
+        "physical_section_id": "demo-l2-s03",
+        "seq": 2,
+        "valid_from": "2018-01-01",
+        "valid_to": null
+      },
+      {
+        "service_line_id": "demo-service-2",
+        "physical_section_id": "demo-l2-s04",
+        "seq": 3,
+        "valid_from": "2018-01-01",
+        "valid_to": null
+      },
+      {
+        "service_line_id": "demo-service-2",
+        "physical_section_id": "demo-l2-s05",
+        "seq": 4,
+        "valid_from": "2018-01-01",
+        "valid_to": null
+      }
+    ],
+    "station_names": [
+      {
+        "station_id": "demo-s01",
+        "name": "青松",
+        "valid_from": "2018-01-01",
+        "valid_to": null
+      },
+      {
+        "station_id": "demo-s02",
+        "name": "云岭",
+        "valid_from": "2018-01-01",
+        "valid_to": null
+      },
+      {
+        "station_id": "demo-s03",
+        "name": "石桥",
+        "valid_from": "2018-01-01",
+        "valid_to": null
+      },
+      {
+        "station_id": "demo-s04",
+        "name": "河湾",
+        "valid_from": "2018-01-01",
+        "valid_to": null
+      },
+      {
+        "station_id": "demo-s05",
+        "name": "白鹭",
+        "valid_from": "2018-01-01",
+        "valid_to": null
+      },
+      {
+        "station_id": "demo-s06",
+        "name": "东浦",
+        "valid_from": "2018-01-01",
+        "valid_to": null
+      },
+      {
+        "station_id": "demo-s07",
+        "name": "松林",
+        "valid_from": "2018-01-01",
+        "valid_to": null
+      },
+      {
+        "station_id": "demo-s08",
+        "name": "望江",
+        "valid_from": "2018-01-01",
+        "valid_to": null
+      },
+      {
+        "station_id": "demo-s09",
+        "name": "枫岸",
+        "valid_from": "2018-01-01",
+        "valid_to": null
+      },
+      {
+        "station_id": "demo-s10",
+        "name": "芦滩",
+        "valid_from": "2018-01-01",
+        "valid_to": null
+      },
+      {
+        "station_id": "demo-s11",
+        "name": "潮汐",
+        "valid_from": "2018-01-01",
+        "valid_to": null
+      },
+      {
+        "station_id": "demo-s12",
+        "name": "灯塔",
+        "valid_from": "2018-01-01",
+        "valid_to": null
+      },
+      {
+        "station_id": "demo-s13",
+        "name": "沙洲",
+        "valid_from": "2018-01-01",
+        "valid_to": null
+      }
+    ],
+    "station_service_periods": [
+      {
+        "station_id": "demo-s01",
+        "kind": "passenger",
+        "valid_from": "2018-01-01",
+        "valid_to": null
+      },
+      {
+        "station_id": "demo-s02",
+        "kind": "passenger",
+        "valid_from": "2018-01-01",
+        "valid_to": null
+      },
+      {
+        "station_id": "demo-s03",
+        "kind": "passenger",
+        "valid_from": "2018-01-01",
+        "valid_to": null
+      },
+      {
+        "station_id": "demo-s04",
+        "kind": "passenger",
+        "valid_from": "2018-01-01",
+        "valid_to": null
+      },
+      {
+        "station_id": "demo-s05",
+        "kind": "passenger",
+        "valid_from": "2018-01-01",
+        "valid_to": null
+      },
+      {
+        "station_id": "demo-s06",
+        "kind": "passenger",
+        "valid_from": "2018-01-01",
+        "valid_to": null
+      },
+      {
+        "station_id": "demo-s07",
+        "kind": "passenger",
+        "valid_from": "2018-01-01",
+        "valid_to": null
+      },
+      {
+        "station_id": "demo-s08",
+        "kind": "passenger",
+        "valid_from": "2018-01-01",
+        "valid_to": null
+      },
+      {
+        "station_id": "demo-s09",
+        "kind": "passenger",
+        "valid_from": "2018-01-01",
+        "valid_to": null
+      },
+      {
+        "station_id": "demo-s10",
+        "kind": "passenger",
+        "valid_from": "2018-01-01",
+        "valid_to": null
+      },
+      {
+        "station_id": "demo-s11",
+        "kind": "passenger",
+        "valid_from": "2018-01-01",
+        "valid_to": null
+      },
+      {
+        "station_id": "demo-s12",
+        "kind": "passenger",
+        "valid_from": "2018-01-01",
+        "valid_to": null
+      },
+      {
+        "station_id": "demo-s13",
+        "kind": "passenger",
+        "valid_from": "2018-01-01",
+        "valid_to": null
+      }
+    ],
+    "section_mappings": [],
+    "topology_events": []
+  }
+}
