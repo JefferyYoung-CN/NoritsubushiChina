@@ -1,114 +1,79 @@
-# Noritsubushi frontend
+# Noritsubushi 前端
 
-Browser frontend for recording trips on a transit network and computing
-completion statistics. The app runs entirely in the browser: the network comes
-from a verified, digest-checked JSON envelope, and the user's records are stored
-locally in IndexedDB. There is no account system and no server-side storage.
+用于记录交通网络上的行程并计算完成度统计的浏览器前端。应用完全在浏览器中运行：路网来自经过校验、带摘要（digest）检查的 JSON 数据信封（envelope），用户的记录则存储在本地 IndexedDB 中。没有账户体系，也没有服务端存储。
 
-This repository is the public frontend repository. It contains the web app, the
-shared application modules and a **synthetic** demo dataset. The licensed data
-snapshots, the data-export pipeline and the backend services are not part of this
-repository.
+本仓库是公开前端仓库，包含 Web 应用、共享应用模块和一份 **合成** 演示数据集。授权数据快照、数据导出流水线和后端服务不在本仓库中。
 
-## Quick start
+## 快速开始
 
-Requirements: Node.js 24 (`>=24.15.0 <25`, see `.node-version`) and npm
-`>=10.8.2 <12`. No Python or other runtime is needed for the demo.
+要求：Node.js 24（`>=24.15.0 <25`，见 `.node-version`）与 npm `>=10.8.2 <12`。演示不需要 Python 或其他运行时。
 
 ```bash
 npm ci --ignore-scripts
 npm run dev
 ```
 
-`npm run dev` first publishes the demo envelope, then starts Vite on
-<http://127.0.0.1:5173>.
+`npm run dev` 先发布演示信封，然后在 <http://127.0.0.1:5173> 启动 Vite。
 
-## Commands
+## 命令
 
-| Command | Purpose |
+| 命令 | 用途 |
 | --- | --- |
-| `npm run prepare:assets` | Decode the envelopes in the data root and publish them for the browser |
-| `npm run demo:generate` | Regenerate the synthetic demo dataset in `demo/` |
-| `npm run dev` | Prepare assets and start the dev server on `127.0.0.1:5173` |
-| `npm run typecheck` | Prepare assets and type-check the web app with `vue-tsc` |
-| `npm test` | Application tests, then the web test suite |
-| `npm run build` | Type-check, then build the production bundle |
-| `npm run preview` | Serve the existing `dist` on `127.0.0.1:4173` |
-| `npm run verify:gates` | Negative probes proving type-check and test discovery work |
+| `npm run prepare:assets` | 解码数据根中的数据信封，并发布给浏览器 |
+| `npm run demo:generate` | 重新生成 `demo/` 中的合成演示数据集 |
+| `npm run dev` | 准备资源并在 `127.0.0.1:5173` 启动开发服务器 |
+| `npm run typecheck` | 准备资源并用 `vue-tsc` 对 Web 应用做类型检查 |
+| `npm test` | 先跑应用测试，再跑 Web 测试套件 |
+| `npm run build` | 先做类型检查，再构建生产包 |
+| `npm run preview` | 在 `127.0.0.1:4173` 上提供现有的 `dist` |
+| `npm run verify:gates` | 反向探针，证明类型检查与测试发现确实生效 |
 
-All commands are expected to exit with code 0. The demo pipeline does not need a
-network connection.
+所有命令都应以退出码 0 结束。演示流水线不需要网络连接。
 
-## Data root
+## 数据根
 
-The app does not read data from a fixed directory at runtime. Assets are
-published at build/start time from a **data root**:
+应用在运行时不从固定目录读取数据。资源在构建/启动时从 **数据根** 发布：
 
-| Variable | Default | Meaning |
+| 变量 | 默认值 | 含义 |
 | --- | --- | --- |
-| `NORITSU_DATA_ROOT` | `demo` | Data root, relative to this repository (or absolute) |
-| `NORITSU_DEMO_SCENARIO` | `demo-reduced` | Scenario directory under `<data root>/scenarios/` used by the demo tests |
+| `NORITSU_DATA_ROOT` | `demo` | 数据根，相对本仓库（也可用绝对路径） |
+| `NORITSU_DEMO_SCENARIO` | `demo-reduced` | 演示测试使用的场景目录，位于 `<data root>/scenarios/` 下 |
 
-A data root contains `envelopes/reduced-envelope.json` (simulated input) and
-optionally `envelopes/development-envelope.json` (licensed input) and
-`envelopes/reviewed-mapping.json` (cross-snapshot record whitelist). See
-[`demo/README.md`](demo/README.md) for the demo layout and
-[`apps/web/README.md`](apps/web/README.md) for the publishing details.
+数据根包含 `envelopes/reduced-envelope.json`（模拟输入），可选地包含 `envelopes/development-envelope.json`（授权输入）和 `envelopes/reviewed-mapping.json`（跨快照的记录白名单）。演示目录结构见 [`demo/README.md`](demo/README.md)，发布细节见 [`apps/web/README.md`](apps/web/README.md)。
 
-## Repository layout
+## 仓库结构
 
 ```text
 .
-├─ apps/web/               # Vue 3 web app (source, tests, Vite/Vitest config)
-├─ packages/application/   # Shared ES modules: readers, records, statistics, storage
+├─ apps/web/               # Vue 3 Web 应用（源码、测试、Vite/Vitest 配置）
+├─ packages/application/   # 共享 ES 模块：读取器、记录、统计、存储
 ├─ tools/
-│  ├─ prepare-web-assets.mjs   # Publishes envelopes; writes the generated manifest
-│  ├─ test-application.mjs     # Application test runner with pinned counts
-│  └─ verify-web-gates.mjs     # Negative probes for the type and test gates
-├─ demo/                   # Synthetic demo dataset (see demo/README.md)
-├─ package.json            # Workspaces and scripts
+│  ├─ prepare-web-assets.mjs   # 发布数据信封；写入生成的清单
+│  ├─ test-application.mjs     # 应用测试运行器，固定文件数与用例数
+│  └─ verify-web-gates.mjs     # 类型门禁与测试发现门禁的反向探针
+├─ demo/                   # 合成演示数据集（见 demo/README.md）
+├─ package.json            # workspaces 与脚本
 └─ LICENSE                 # AGPL-3.0
 ```
 
-## Demo data
+## 演示数据
 
-`demo/` contains a deliberately small, entirely fictional network (one city, one
-operator, two lines, 13 stations). It exists so the project can be cloned,
-built and run without any licensed data. It is not real-world data; the
-generator and the notice file document this. Recreate it with
-`npm run demo:generate`.
+`demo/` 包含一个刻意做得很小、完全虚构的路网（一座城市、一个运营方、两条线路、13 座车站）。它让项目无需任何授权数据即可克隆、构建和运行。它不是真实数据；生成器和声明文件对此有说明。用 `npm run demo:generate` 可以重新生成。
 
-## Tests and verification
+## 测试与验证
 
-- `npm run test:application` runs the application modules' tests on the demo
-  dataset. The runner pins the discovered file and test counts.
-- `npm run test:ui` runs the Vitest suites in `apps/web/test/`, which use
-  synthetic fixtures and in-memory adapters. No network access is required.
-- `npm run verify:gates` creates two temporary probes (one type error, one
-  failing assertion), confirms both fail for the intended reason, then removes
-  them and verifies the source bytes are unchanged.
+- `npm run test:application` 在演示数据集上运行应用模块的测试。运行器会固定测试发现到的文件数与用例数。
+- `npm run test:ui` 运行 `apps/web/test/` 中的 Vitest 测试套件，它们使用合成测试夹具和内存适配器。不需要网络访问。
+- `npm run verify:gates` 创建两个临时探针（一个类型错误、一个断言失败），确认两者都因预期原因失败，然后删除它们并验证源文件字节未变。
 
-### Why the public test suite is a subset
+### 公开测试集为什么只是子集
 
-The public repository ships checks that can run on synthetic data:
-2 application test files (13 cases) and 45 web test files (431 cases). The rest
-of the test suite asserts against licensed data snapshots — real topology,
-scenario archives and source reviews: 14 application test files and 14 web test
-files. Those tests live in the private workspace together with the data. They
-are not skipped here; they are simply not part of this repository, so there is
-no flag that turns them on.
+公开仓库只带能在合成数据上运行的检查：2 个应用测试文件（13 个用例）和 45 个前端测试文件（431 个用例）。测试集的其余部分针对授权数据快照断言——真实拓扑、场景归档和来源评审：14 个应用测试文件 + 14 个前端测试文件。这些测试与数据一起位于私有工作区中。它们在这里并未被跳过，只是不属于本仓库，因此也没有能打开它们的开关。
 
-If you are a maintainer with access to the licensed data, the full suite runs
-from the private workspace, which contains both those tests and a data root with
-`envelopes/`. Point its tools at that root with `NORITSU_DATA_ROOT` as described
-in [`apps/web/README.md`](apps/web/README.md); the public repository intentionally
-cannot reproduce that run.
+如果你是能访问授权数据的维护者，完整测试集在私有工作区中运行，那里同时包含这些测试和一个带 `envelopes/` 的数据根。按 [`apps/web/README.md`](apps/web/README.md) 的说明，用 `NORITSU_DATA_ROOT` 把工具指向该数据根；公开仓库有意无法复现那次运行。
 
-## License
+## 许可证
 
-This project is licensed under the GNU Affero General Public License, version 3
-or later (AGPL-3.0-or-later). The full license text is in [`LICENSE`](LICENSE).
+本项目采用 GNU Affero 通用公共许可证第 3 版或更高版本（AGPL-3.0-or-later）授权。完整许可证文本见 [`LICENSE`](LICENSE)。
 
-Because the project is offered as a network service, the AGPL's
-remote-network-interaction terms apply: if you run a modified version as a
-service, you must offer its source to the users.
+由于本项目以网络服务形式提供，AGPL 的远程网络交互条款适用：如果你将修改后的版本作为服务运行，必须向用户提供其源代码。

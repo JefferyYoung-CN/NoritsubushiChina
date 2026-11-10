@@ -1,84 +1,63 @@
-# Web frontend
+# Web 前端
 
-Vue 3 single-page app for browsing and searching a transit network, drawing the
-network on a map, recording basic and advanced trips in the browser, computing
-completion statistics, and exporting/importing backups. Records are stored
-locally in IndexedDB; the app never writes to a server.
+用于浏览和搜索交通网络、在地图上绘制路网、在浏览器中记录基础行程与高级行程、计算完成度统计，以及导出/导入备份的 Vue 3 单页应用。记录存储在本地 IndexedDB 中；应用从不写入服务器。
 
-The app loads a verified application envelope. In this public repository the
-envelope is built from the synthetic demo dataset in `demo/`; the licensed data
-pipeline is not part of this repository.
+应用加载经过校验的应用数据信封（envelope）。在公开仓库中，信封由 `demo/` 的合成演示数据集构建；授权数据流水线不在本仓库中。
 
-## Requirements
+## 要求
 
-- Node.js 24 (`>=24.15.0 <25`, verified with `24.22.1`; see `.node-version`)
-- npm `10.8.2` (or any version in `>=10.8.2 <12`)
-- No Python or other runtime is needed for the demo dataset.
+- Node.js 24（`>=24.15.0 <25`，已用 `24.22.1` 验证；见 `.node-version`）
+- npm `10.8.2`（或 `>=10.8.2 <12` 内的任意版本）
+- 演示数据集不需要 Python 或其他运行时。
 
-## Commands
+## 命令
 
-Run from the repository root:
+在仓库根目录运行：
 
 ```bash
 npm ci --ignore-scripts
-npm run dev          # generate the demo assets, then start Vite on http://127.0.0.1:5173
+npm run dev          # 生成演示资源，然后在 http://127.0.0.1:5173 启动 Vite
 npm run typecheck    # vue-tsc --noEmit
-npm test             # application tests + web tests
-npm run build        # typecheck, then vite build
-npm run preview      # serve the existing dist on http://127.0.0.1:4173
-npm run verify:gates # negative probes for typecheck and test discovery
+npm test             # 应用测试 + Web 测试
+npm run build        # 先类型检查，再 vite build
+npm run preview      # 在 http://127.0.0.1:4173 提供现有的 dist
+npm run verify:gates # 类型检查与测试发现的反向探针
 ```
 
-All checks are expected to exit with code 0. The dev and preview servers bind to
-`127.0.0.1` only. `preview` needs a previous `npm run build`.
+所有检查都应以退出码 0 结束。开发服务器和预览服务器只绑定 `127.0.0.1`。`preview` 需要先执行过 `npm run build`。
 
-Web Crypto requires a secure context; `http://127.0.0.1` and
-`http://localhost` qualify. A remote deployment must use HTTPS.
+Web Crypto 需要安全上下文；`http://127.0.0.1` 和 `http://localhost` 满足这一要求。远程部署必须使用 HTTPS。
 
-## Assets and the data root
+## 资源与数据根
 
-`npm run prepare:assets` runs `tools/prepare-web-assets.mjs`. It reads a data
-root, decodes the envelopes it finds there, and publishes them to
-`apps/web/public/application-input/` plus the generated TypeScript manifest in
-`apps/web/.generated/`. Both output directories are ignored by git and are
-recreated by the command.
+`npm run prepare:assets` 运行 `tools/prepare-web-assets.mjs`。它读取数据根，解码其中找到的数据信封，并把它们发布到 `apps/web/public/application-input/`，同时生成 `apps/web/.generated/` 下的 TypeScript 清单（manifest）。两个输出目录都被 git 忽略，并会由该命令重建。
 
-| Environment variable | Default | Meaning |
+| 环境变量 | 默认值 | 含义 |
 | --- | --- | --- |
-| `NORITSU_DATA_ROOT` | `demo` | Data root, relative to the repository root (or absolute). |
-| `NORITSU_DEMO_SCENARIO` | `demo-reduced` | Scenario directory used by the demo tests under `<data root>/scenarios/`. |
+| `NORITSU_DATA_ROOT` | `demo` | 数据根，相对仓库根（也可用绝对路径）。 |
+| `NORITSU_DEMO_SCENARIO` | `demo-reduced` | 演示测试使用的场景目录，位于 `<data root>/scenarios/` 下。 |
 
-A data root must provide `envelopes/reduced-envelope.json` and may provide
-`envelopes/development-envelope.json` and `envelopes/reviewed-mapping.json`.
-`demo/README.md` documents the demo layout. A corrupt or unverifiable envelope
-stops the command with a diagnostic instead of reaching the browser.
+数据根必须提供 `envelopes/reduced-envelope.json`，也可提供 `envelopes/development-envelope.json` 和 `envelopes/reviewed-mapping.json`。`demo/README.md` 说明了演示目录结构。信封损坏或无法校验时，命令会带着诊断信息停止，而不会把它送进浏览器。
 
-## Tests
+## 测试
 
-- `npm run test:application` runs the `packages/application` tests that work on
-  the synthetic demo dataset; the runner pins the discovered file and test
-  counts so a silent discovery change fails the gate.
-- `npm run test:ui` runs the Vitest suite in `test/`. It uses synthetic fixtures
-  and in-memory adapters; no network access is required.
+- `npm run test:application` 运行 `packages/application` 中能在合成演示数据集上工作的测试；运行器固定测试发现到的文件数与用例数，因此测试发现被悄悄改动会导致门禁失败。
+- `npm run test:ui` 运行 `test/` 中的 Vitest 测试套件。它使用合成测试夹具和内存适配器；不需要网络访问。
 
-Checks that need a licensed data snapshot (real topology, scenario archives,
-source reviews) are maintained in the private workspace together with that data
-and are intentionally not part of this repository; the public suite is the
-synthetic-data subset. A maintainer with a licensed data root can run the full
-suite from that private workspace, not from here.
+需要授权数据快照的检查（真实拓扑、场景归档、来源评审）与那份数据一起维护在私有工作区中，并且有意不属于本仓库；公开测试集只是合成数据子集。持有授权数据根的维护者可以在那个私有工作区运行完整测试集，而不是在这里。
 
-## Layout
+## 布局
 
 ```text
 apps/web/
 ├─ index.html
-├─ src/            # app entry, views, components, map, integration helpers
-├─ test/           # Vitest suites
-├─ public/         # static files; application-input/ is generated
+├─ src/            # 应用入口、视图、组件、地图、集成辅助模块
+├─ test/           # Vitest 测试套件
+├─ public/         # 静态文件；application-input/ 为生成目录
 ├─ vite.config.ts
 └─ tsconfig.json
 ```
 
-## License
+## 许可证
 
-AGPL-3.0-or-later. See [LICENSE](../../LICENSE).
+AGPL-3.0-or-later。见 [LICENSE](../../LICENSE)。

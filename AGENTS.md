@@ -1,24 +1,16 @@
 # AGENTS.md
 
-Instructions for AI coding agents working in this repository. Follow the
-repository documentation and the code's own conventions when they are more
-specific; this file only records rules that are easy to get wrong.
+面向在本仓库工作的 AI 编码智能体的说明。仓库文档和代码本身的约定更具体时，以它们为准；本文件只记录容易做错的规则。
 
-## Repository scope
+## 仓库范围
 
-- This is the public frontend repository. It contains the web app, the shared
-  application modules and a synthetic demo dataset.
-- Never add licensed or private data, source-restricted snapshots, credentials,
-  internal documents, or references to a private workspace. `demo/` is the only
-  sample data and it is synthetic.
-- Do not add a dependency, a generated directory, or a build artifact unless the
-  task explicitly calls for it. `apps/web/.generated/`,
-  `apps/web/public/application-input/` and `apps/web/dist/` are generated and
-  git-ignored; do not edit or commit them.
+- 本仓库是公开前端仓库，包含 Web 应用、共享应用模块和一份合成演示数据集。
+- 绝不要加入授权数据或私有数据、来源受限的快照、凭据、内部文档，也不要加入指向私有工作区的引用。`demo/` 是唯一的示例数据，且为合成数据。
+- 除非任务明确要求，不要新增依赖、生成目录或构建产物。`apps/web/.generated/`、`apps/web/public/application-input/` 和 `apps/web/dist/` 都是生成内容且被 git 忽略；不要编辑或提交它们。
 
-## Commands
+## 命令
 
-Use Node.js 24 (`>=24.15.0 <25`; see `.node-version`) and npm `>=10.8.2 <12`.
+使用 Node.js 24（`>=24.15.0 <25`；见 `.node-version`）与 npm `>=10.8.2 <12`。
 
 ```bash
 npm ci --ignore-scripts
@@ -29,51 +21,32 @@ npm run verify:gates
 npm run demo:generate
 ```
 
-`typecheck`, `test` and `build` prepare the demo assets first. All commands are
-expected to exit 0. If a check cannot run in your environment, report it as not
-run with the reason; never report it as passed.
+`typecheck`、`test` 和 `build` 会先准备演示资源。所有命令都应以 0 退出。检查无法在你的环境中运行时，按「未运行」上报并说明原因；绝不要上报为通过。
 
-## Data and assets
+## 数据与资源
 
-- The data root is `NORITSU_DATA_ROOT` (default `demo`, resolved against the
-  repository root). `NORITSU_DEMO_SCENARIO` selects the scenario directory used
-  by demo tests (default `demo-reduced`).
-- `tools/prepare-web-assets.mjs` only consumes pre-generated envelopes; it must
-  decode and verify them before publishing. Keep it free of licensed-data
-  paths and of the private export pipeline.
-- `demo/generate.mjs` is the single source of the committed demo files. Change
-  the dataset in the script and re-run it; do not hand-edit the generated JSON.
-- The demo data must stay obviously synthetic. Do not copy real station names,
-  line identifiers, mileage or coordinates into it.
+- 数据根由 `NORITSU_DATA_ROOT` 指定（默认 `demo`，相对仓库根解析）。`NORITSU_DEMO_SCENARIO` 选择演示测试使用的场景目录（默认 `demo-reduced`）。
+- `tools/prepare-web-assets.mjs` 只消费预先生成的数据信封（envelope）；发布前必须解码并校验它们。不要让它出现授权数据路径，也不要接入私有导出流水线。
+- `demo/generate.mjs` 是已提交演示文件的唯一来源。改数据集就改脚本再重跑；不要手工编辑生成的 JSON。
+- 演示数据必须一眼看出是合成的。不要把真实车站名、线路标识、里程或坐标抄进去。
 
-## Tests
+## 测试
 
-- Tests must run on the synthetic demo dataset or in-memory fixtures. Do not add
-  tests that need a licensed data snapshot.
-- Keep assertion strength. Do not rewrite a test expectation to make a failure
-  pass; if the contract changed, update the test deliberately and say so.
-- When adding or removing application tests, update `EXPECTED_TEST_FILES` and
-  `EXPECTED_TESTS` in `tools/test-application.mjs` in the same change.
-- Include a negative check when changing validation, type checking or test
-  discovery, and confirm it fails for the intended reason.
+- 测试必须在合成演示数据集或内存测试夹具上运行。不要新增需要授权数据快照的测试。
+- 保持断言强度。不要为了掩盖失败而改写测试期望；契约确实变了，就有意识地更新测试并说明。
+- 新增或删除应用测试时，在同一笔改动中更新 `tools/test-application.mjs` 里的 `EXPECTED_TEST_FILES` 和 `EXPECTED_TESTS`。
+- 改动校验、类型检查或测试发现时，要附带一条反向检查，并确认它确实因预期原因失败。
 
-## Code
+## 代码
 
-- Validate untrusted input at the boundary and return frozen, validated values.
-  Do not leak raw payload shapes into views or storage.
-- Keep modules focused and files below roughly 500 lines; split by
-  responsibility when a file grows past that.
-- Prefer deleting obsolete code over adding compatibility shims.
-- Leave a short comment for a non-obvious decision, with its reason and any
-  known limitation. Avoid comments that narrate the diff.
-- UI work must cover loading, empty, error, retry and feedback states and keep
-  keyboard accessibility.
+- 在边界处校验不可信输入，返回冻结的、已校验的值。不要把原始载荷结构泄漏进视图或存储。
+- 模块保持职责聚焦，单个文件控制在 500 行左右；超过就按职责拆分。
+- 过时代码优先删除，不要新增兼容层。
+- 不直观的决定要留一行短注释，写明原因和已知限制。避免叙述改动过程的注释。
+- UI 工作必须覆盖加载、空、错误、重试和反馈状态，并保持键盘可访问。
 
-## Git and review
+## Git 与评审
 
-- Do not run `git push`, `git tag`, or publish releases; the maintainers do that.
-- Keep commits focused. Do not commit generated output, data files, editor
-  configuration, or machine-specific paths.
-- In commit messages and pull request text, describe the behavior change and its
-  reason. Do not reference private systems, internal task identifiers or private
-  paths.
+- 不要运行 `git push`、`git tag`，也不要发布版本；这些由维护者来做。
+- 提交保持聚焦。不要提交生成产物、数据文件、编辑器配置或与本机相关的路径。
+- 提交信息与拉取请求正文里，写清行为变更及其原因。不要引用私有系统、内部任务标识或私有路径。

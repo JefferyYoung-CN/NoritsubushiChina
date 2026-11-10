@@ -1,31 +1,25 @@
-# Contributing
+# 贡献指南
 
-Thanks for improving the project. This document describes how to propose a
-change and what a reviewable change looks like.
+感谢你改进本项目。本文说明如何提出改动，以及什么样的改动才便于评审。
 
-## Before you start
+## 开始之前
 
-- Read [`README.md`](README.md) and the README of the area you want to change
-  (`apps/web/`, `packages/application/`).
-- For a non-trivial behavior change, open an issue or a draft pull request first
-  so the approach can be discussed before implementation.
-- Never submit licensed or private data, credentials, or screenshots of either.
-  This repository is public; the demo dataset in `demo/` is synthetic and is the
-  only sample data it ships.
+- 先读 [`README.md`](README.md)，以及你要改动的部分自己的 README（`apps/web/`、`packages/application/`）。
+- 改动会明显影响行为时，先开一个议题或草稿拉取请求，让方案在实现前先经过讨论。
+- 不要提交授权数据或私有数据、凭据，也不要提交它们的截图。本仓库是公开的；`demo/` 中的演示数据集是合成的，也是仓库唯一附带的示例数据。
 
-## Setup
+## 环境准备
 
-Requirements: Node.js 24 (`>=24.15.0 <25`, see `.node-version`) and npm
-`>=10.8.2 <12`.
+要求：Node.js 24（`>=24.15.0 <25`，见 `.node-version`）与 npm `>=10.8.2 <12`。
 
 ```bash
 npm ci --ignore-scripts
 npm run dev
 ```
 
-## Checks
+## 检查
 
-Every change must pass:
+每次改动都必须通过：
 
 ```bash
 npm run typecheck
@@ -33,53 +27,36 @@ npm test
 npm run build
 ```
 
-`npm run verify:gates` additionally proves that the type gate and the test
-discovery gate still fail for a deliberately broken probe; run it when you touch
-those configurations.
+`npm run verify:gates` 还会用一条故意破坏的探针，证明类型门禁和测试发现门禁仍然会失败；改动这些配置时请运行它。
 
-Generated directories — `apps/web/.generated/`, `apps/web/public/application-input/`
-and `apps/web/dist/` — are ignored by git. Do not edit or commit them; they are
-recreated by `npm run prepare:assets` / `npm run build`.
+生成目录——`apps/web/.generated/`、`apps/web/public/application-input/` 和 `apps/web/dist/`——已被 git 忽略。不要编辑或提交它们；它们会由 `npm run prepare:assets` / `npm run build` 重建。
 
-## Tests
+## 测试
 
-- Add or update tests for the behavior you change. Test the user-visible or
-  contractual behavior, not private implementation details.
-- Tests must be able to run on the synthetic demo dataset and in-memory fixtures.
-  Checks that require a licensed data snapshot do not belong in this repository.
-- The application test runner (`tools/test-application.mjs`) pins the number of
-  discovered test files and test cases. When you add or remove a test, update
-  `EXPECTED_TEST_FILES` and `EXPECTED_TESTS` in the same change.
-- Do not weaken or delete an assertion to make a test pass. If the business rule
-  changed, explain why in the pull request and update the tests deliberately.
+- 为你改动的行为新增或更新测试。测试应针对用户可见的行为或契约行为，而不是私有实现细节。
+- 测试必须能在合成演示数据集和内存测试夹具上运行。需要授权数据快照的检查不属于本仓库。
+- 应用测试运行器（`tools/test-application.mjs`）固定测试发现到的文件数与用例数。新增或删除测试时，要在同一笔改动中更新 `EXPECTED_TEST_FILES` 和 `EXPECTED_TESTS`。
+- 不要为了让测试通过而削弱或删除断言。业务规则确实变了，就在拉取请求里说明原因，并有意识地更新测试。
 
-## Code guidelines
+## 代码约定
 
-- Follow the surrounding style; keep modules focused and files below roughly 500
-  lines, splitting by responsibility when a file grows past that.
-- Keep validation at the boundary. Data coming from an envelope or from the
-  user's storage is untrusted; validate it and convert it to the internal
-  representation instead of leaking raw shapes into views.
-- Do not introduce a dependency for a small utility. Discuss new runtime
-  dependencies first; the application package intentionally has none.
-- Record the reason for non-obvious decisions and known limitations in a comment
-  or documentation, with enough context for the next maintainer.
-- UI changes must keep loading, empty, error, retry and feedback states, and must
-  remain keyboard accessible.
+- 沿用周围代码的风格；模块保持职责聚焦，单个文件控制在 500 行左右，超过就按职责拆分。
+- 校验留在边界处。来自数据信封（envelope）或用户存储的数据都不可信；要校验并转换成内部表示，不要把原始结构泄漏进视图。
+- 不要为一个小工具引入依赖。新增运行时依赖先讨论；应用包有意不依赖任何第三方库。
+- 不直观的决定和已知限制，要在注释或文档里记下原因，并给下一位维护者留足上下文。
+- UI 改动必须保留加载、空、错误、重试和反馈状态，并保持键盘可访问。
 
-## Pull requests
+## 拉取请求（PR）
 
-A good pull request:
+一个好的拉取请求：
 
-- is focused on one concern and does not mix unrelated refactors;
-- states the user-visible or contractual change and the verification performed;
-- lists any check that could not be run, with the reason;
-- does not include build output, data files, or machine-specific configuration.
+- 只聚焦一个问题，不混入无关重构；
+- 说明用户可见的变更或契约变更，以及实际做了哪些验证；
+- 列出没能运行的检查及原因；
+- 不包含构建产物、数据文件或与本机相关的配置。
 
-Commit messages describe the change and its reason. Reference issue numbers when
-they exist.
+提交信息要说明改了什么、为什么改。有议题编号时请引用。
 
-## License
+## 许可证
 
-By contributing you agree that your contribution is licensed under the
-project's AGPL-3.0 license (see [`LICENSE`](LICENSE)).
+提交贡献即表示你同意自己的贡献按项目的 AGPL-3.0 许可证授权（见 [`LICENSE`](LICENSE)）。
