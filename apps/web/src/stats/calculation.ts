@@ -1,5 +1,5 @@
 /**
- * 重算状态展示的纯逻辑（ADR-0010）。
+ * 重算状态展示的纯逻辑。
  *
  * 只解释持久化端口暴露的 `calculation` 与 `derived`，不触发计算：
  * running 必须显示进行中；被打断或记录变更后应是 pending；旧 derived

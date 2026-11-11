@@ -1,5 +1,5 @@
 /**
- * 配额耗尽保存链路（P5 复验 FAIL）：浏览器注入 `IDBObjectStore.prototype.put` 抛
+ * 配额耗尽保存链路（复验 FAIL）：浏览器注入 `IDBObjectStore.prototype.put` 抛
  * QuotaExceededError 后，用户看到的是英文 "The quota has been exceeded."。
  *
  * 根因在适配器：`transact` 里 `store.put` 的同步 DOMException 不经过 tx.onerror，以原始
@@ -111,7 +111,7 @@ const record = (id: string): AdvancedRecordWrite => ({
   serviceLineIds: ['service-1'], sectionIds: [`section-${id}`], note: '', vehicle: '',
 });
 
-describe('P5 quota exhaustion through the real save path', () => {
+describe('quota exhaustion through the real save path', () => {
   test('a synchronous QuotaExceededError becomes the Chinese E_STORAGE message and keeps stored facts', async () => {
     const idb = createQuotaIndexedDB();
     const workspace = createWorkspace({ indexedDB: idb as unknown as IDBFactory });

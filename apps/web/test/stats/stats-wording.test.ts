@@ -26,7 +26,7 @@ describe('统计页用词', () => {
       .toEqual(['范围', '已乘坐 / 总计', '已乘坐车站 / 总计', '说明']);
     expect(wrapper.get('caption').text()).toBe('按当前口径的已乘坐情况');
     expect(wrapper.get('.table-scroll').attributes('aria-label')).toContain('已乘坐统计表');
-    // 决策 #43：完站只由进阶记录贡献，基础记录只贡献区间完乘。
+    // 完站只由进阶记录贡献，基础记录只贡献区间完乘。
     expect(wrapper.text()).toContain('已乘坐车站只由进阶记录贡献（出发站与到达站各计一次），基础记录只贡献区间完乘');
     expect(wrapper.text()).not.toContain('已完成');
     expect(wrapper.text()).not.toContain('未乘情况');

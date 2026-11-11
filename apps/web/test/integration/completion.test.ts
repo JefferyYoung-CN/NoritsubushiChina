@@ -1,5 +1,5 @@
 /**
- * 统计映射与待处理注入（P5 收口 S8 关键缺口）。
+ * 统计映射与待处理注入（关键缺口）。
  *
  * 断言：可映射事实进入区间/车站统计；五类 pending 整条保留（recordId/layer/reason）、
  * 不写入任何集合、不抛 E_SNAPSHOT；日期边界 E_DATE/E_SNAPSHOT 明确失败。
@@ -23,7 +23,7 @@ const codeOf = (run: () => unknown): string => {
 };
 
 describe('computeCompletion', () => {
-  test('当前快照的可映射基础事实只进入区间统计，不贡献完站（决策 #43）', () => {
+  test('当前快照的可映射基础事实只进入区间统计，不贡献完站', () => {
     const result = computeCompletion(facts([fact()]), network, ON_DATE);
     expect(result.pending).toEqual([]);
     expect(result.basic).toEqual([{ sectionId: 'sAB', firstCompletedOn: '2024-05-01' }]);
@@ -38,7 +38,7 @@ describe('computeCompletion', () => {
     expect(advanced.basic).toEqual([]);
     expect(advanced.advanced).toEqual([{ sectionId: 'sBD', firstCompletedOn: '2024-05-01' }]);
     expect(advanced.contributions).toEqual([{ recordId: 'adv-1', sectionIds: ['sBD'] }]);
-    // 完站只看进阶记录（决策 #43）：基础记录再多也不贡献车站乘降。
+    // 完站只看进阶记录：基础记录再多也不贡献车站乘降。
     expect(advanced.stations.map(row => row.stationId)).toEqual(['B', 'D']);
   });
 

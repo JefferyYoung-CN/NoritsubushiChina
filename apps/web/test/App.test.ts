@@ -248,7 +248,7 @@ describe('App user flows', () => {
     expect((wrapper.get('#record-note').element as HTMLInputElement).value).toBe('');
   });
   test('完全重复的保存不冒充「记录已保存」，状态播报如实说明未产生新记录', async () => {
-    // 决策 #42：本次区间此前已全部记录时领域不写库，界面不能只说「记录已保存」。
+    // 本次区间此前已全部记录时领域不写库，界面不能只说「记录已保存」。
     mocks.add.mockReturnValueOnce({ lastSave: { total: 1, covered: 1, runs: [] } });
     const wrapper = render(); await flushPromises();
     await wrapper.get('.modes button').trigger('click');
@@ -299,7 +299,7 @@ describe('App user flows', () => {
     // 结果还在，但上下文属于别的日期：对当前页面是「日期未知的旧结果」，不能上色。
     mocks.derived = { overall: [{ sectionId: 'sAB', firstCompletedOn: '2024-05-01' }] };
     mocks.calculation = { status: 'ready', generation: 1, context: { onDate: '2024-01-01', snapshotId: 'snap-2024-01-01' }, error: null };
-    // 打开后的自动补算第一次失败（P6：不能无限自动重试），之后由用户显式重试。
+    // 打开后的自动补算第一次失败（不能无限自动重试），之后由用户显式重试。
     mocks.calculate.mockReturnValueOnce('fail');
     mocks.calculate.mockImplementationOnce((_network: unknown, onDate: string) => {
       mocks.calculation = { status: 'ready', generation: 2, context: { onDate, snapshotId: 'snap-2024-01-01' }, error: null };

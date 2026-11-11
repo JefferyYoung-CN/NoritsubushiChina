@@ -9,7 +9,7 @@ import {
 } from '../../src/map/label-placement';
 import { makeStation, makeNetwork } from './fixtures';
 
-describe('站名消歧（ADR-0005 §3）', () => {
+describe('站名消歧', () => {
   it('同名但为拆分站时按各自目标身份加管理编号，不合并', () => {
     const network = makeNetwork({
       stations: [

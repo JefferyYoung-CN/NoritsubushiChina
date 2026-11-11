@@ -33,13 +33,13 @@ export function decodeFacts(value) {
     array(value[layer], `facts.${layer}`, 10000).map((row, index) => decodeRecord(row, `facts.${layer}[${index}]`, layer))]));
   requireValue(facts.advanced.every(row => !row.physicalLineId), 'E_FORMAT', 'facts.advanced', 'Advanced records require service paths');
   unique([...facts.basic, ...facts.advanced], row => row.id, 'facts.id');
-  // 基础记录之间不再要求物理区间唯一：保存由 add 按未记录部分拆分保证（决策 #42），
+  // 基础记录之间不再要求物理区间唯一：保存由 add 按未记录部分拆分保证，
   // 读取与备份导入则容忍历史数据或手工文件里的跨记录重叠，统计仍按区间去重。
   return independent(facts);
 }
 
 /**
- * 把一次基础录入按「本档案已有基础记录覆盖的区间」折算成未记录的连续段（决策 #42）。
+ * 把一次基础录入按「本档案已有基础记录覆盖的区间」折算成未记录的连续段。
  * 只读 basicRecords 的 sectionIds，忽略其余字段与来源：读取容忍的跨记录重叠在这里收敛为
  * 保存不再产生重叠。沿 view.normalSections 从 view.fromStationId 走站链，取未覆盖段的最大连续
  * 切片；切片两端站即新记录的起终点，整圈等首尾同站由调用方按物理线路规则判断。
@@ -86,7 +86,7 @@ export function createRecordApplication(port) {
         [view.fromStationId, view.toStationId].every(id => view.stations.some(row => row.id === id && row.passengerAvailable)),
       'E_PATH', 'view', 'Record requires a validated available passenger route');
       const state = port.read();
-      // 只有基础层做扣除（决策 #42）；进阶记录可以重复覆盖同一区间，用空已记录集把整段合成一条。
+      // 只有基础层做扣除；进阶记录可以重复覆盖同一区间，用空已记录集把整段合成一条。
       const split = planBasicSplit(view, command.layer === 'basic' ? state.facts.basic : []);
       const serviceLineIds = view.physicalLineId ? [] : [view.serviceLineId];
       const records = split.runs.map((run, index) => {

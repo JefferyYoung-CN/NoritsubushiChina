@@ -4,7 +4,7 @@ import { decodeFacts } from './records.mjs';
 export const BACKUP_VERSION = 'phase1.user-backup.v4';
 export const REPLACEMENT_WARNING = '导入备份将清空目前设备上保存的全部记录';
 // v4 只放宽进阶记录的值范围，没有新增字段；v1–v3 仍按旧记录规则读取。
-// 基础区间跨记录重叠自决策 #42 起在读取与导入时容忍（见 records.decodeFacts），不因版本拒绝。
+// 基础区间跨记录重叠在读取与导入时容忍（见 records.decodeFacts），不因版本拒绝。
 const READABLE_VERSIONS = [BACKUP_VERSION, 'phase1.user-backup.v3', 'phase1.user-backup.v2', 'phase1.user-backup.v1'];
 const tickets = new WeakMap();
 

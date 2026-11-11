@@ -47,12 +47,12 @@ async function probe(relative, content, script, expectedDiagnostic) {
   }
 }
 try {
-  await probe('src/__p4_type_probe.ts',
+  await probe('src/__type_probe.ts',
     "import { decodeApplicationEnvelope } from '@noritsubushi/application/development-input';\nvoid decodeApplicationEnvelope(42, 'invalid');\n",
-    'typecheck', /__p4_type_probe\.ts.*TS2345/s);
-  await probe('test/__p4_discovery_probe.test.ts',
-    "import { expect, it } from 'vitest';\nit('P4 intentional discovery failure', () => { expect('discovered').toBe('must-fail'); });\n",
-    'test', /P4 intentional discovery failure/);
+    'typecheck', /__type_probe\.ts.*TS2345/s);
+  await probe('test/__discovery_probe.test.ts',
+    "import { expect, it } from 'vitest';\nit('intentional discovery failure', () => { expect('discovered').toBe('must-fail'); });\n",
+    'test', /intentional discovery failure/);
 } finally {
   const restored = { ...await capture(join(app, 'src')), ...await capture(join(app, 'test')),
     ...await capture(join(root, 'packages/application')) };

@@ -163,7 +163,7 @@ export function mileage(network, sections) {
 /**
  * 日期视图的唯一构建入口：把「物理线路或运营服务 + 起终点」解析成当日的录入/统计视图。
  *
- * 调用契约（ADR-0011「已知限制与调用契约」）：
+ * 调用契约（已知限制）：
  * - request.onDate 必须在 1997-01-01 与 network.knowledgeThrough 之间，否则抛 E_DATE。
  * - physicalLineId 与 serviceLineId 互斥；物理线路分支要求 serviceLineId === null，给了
  *   sectionIds 时必须是该线当日唯一径路的完整有序序列，否则抛 E_PATH。

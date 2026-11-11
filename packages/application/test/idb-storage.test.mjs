@@ -12,7 +12,7 @@ const factsWith = (id = 'one', sectionId = 'section-1') => ({ basic: [record(id,
 const scope = { tenantId: 'local', profileId: 'alice' };
 
 // 最小可控 IndexedDB：只在 Node 测试里替代浏览器实现，验证适配器的单事务读改写、
-// 失败回滚与重开恢复；不证明真实浏览器的提交点与持久性（P5 计划 §5.2）。
+// 失败回滚与重开恢复；不证明真实浏览器的提交点与持久性。
 function createFakeIndexedDB() {
   const databases = new Map();
   let nextFault = null;
@@ -208,11 +208,11 @@ async function contract(createBackend) {
   assert.equal(reopened.publish(running, { overall: [] }), false);
 }
 
-test('memory backend keeps the shared P3 port contract', async () => {
+test('memory backend keeps the shared port contract', async () => {
   await contract(() => createMemoryBackend());
 });
 
-test('IndexedDB backend keeps the shared P3 port contract', async () => {
+test('IndexedDB backend keeps the shared port contract', async () => {
   await contract(() => createIdbBackend({ indexedDB: createFakeIndexedDB() }));
 });
 

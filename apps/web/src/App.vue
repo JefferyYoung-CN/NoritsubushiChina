@@ -1,6 +1,6 @@
 <script setup lang="ts">
 /**
- * 根协调组件（P5 收口 S8）：加载真实封套、持 activeView 与会话/日期状态，并把各个面板接起来。
+ * 根协调组件：加载真实封套、持 activeView 与会话/日期状态，并把各个面板接起来。
  *
  * 状态机与可用性判断在 integration/*（纯逻辑、可测）；这里只做协调、焦点与 aria-live 反馈。
  * 端口由 integration/workspace 用真实 createIdbBackend 打开，运行期不回落到 fake-storage；
@@ -74,7 +74,7 @@ const busy = ref(false);
 const savedRecordId = ref('');
 /**
  * 最近一次基础保存的回执快照：保存成功后立刻取工作区返回值，避免随后的重算把它清成 null，
- * 面板才能稳定拿到「实际写了几段」（决策 #42）。
+ * 面板才能稳定拿到「实际写了几段」。
  */
 const lastSave = ref<LastSave | null>(null);
 const advancedSaved = ref<{ recordId: string; message: string } | null>(null);
@@ -99,7 +99,7 @@ const { state: backup, exportBackup, inspectImport, confirmImport, cancelImport,
 });
 
 /**
- * AdvancedPanel 是真实文件（P5 S7），直接静态 import：不再用 glob 兜底，
+ * AdvancedPanel 是真实文件，直接静态 import：不再用 glob 兜底，
  * 让缺失/契约漂移在类型检查与构建期暴露，而不是运行期静默降级。
  */
 
@@ -157,7 +157,7 @@ const calculation = computed(() => {
   return { ...view, kind: 'running' as const, message: `正在计算 ${expected.value.onDate} 的统计…`, retryable: false };
 });
 const statsData = computed(() => (session.value.snapshot?.derived?.statistics ?? null) as StatisticsData | null);
-/** 运营商/线路维度是体验增强（决策 #41 C1），不参与 P6 验收；数据缺失时保持为空，不伪造分组。 */
+/** 运营商/线路维度是体验增强，不在验收范围内；数据缺失时保持为空，不伪造分组。 */
 const statsDimensions = computed(() => {
   const current = network.value;
   const derived = session.value.snapshot?.derived ?? null;
@@ -476,7 +476,7 @@ onUnmounted(() => { disposed = true; ++requestId; active?.abort(); clearTimeout(
       <h2 id="usage-title">使用范围</h2>
       <p>本页用于内部数据与工程验证，尚不具备正式发布条件。记录、统计、备份、进阶与地图功能仍需人工验收。</p>
       <p>坐标采用 WGS-84，数据遵循 <a href="https://opendatacommons.org/licenses/odbl/1-0/">ODbL 1.0</a>；地图的实际呈现仍需人工验收。</p>
-      <p>单写者约束（ADR-0010）：同一浏览器请只开一个标签页编辑；多标签页并发写入与跨会话幂等当前不做保证。</p>
+      <p>单写者约束：同一浏览器请只开一个标签页编辑；多标签页并发写入与跨会话幂等当前不做保证。</p>
     </aside>
   </main>
   <footer>

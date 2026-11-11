@@ -1,5 +1,5 @@
 /**
- * 拓扑映射注入点（P5 收口 S8）。
+ * 拓扑映射注入点。
  *
  * `computeCompletion` 只做三件事：校验统计上下文（日期下限与知识截止 → E_DATE/E_SNAPSHOT）、
  * 调用 `topology-mapping.mapRecordFacts` 把事实投影到统计快照拓扑、把 mappedFacts + pending

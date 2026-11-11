@@ -1,5 +1,5 @@
 /**
- * 从公共静态资产加载经过校验的开发封套，并建立全网快照索引（P5 S6）。
+ * 从公共静态资产加载经过校验的开发封套，并建立全网快照索引。
  *
  * 数据流：fetch 静态封套文本 → `decodeApplicationEnvelope`（内部完成 sha256、
  * 封套 schema、内嵌文件摘要和 `decodeReader` 的全网校验）→ `snapshotEntryOf`

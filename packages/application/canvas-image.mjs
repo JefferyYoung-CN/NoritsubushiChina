@@ -1,5 +1,5 @@
 // 真实 Canvas 图片导出：本模块只接收已验证图片请求与 2D context，由显式绘制得到位图，
-// 不用 DOM 截图。原因见 ADR-0009：截图会受跨域底图、字体加载、裁剪与样式差异影响，
+// 不用 DOM 截图：截图会受跨域底图、字体加载、裁剪与样式差异影响，
 // 而导出内容与统计口径必须可复现、可测试；显式绘制也能保证底部署名不依赖页面布局。
 //
 // 许可边界：署名
@@ -13,7 +13,7 @@ import { independent, requireValue } from './validation.mjs';
 
 export const ATTRIBUTION_TEXT = ATTRIBUTION;
 
-/** 模拟（重建）封套的导出必须在署名后固定标注「重建数据」（confirmed-decisions §J）。 */
+/** 模拟（重建）封套的导出必须在署名后固定标注「重建数据」。 */
 const SIMULATED_EXPORT_NOTE = '重建数据';
 const footerTextOf = sourceKind =>
   (sourceKind === 'simulated' ? `${ATTRIBUTION} · ${SIMULATED_EXPORT_NOTE}` : ATTRIBUTION);

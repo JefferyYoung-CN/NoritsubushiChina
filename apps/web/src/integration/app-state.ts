@@ -1,5 +1,5 @@
 /**
- * 视图与会话级的纯状态逻辑（P5 收口 S8）。
+ * 视图与会话级的纯状态逻辑。
  *
  * App.vue 只做协调：activeView 联合、日期边界、视图可用性判断都在这里，便于纯逻辑测试。
  * 这里不碰 DOM、不读写存储。
@@ -77,7 +77,7 @@ export function viewAvailability(
 }
 
 /**
- * 日期边界：不早于 1997-01-01，不晚于快照的业务知识截止日（ADR-0009 的已验证范围）。
+ * 日期边界：不早于 1997-01-01，不晚于快照的业务知识截止日（已验证范围）。
  * 越界时夹到边界并给出说明，绝不让统计去猜未来数据。
  */
 export function clampDate(onDate: string, network: Pick<TransitNetwork, 'knowledgeThrough'> | null): string {
@@ -162,7 +162,7 @@ export function defaultDate(
 
 /**
  * 来源标签：顶栏常显，切到记录/统计页也不消失。
- * 模拟（重建）封套固定标注「模拟数据 · 仅用于场景验证」（confirmed-decisions §J）。
+ * 模拟（重建）封套固定标注「模拟数据 · 仅用于场景验证」。
  */
 export function sourceLabel(sourceKind: string): string {
   return sourceKind === 'simulated' ? '模拟数据 · 仅用于场景验证'

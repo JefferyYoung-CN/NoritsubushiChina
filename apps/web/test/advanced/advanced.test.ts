@@ -100,7 +100,7 @@ function chainToD(): ChainDraft {
   return appendLeg(chain, legFromResolution(second, 'D'));
 }
 
-describe('首段唯一径路（AC-A01）', () => {
+describe('首段唯一径路', () => {
   test('候选线路按日期与站点过滤', () => {
     const services = listServicesAtStation(network(), ON, 'A');
     expect(services.map((row) => row.serviceLineId)).toEqual(['S1', 'S5']);
@@ -175,7 +175,7 @@ describe('到达站候选按线路顺序排列', () => {
   });
 });
 
-describe('链式继续、回退与直通边界（AC-A02 / ADR-0002）', () => {
+describe('链式继续、回退与直通边界', () => {
   test('换乘不入链：共享车站不产生候选，直通候选只来自已维护线路对', () => {
     const net = network();
     let chain = startChain(net, { onDate: ON, fromStationId: 'A' });
@@ -256,7 +256,7 @@ describe('链式继续、回退与直通边界（AC-A02 / ADR-0002）', () => {
   });
 });
 
-describe('进阶保存：两层完乘与并集（AC-A02）', () => {
+describe('进阶保存：两层完乘与并集', () => {
   test('多段链条保存为一条完整记录，服务按顺序去重', () => {
     const net = network();
     const chain = chainToD();
@@ -337,7 +337,7 @@ describe('进阶保存：两层完乘与并集（AC-A02）', () => {
   });
 });
 
-describe('不可直接编辑（AC-A05）', () => {
+describe('不可直接编辑', () => {
   test('只接受备注与车次，日期/径路字段被领域层拒绝', () => {
     expect(metadataFromInput({ note: 'x', vehicle: 'G1' })).toEqual({ note: 'x', vehicle: 'G1' });
     for (const field of ['occurredOn', 'onDate', 'fromStationId', 'toStationId', 'sectionIds', 'serviceLineIds']) {
@@ -353,7 +353,7 @@ describe('不可直接编辑（AC-A05）', () => {
   });
 });
 
-describe('删除后的重算状态（ADR-0010）', () => {
+describe('删除后的重算状态', () => {
   const expected = { onDate: ON, snapshotId: 'snap1' };
   const derived = { onDate: ON, snapshotId: 'snap1' };
 

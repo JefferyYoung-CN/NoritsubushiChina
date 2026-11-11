@@ -2,7 +2,7 @@ import { BoundaryError, canonical, fields, independent, requireValue, text } fro
 import { decodeFacts } from './records.mjs';
 
 /*
- * 真实 IndexedDB 存储适配器（P5 S1）。
+ * 真实 IndexedDB 存储适配器。
  *
  * 持久化结构
  * - 数据库：默认 `noritsubushi-phase1`，版本 1。
@@ -13,9 +13,9 @@ import { decodeFacts } from './records.mjs';
  *
  * 事务边界
  * - `replace` 在单个 readwrite 事务内 get → 比较 revision → put 整份状态；任何失败
- *   abort，旧记录完整保留，不会出现半套新旧记录（ADR-0007 决策 5）。
+ *   abort，旧记录完整保留，不会出现半套新旧记录。
  * - `open` 的 `running → pending` 恢复也在单个 readwrite 事务内完成，随后才暴露端口。
- * - `beginCalculation` / `publish` / `fail` 是 P3 的同步契约（调用方不 await），
+ * - `beginCalculation` / `publish` / `fail` 是同步契约（调用方不 await），
  *   因此同步返回内存判断，持久化写进入后端串行队列；调用方必须 await
  *   `port.settled()` 后才能计算或报告发布成功。失败回退至最后已提交状态并抛出。
  *   `backend.settled()` 用于后端级诊断；`replace` 等待自己的事务提交后才返回。
@@ -36,8 +36,8 @@ import { decodeFacts } from './records.mjs';
  *
  * 与 fake 的测试边界
  * - Node 测试注入最小 IndexedDB 假实现，只能证明适配器逻辑、单事务读改写和失败回滚；
- *   jsdom 无 IndexedDB，真实浏览器事务提交、真实关闭/重开与多标签页行为必须按
- *   P5 计划 §5.2 在 Chromium 人工复核。fake-storage.mjs 保留为行为基线。
+ *   jsdom 无 IndexedDB，真实浏览器事务提交、真实关闭/重开与多标签页行为必须在
+ *   Chromium 人工复核。fake-storage.mjs 保留为行为基线。
  *
  * 唯一与 fake 不同步的入口是 `open`：IndexedDB 的打开与恢复事务必须异步。返回端口的
  * 读写方法保留 createMemoryBackend 的签名，另提供 settled() 持久化屏障。

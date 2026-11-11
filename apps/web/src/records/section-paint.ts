@@ -2,7 +2,7 @@
  * 区间着色视图模型（票 04/08）：把「完乘是否可用 / 总体完乘并集 / 临时停运 / 本次所选」
  * 压成图上每条区间只认的样式。纯函数，不依赖 Vue/DOM，也不读 network。
  *
- * 优先级（施工规格 §3.3、§3.5、§5.1）：
+ * 优先级：
  * - 临时停运最高：画虚线，既不叠本次所选外圈，底色也仍按乘坐与否决定；
  * - 完乘派生不可用（重算中或结果缺失）：只画中性线，连本次所选外圈也不画；
  * - 其余按总体完乘并集区分已乘坐 / 未乘坐，本次所选再叠外圈。
@@ -42,7 +42,7 @@ export const SECTION_PAINT: Readonly<Record<SectionPaintState, SectionPaint>> = 
   unknown: Object.freeze({ stroke: '#5b635f', dash: null, width: SECTION_LINE_WIDTH }),
 });
 
-/** 本次所选外圈：橙 13 / 白 8 / 原色 5（宽度来自规格 §5.1），三层自下而上叠，原色仍可辨。 */
+/** 本次所选外圈：橙 13 / 白 8 / 原色 5，三层自下而上叠，原色仍可辨。 */
 export const SELECTED_RING = Object.freeze({
   outer: Object.freeze({ stroke: '#b45c21', width: RING_OUTER_WIDTH }),
   gap: Object.freeze({ stroke: '#ffffff', width: 8 }),

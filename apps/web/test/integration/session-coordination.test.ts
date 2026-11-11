@@ -9,8 +9,8 @@ import type { Workspace, WorkspaceOperation, WorkspaceSnapshot, WorkspaceState }
 import App from '../../src/App.vue';
 
 /**
- * P6 复审的 4 处回归：重算并发协调（#1）、换快照后的补算与过期反馈（#2）、
- * 保存失败后重试入口的存活期（#3）、页签方向键的焦点跟随时机（#4）。
+ * 4 处回归：重算并发协调、换快照后的补算与过期反馈、
+ * 保存失败后重试入口的存活期、页签方向键的焦点跟随时机。
  *
  * 工作区是可手动放行的替身：重算的完成顺序由测试控制，才能构造真的交错与竞态，
  * 而不是只跑一条顺序路径。真实 IndexedDB 行为由 integration 其他测试覆盖。

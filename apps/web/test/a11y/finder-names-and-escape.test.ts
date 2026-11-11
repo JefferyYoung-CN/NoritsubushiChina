@@ -44,7 +44,7 @@ describe('组合框聚焦不再重复播报结果数（A 组）', () => {
     expect(status()).toContain('3 个结果');
     expect(wrapper.get('#station-option-0').classes()).toContain('active');
 
-    // Esc 关闭后播报一句确认（P6 走查发现 8：原来完全静默，用户不知道刚取消了什么）。
+    // Esc 关闭后播报一句确认（原来完全静默，用户不知道刚取消了什么）。
     await input.trigger('keydown', { key: 'Escape' });
     expect(input.attributes('aria-expanded')).toBe('false');
     expect(status()).toContain('已关闭候选列表');

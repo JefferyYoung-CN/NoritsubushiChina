@@ -1,15 +1,15 @@
 import type { TransitNetwork } from '../../../../packages/application/reader.mjs';
 
 /**
- * 按 ADR-0005 §3 生成最小充分消歧标签（display_label）。
+ * 按站名消歧规则生成最小充分消歧标签（display_label）。
  *
  * 规则：以规范化站名为组，初始只显示站名；某字段只有当它能拆分“当前仍冲突”的
  * 车站时，才追加到该组所有标签；能全部区分后停止。字段顺序 city → operator →
- * mode → service_line_set → station_code。读取层没有 mode 字段，P5 数据也没有
+ * mode → service_line_set → station_code。读取层没有 mode 字段，现有数据也没有
  * 只靠线路集合才能区分的同名站，因此实现按 city → operator → station_code 回退，
  * 管理编号在读取层唯一，是文档规定的最后安全回退。
  *
- * 拆分站（ADR-0006）在读取层已经是独立 station_id，这里按目标身份各自生成标签，
+ * 拆分站在读取层已经是独立 station_id，这里按目标身份各自生成标签，
  * 不把目标并回源站名，也不以旧括注名称猜身份。
  */
 export interface StationLabelContext {
@@ -116,7 +116,7 @@ export function buildStationLabels(
     for (const field of LABEL_FIELDS) {
       if (!conflicts.some(group => group.length > 1)) break;
       const values = new Map(ids.map(id => [id, field.value(contextById.get(id) as StationLabelContext)]));
-      // 字段只有在能拆分当前仍冲突的车站时才加入该组所有标签（ADR-0005 §3）。
+      // 字段只有在能拆分当前仍冲突的车站时才加入该组所有标签。
       const splittable = conflicts.some(group => group.length > 1 && new Set(group.map(id => values.get(id))).size > 1);
       if (!splittable) continue;
       for (const id of ids) {

@@ -74,7 +74,7 @@ describe('手动选站面板、回显行与焦点归位', () => {
     expect(await optionValues(wrapper, 'record-origin')).toEqual(['A', 'B', 'D']);
     await wrapper.get('#record-origin').setValue('CODE-B');
     expect(await optionValues(wrapper, 'record-origin')).toEqual(['B']);
-    // 主文本是 ADR-0005 的 display_label（快照里站名唯一，故不再补限定词），
+    // 主文本是日期有效的 display_label（快照里站名唯一，故不再补限定词），
     // 「城市 · 站码」作为副说明仍参与检索与显示。
     await wrapper.get('#record-origin').trigger('focus');
     const option = wrapper.get('#record-origin-listbox [role="option"][data-value="B"]');

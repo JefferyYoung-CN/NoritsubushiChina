@@ -1,7 +1,7 @@
 import { describe, expect, test } from 'vitest';
 import { paintSections, SECTION_PAINT, sectionPaint, SELECTED_RING } from '../../src/records/section-paint';
 
-describe('区间着色优先级（§3.3 / §3.5）', () => {
+describe('区间着色优先级', () => {
   test('完乘可用时按总体完乘并集区分已乘坐与未乘坐', () => {
     const paint = paintSections(['a', 'b'], { completionReady: true, completedSectionIds: ['a'] });
     expect(paint.get('a')).toEqual({ state: 'completed', selected: false });

@@ -16,8 +16,8 @@ export function createImageRequest(view) {
   return request;
 }
 
-// This adapter exercises the export port only; P5 replaces it with bitmap
-// rendering and verifies footer legibility at actual output sizes.
+// This adapter exercises the export port only; the runtime renderer produces a
+// bitmap and must keep the footer legible at actual output sizes.
 export function createFakeImageExporter() {
   return Object.freeze({ async export(request, { signal, fail = false } = {}) {
     requireValue(requests.has(request), 'E_IMAGE', 'request', 'Unvalidated image request');

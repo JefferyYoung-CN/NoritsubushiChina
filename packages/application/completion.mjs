@@ -56,7 +56,7 @@ export function deriveCompletion(network, onDate, mappedFacts, pending) {
     for (const section of fact.sections) {
       accumulate(fact.layer === 'basic' ? basic : advanced, [section.sectionId], section.completedOn);
     }
-    // 决策 #43：完站只由进阶乘车记录贡献。基础录入不以「上车到下车」为基准，
+    // 完站只由进阶乘车记录贡献。基础录入不以「上车到下车」为基准，
     // 换乘或直通分段录入的拆段端点会在中途站造出并非真实上落车的乘降。
     if (fact.layer === 'advanced') {
       accumulate(stationDates, [fact.fromStationId, fact.toStationId], fact.occurredOn);

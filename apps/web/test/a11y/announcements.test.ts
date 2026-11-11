@@ -10,7 +10,7 @@ afterEach(() => { wrappers.splice(0).forEach(wrapper => wrapper.unmount()); });
 
 describe('本地存储打不开时的诊断（C07）', () => {
   test('DOMException 归为存储不可用，不再建议检查网络', () => {
-    const feedback = errorFeedback(new DOMException('P6 injected failure', 'SecurityError'));
+    const feedback = errorFeedback(new DOMException('injected failure', 'SecurityError'));
     expect(feedback.code).toBe('E_STORAGE_UNAVAILABLE');
     expect(feedback.retryable).toBe(true);
     expect(feedback.message).toContain('本地存储');

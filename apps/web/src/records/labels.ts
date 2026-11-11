@@ -1,5 +1,5 @@
 /**
- * 站名消歧与站/区间搜索（ADR-0005 §3）。
+ * 站名消歧与站/区间搜索。
  *
  * 同名站按固定顺序逐级补足限定词：城市 → 运营方 → 服务线路集合 → station_code，
  * 取能让组内标签唯一的最短组合；没有重名时直接使用站名。搜索只读快照数据，
@@ -93,7 +93,7 @@ function stationFeatures(network: TransitNetwork): Map<string, Features> {
   );
 }
 
-/** 按 ADR-0005 顺序可追加的字段；`station_code` 只作最后安全回退，不在正常逐级里。 */
+/** 按消歧顺序可追加的字段；`station_code` 只作最后安全回退，不在正常逐级里。 */
 const ADDABLE_FIELDS = ['city', 'operators', 'lines'] as const;
 type LabelField = typeof ADDABLE_FIELDS[number] | 'code';
 
@@ -114,7 +114,7 @@ function displayName(network: TransitNetwork, station: { readonly id: string; re
 /**
  * 为全网每个站点生成稳定、可读且组内唯一的标签；`onDate` 决定按哪天的站名分组与显示。
  *
- * 消歧按 ADR-0005 §3：先按规范化站名分组；初始标签只有站名，只要组内还有冲突，就按
+ * 消歧顺序：先按规范化站名分组；初始标签只有站名，只要组内还有冲突，就按
  * 城市 → 运营方 → 服务线路集合（经过的线路名）的顺序，**只追加当时能拆开剩余冲突的字段**，
  * 全部能区分后立即停止；全部字段仍拆不开时用 station_code 做最后安全回退。字段值缺失时
  * 跳过该字段（ADR 要求导入校验报告这类数据问题，本层不猜测缺失值）。

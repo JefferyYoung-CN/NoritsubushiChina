@@ -1,5 +1,5 @@
 /**
- * `src/records/labels.ts` 的行为测试（ADR-0005 §3「名称与用户界面」）。
+ * `src/records/labels.ts` 的行为测试（「名称与用户界面」）。
  *
  * 覆盖在用的站名消歧实现：按规范化站名分组，逐级追加 city → operators → 线路集合的
  * 最小充分限定词，全部拆不开时回退 `station_code`；`onDate` 与快照静态站名两种口径；
@@ -61,7 +61,7 @@ describe('组内没有同名冲突', () => {
   });
 });
 
-describe('逐级追加限定词（ADR-0005 §3 的最小充分组合）', () => {
+describe('逐级追加限定词（最小充分组合）', () => {
   test('同名站只需城市就能拆开时，只追加城市（不冗余追加运营方）', () => {
     const labels = buildStationLabels(sameNameDifferentCity());
     expect(labels.get('s1')).toEqual({ id: 's1', name: '同名站', label: '同名站（示例城）', disambiguated: true });

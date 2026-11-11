@@ -30,7 +30,7 @@ const busy = computed(() => props.exporting === true || isBusy(props.state));
 const message = computed(() => readError.value || props.state.message);
 const canPickFile = computed(() => !busy.value && (props.state.phase === 'idle' || props.state.phase === 'exported' || props.state.phase === 'cancelled' || props.state.phase === 'error'));
 /**
- * 预览/确认区出现时原按钮被替换，焦点会掉回 body（P5 实测）；这里记住触发元素，
+ * 预览/确认区出现时原按钮被替换，焦点会掉回 body（实测）；这里记住触发元素，
  * 确认区出现后聚焦「确认替换并导入」，取消/返回后把焦点还给它，键盘路径不逃逸。
  * 只有预览入口（选中备份文件）记录 trigger：文件输入不会被预览区替换，是稳定元素；
  * 取消按钮自身随后会被移除，取消路径不能拿它当还原目标。

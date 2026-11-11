@@ -11,7 +11,7 @@ import type { SectionStatusName } from '../../../../packages/application/date-vi
 export type SectionStatus = SectionStatusName;
 
 export interface MapStationInput {
-  /** station_id：不可变内部身份。拆分站按其目标身份各自出现，不合并回源站（ADR-0005 §4、ADR-0006）。 */
+  /** station_id：不可变内部身份。拆分站按其目标身份各自出现，不合并回源站。 */
   readonly id: string;
   readonly latitude: number | null;
   readonly longitude: number | null;

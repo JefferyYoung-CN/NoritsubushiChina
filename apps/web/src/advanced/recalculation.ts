@@ -1,5 +1,5 @@
 /**
- * 重算状态展示与可取消的异步编排（P5 S7；ADR-0010 重开→pending、保留旧结果）。
+ * 重算状态展示与可取消的异步编排（重开→pending、保留旧结果）。
  *
  * 与 stats/calculation.ts 的 describeCalculation 同语义，但那边是 .ts 且 Node 的
  * type-stripping 运行时无法解析无扩展名的同目录导入，故在 advanced 内保留一份最小实现；

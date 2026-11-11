@@ -88,7 +88,7 @@ export function stationDescription(network: TransitNetwork, stationId: string): 
 
 /**
  * 当日办客车站的候选（手动选站、按车站查找共用）。
- * 主文本是 ADR-0005 的日期有效 display_label（最小充分消歧），副说明保留「城市 · 站码」，
+ * 主文本是日期有效的 display_label（最小充分消歧），副说明保留「城市 · 站码」，
  * 因此按站名、城市、站码都仍可检索。
  */
 export function stationOptions(network: TransitNetwork, onDate: string): readonly { id: string; label: string; description: string }[] {

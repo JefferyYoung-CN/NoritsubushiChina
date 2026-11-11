@@ -1,15 +1,15 @@
 /**
- * 进阶链式录入的纯领域逻辑（P5 S7；AC-A01 首段唯一径路、AC-A02 链式继续与回退）。
+ * 进阶链式录入的纯领域逻辑（首段唯一径路、链式继续与回退）。
  *
  * 边界：
  * - 可乘径路按服务运行序（memberships.sequence 的严格顺序，见 reader.mjs 的序号约束）
  *   做单调邻接遍历：只允许序号递增或递减，相邻成员必须在当前站首尾相接。唯一性以运行序
  *   为准；date-view.buildDateView 提供区间明细与可用性。不挑最短路、不把“连通”当成可走。
- * - 直通只认调用方显式传入的运营线路对（confirmed-decisions 第 9 条）；缺省为空，即
+ * - 直通只认调用方显式传入的运营线路对；缺省为空，即
  *   “没有维护关系就没有直通候选”。换乘不在本条链内：下车换乘另一条线路另开一条记录
  *   （2026-10-28 决策「一次乘车 = 一条记录」）。
  * - 纯函数：不读写存储、不碰 DOM、不改入参；返回值冻结。
- * - 站名取业务日期上的当前名称；同名站消歧由视图层 labels.ts 负责（ADR-0005 §3）。
+ * - 站名取业务日期上的当前名称；同名站消歧由视图层 labels.ts 负责。
  */
 import { buildDateView, mileage, sectionStatus } from '../../../../packages/application/date-view.mjs';
 import { serviceCycle } from '../../../../packages/application/simple-cycle.mjs';

@@ -3,7 +3,7 @@ import type { TransitNetwork } from '../../../../packages/application/reader.mjs
 /**
  * 地图测试用的最小 TransitNetwork 夹具。
  *
- * 只填 S4 读取路径真正用到的字段（站点坐标、区间、服务/运营商、日期策略），其余保持
+ * 只填读取路径真正用到的字段（站点坐标、区间、服务/运营商、日期策略），其余保持
  * 空数组，避免测试依赖与地图无关的读取层细节。文件是 .ts 并复用 reader.d.mts 的
  * TransitNetwork，让夹具缺失字段在类型检查时就暴露，而不是等到运行期。
  */

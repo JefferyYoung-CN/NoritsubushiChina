@@ -4,8 +4,8 @@ import { decodeFacts } from './records.mjs';
 const completionInput = facts => canonical(Object.fromEntries(Object.entries(facts).map(([layer, rows]) =>
   [layer, rows.map(({ note, vehicle, vehicleDetails, ...row }) => row)])));
 
-// P3 test adapter. Replace the runtime adapter with an IndexedDB transaction in
-// P5; its transaction must compare revision and replace the whole set together.
+// In-memory test adapter. The runtime adapter uses an IndexedDB transaction that
+// must compare revision and replace the whole set together.
 export function createMemoryBackend() {
   const entries = new Map();
   let epoch = 0;
@@ -32,8 +32,8 @@ export function createMemoryBackend() {
       // calculation cannot still be in flight; it returns to pending for a
       // manual retry, while the persisted facts and the last complete derived
       // result stay authoritative. crash() simulates the same interruption.
-      // A real reopen in the P5 IndexedDB adapter must perform this recovery
-      // before exposing the scope; see ADR-0010.
+      // The IndexedDB adapter must perform the same recovery on a real reopen
+      // before exposing the scope.
       if (state.calculation.status === 'running') {
         state.calculation = { ...state.calculation, status: 'pending', error: null };
       }

@@ -9,7 +9,7 @@ import type { Workspace, WorkspaceOperation, WorkspaceSnapshot, WorkspaceState }
 import App from '../../src/App.vue';
 
 /**
- * P6 读屏走查的两处修复（维护者选 A）：
+ * 读屏走查的两处修复（维护者选 A）：
  * 1) 失败横幅按实际操作说话，并给出真正会重提载荷的「重试保存」；
  * 2) 数据源/统计基准日变化后自动重算一次，且可播报、可去重、失败不无限重试。
  *

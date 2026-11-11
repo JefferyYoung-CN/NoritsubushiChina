@@ -2,7 +2,7 @@
  * 进阶（链式多段）记录的保存编排：会话层注入 id 与快照，端口写入后立即重算。
  *
  * 校验与派生都不在这里复制：`addAdvanced` 由 application 的 decodeRecord 把关，
- * 重算走 workspace 的 `createMappedCompute`（含 S8 的 mapRecordFacts 注入）。
+ * 重算走 workspace 的 `createMappedCompute`（含 mapRecordFacts 注入）。
  * 本模块只负责把界面提交的视图字段裁成事实字段、按顺序调用端口，并把每一步的
  * 失败翻译成可展示的结果——任何一步失败都不会被吞掉。
  */

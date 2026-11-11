@@ -40,7 +40,7 @@ const localMessage = ref('');
 const submitted = ref<{ id: string; note: string } | null>(null);
 const summary = ref<HTMLElement | null>(null);
 /**
- * 保存回执（决策 #42）：`savedRecordId` 只表示提交已完成，写入了什么以工作区回执 `lastSave` 为准。
+ * 保存回执：`savedRecordId` 只表示提交已完成，写入了什么以工作区回执 `lastSave` 为准。
  * 完全重复时没有新记录，备注不清空，避免让用户以为输入已被采纳。
  */
 watch(() => props.savedRecordId, id => {
@@ -66,7 +66,7 @@ const draft = computed<RecordDraft>(() => ({
 const problems = computed(() => draftProblems(draft.value));
 const routeReady = computed(() => props.view !== null && props.view.routeAvailable && !props.view.empty);
 /**
- * 保存预览（决策 #42）：保存时扣除该档案已有基础记录覆盖的区间，只写入未记录部分并按连续段拆分。
+ * 保存预览：保存时扣除该档案已有基础记录覆盖的区间，只写入未记录部分并按连续段拆分。
  * 预览只在确有已记录段时出现，常态录入不重复「本次区间」摘要；[role="status"] 不参与提交拦截。
  */
 const savePreview = computed(() => {

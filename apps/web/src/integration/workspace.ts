@@ -3,7 +3,7 @@
  *
  * 为什么不直接用 `records/session.ts`：它的 `calculate()` 固定调用
  * `recalculate(port, network, onDate)`（默认 compute = calculateCompletion），没有注入点；
- * 而它是正在评审的既有模块，S8 不改它。这里按同一套 application 端口 API 组合出会话，
+ * 而它是正在评审的既有模块，本次不改它。这里按同一套 application 端口 API 组合出会话，
  * 只多一件事：重算时传入 `createMappedCompute()`。运行路径不得回落到 fake-storage。
  *
  * 状态形状与 SessionState 对齐（phase/message/errorCode/retryable/snapshot），便于 App
@@ -37,7 +37,7 @@ export interface WorkspaceFailureInfo {
 }
 
 /**
- * E_STORAGE 这句文案原本只按「保存记录」写，重算统计写入失败时也照念「记录未保存」（P6 实测）。
+ * E_STORAGE 这句文案原本只按「保存记录」写，重算统计写入失败时也照念「记录未保存」（实测）。
  * 按操作给出稳定中文结果，用户才能对上自己刚才做的事。
  */
 const STORAGE_OUTCOME: Readonly<Record<WorkspaceOperation, string>> = Object.freeze({
@@ -52,7 +52,7 @@ const STORAGE_OUTCOME: Readonly<Record<WorkspaceOperation, string>> = Object.fre
 
 /**
  * 存储层把 QuotaExceededError 包成 BoundaryError('E_STORAGE') 并拼上原始英文 cause 文案，
- * 直接透传会把 `IndexedDB transaction failed: The quota has been exceeded.` 显示给用户（P5 实测）。
+ * 直接透传会把 `IndexedDB transaction failed: The quota has been exceeded.` 显示给用户（实测）。
  * 因此按错误码给出稳定的中文文案；未识别的错误才回落到原始 message/兜底文案。
  */
 export function failureMessage(code: string | undefined, error: unknown, fallback: string,
@@ -97,7 +97,7 @@ export interface WorkspaceState {
   readonly errorCode: string | null;
   readonly retryable: boolean;
   readonly snapshot: WorkspaceSnapshot | null;
-  /** 最近一次基础保存实际写入了什么（决策 #42）；失败或其他操作后为 `null`。 */
+  /** 最近一次基础保存实际写入了什么；失败或其他操作后为 `null`。 */
   readonly lastSave?: LastSave | null;
   /** 最近一次失败的操作来源；界面据此选文案与重试入口，而不是猜「一定是在保存」。 */
   readonly failure?: WorkspaceFailureInfo | null;
@@ -152,7 +152,7 @@ function codeOf(error: unknown): string {
 export const DEFAULT_SCOPE = Object.freeze({ tenantId: 'local', profileId: 'primary' });
 
 /**
- * 把领域返回的保存计划映射成界面回执（决策 #42）。
+ * 把领域返回的保存计划映射成界面回执。
  *
  * 计划里的 runs 已按写入顺序带真实记录 id；这里只做边界转换，避免把领域对象直接
  * 挂到视图状态上（界面只依赖展示所需字段）。

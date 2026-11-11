@@ -1,5 +1,5 @@
 /**
- * network-loader 的资产加载、失败码、取消与重试（P5 收口）。
+ * network-loader 的资产加载、失败码、取消与重试。
  *
  * 用注入的 fetch + decodeEnvelope 模拟四种边界：成功、404（E_ASSET_MISSING）、
  * 外部取消（E_ABORT）、失败后 retry 成功；另测未就绪时 select 必须报 E_SNAPSHOT。

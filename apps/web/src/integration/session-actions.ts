@@ -180,9 +180,9 @@ export function useSessionActions(options: SessionActionsOptions) {
   /**
    * 自动重算只针对「已经有发布结果、但结果对应的日期/快照已不是当前输入」的旧数字：
    * - 从未算过时统计页明确显示「尚未计算」，不替用户写库；
-   * - pending/failed/running 已有明确标记与显式重试入口（ADR-0010），不自动抢着重试。
+   * - pending/failed/running 已有明确标记与显式重试入口，不自动抢着重试。
    * 同一输入只自动尝试一次：失败后保持旧结果标记，等用户点「重新计算」，避免重算循环与无限重试。
-   * 重算在途时不再直接放弃，而是排队追赶：否则换快照后的新输入永远算不到（P6 复审 #2）。
+   * 重算在途时不再直接放弃，而是排队追赶：否则换快照后的新输入永远算不到。
    */
   async function autoRecalculateIfStale(): Promise<void> {
     const current = options.network();
@@ -228,7 +228,7 @@ export function useSessionActions(options: SessionActionsOptions) {
       options.lastSave.value = next.lastSave ?? null;
       options.savedRecordId.value = pending.command.id;
       await recalculate();
-      // 完全被已记录区间覆盖时没有新记录：状态播报不能仍说「记录已保存」（决策 #42）。
+      // 完全被已记录区间覆盖时没有新记录：状态播报不能仍说「记录已保存」。
       const headline = next.lastSave?.runs.length === 0 ? '本次区间此前已全部记录，未产生新记录' : '记录已保存';
       status.value = session.value.phase === 'ready' ? `${headline}，统计已更新` : `${headline}；${session.value.message}`;
     } else {

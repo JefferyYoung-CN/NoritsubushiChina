@@ -1,5 +1,5 @@
 /**
- * 拓扑映射纯函数（P5 切片 S2）。
+ * 拓扑映射纯函数。
  *
  * 职责：把历史区间、直通、径路事实投影到「统计所用快照」的当前拓扑上，产出可注入
  * completion 重算的映射结果；映射失败的事实整条保留为待处理，不进入派生结果。
@@ -11,7 +11,7 @@
  *   onDate   —— 统计日期；occurredOn 晚于它的事实不参与本次映射（与 completion 的过滤一致）。
  *   reviewed —— 可选，已复核映射输入，三者缺省皆为空（此时一切跨快照/多段直通事实保持待处理）：
  *     snapshots           旧快照身份白名单；不在其中且与 network.snapshotId 不同 → 待处理。
- *     stationSplits       [{ retiredStationId, targetStationIds }]，来自已在 ADR-0006 复核的
+ *     stationSplits       [{ retiredStationId, targetStationIds }]，来自已复核的
  *                         站点来源映射批次；只用于把旧身份按「当前区间端点」唯一定位到目标站。
  *     throughServicePairs 显式维护的运营线路对（无序数组对）；直通事实只在显式关系齐备时
  *                         才可映射。绝不从共享车站/邻接/连通性推断，这里也没有推断代码。
@@ -26,11 +26,11 @@
  * 抛出——E_SNAPSHOT 仅表示统计上下文无效（未选快照、统计日期超出已验证知识范围），由
  * completion.calculateCompletion 自己判断。
  *
- * 合并规则（ADR-0002 §拓扑映射、confirmed-decisions 第 11 条）：一个合并区间只有在它的
+ * 合并规则：一个合并区间只有在它的
  * 全部旧区间都出现在可映射事实中、且这些成员在单条径路里连续时，才产生合并结果，完乘
  * 日期取最晚；只要有一个旧区间缺位，触及该组的事实整条保留为待处理，不做部分合并。
  *
- * 与 completion 的注入点：S8 收口时由 completion 在 evaluate 每条事实的位置调用本函数
+ * 与 completion 的注入点：completion 在 evaluate 每条事实的位置调用本函数
  * （逐层传入 { facts, network, onDate, reviewed }），用 mappedFacts 的 sections 取代原先
  * record.sectionIds 的直接累加，pending 直接并入 completion 的 pending 数组。completion
  * 的 accumulate 取最早日期，因此合并组内每条事实都携带组内最晚日期即可保证最终最早日期正确。
@@ -86,7 +86,7 @@ function decodeRecord(row, path) {
   };
 }
 
-/** 线路对按无序比较，方向和先后都不敏感（confirmed-decisions 第 9 条只按线路对维护）。 */
+/** 线路对按无序比较，方向和先后都不敏感（只按线路对维护）。 */
 function pairKey(left, right) {
   return left < right ? `${left}\u0000${right}` : `${right}\u0000${left}`;
 }
@@ -119,7 +119,7 @@ function decodeReviewed(reviewed) {
 
 /**
  * 从快照构建只读索引。映射表是「区间已被更替」的唯一依据；区间 ID 与时期在复核转换中
- * 保持不变（ADR-0006），因此同一快照内的历史区间按引用直接命中，旧快照身份按映射表改写。
+ * 保持不变，因此同一快照内的历史区间按引用直接命中，旧快照身份按映射表改写。
  */
 function buildTopology(network) {
   const sections = new Map();
@@ -164,7 +164,7 @@ function mapSectionId(sectionId, topology) {
 
 /**
  * 站身份解析：当前快照中存在的站按引用命中；不存在时只在已复核拆分表登记过、且当前区间
- * 端点能唯一定位一个目标时才映射（ADR-0005 §4 / ADR-0006 历史办客期）。上下文不足或仍有
+ * 端点能唯一定位一个目标时才映射（历史办客期）。上下文不足或仍有
  * 多个目标时返回失败，绝不在同名站之间猜测。
  */
 function stationIdentity(stationId, section, topology, reviewed) {
@@ -208,7 +208,7 @@ function evaluate(record, topology, reviewed, network) {
     if (mapped.reason) return mapped;
     mappedIds.push(mapped.sectionId);
   }
-  // 几何一律取自记录的原始区间行：复核转换保持区间 ID 与时期、只改写站引用（ADR-0006），
+  // 几何一律取自记录的原始区间行：复核转换保持区间 ID 与时期、只改写站引用，
   // 合并组的原始行才保留记录当时的真实站端点；当前身份另由 mappedIds 给出。
   const path = record.sectionIds.map((id, index) => topology.sections.get(id) ?? topology.sections.get(mappedIds[index]));
   const from = stationIdentity(record.fromStationId, path[0], topology, reviewed);

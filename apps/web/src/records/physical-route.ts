@@ -155,7 +155,7 @@ export function buildPhysicalTrip(network: TransitNetwork, request: PhysicalSele
  * 表单位置序列：以整线分段派生为唯一站序来源，只保留当日办客的车站（直穿站仍占派生
  * 位置，但不作为可保存的起终点）。id 是表单位置键，stationId 才是事实身份；
  * 环线末端使用 fold-end 键，绝不把末端折叠站作为假车站保存。
- * label 是 ADR-0005 的日期有效 display_label（最小充分消歧），图上、无障碍名、手动下拉
+ * label 是日期有效的 display_label（最小充分消歧），图上、无障碍名、手动下拉
  * 与回显行照抄同一份；description 只是手动候选的「城市 · 站码」副说明，供按城市/站码检索。
  */
 export function physicalStops(network: TransitNetwork, onDate: string, lineId: string) {

@@ -4,7 +4,7 @@ import type { SectionStatus } from './types';
  * 区间与车站的视觉编码集中在一处，组件与图例共用，避免两套样式漂移。
  *
  * 非颜色唯一编码：运营与临时停运由实线/虚线区分，颜色只是辅助；高亮用线宽表达。
- * 废线只进入统计，不提供地图样式（已确认决策 §F）。
+ * 废线只进入统计，不提供地图样式。
  */
 export interface SectionVisual {
   readonly stroke: string;

@@ -13,7 +13,7 @@ import { fixtureNetwork } from './integration/fixtures';
 
 const source = (path: string): string => readFileSync(new URL(path, import.meta.url), 'utf8');
 
-describe('P5 storage error mapping', () => {
+describe('storage error mapping', () => {
   test('quota exhaustion becomes a Chinese E_STORAGE message, raw English never leaks', () => {
     const error = Object.assign(new Error('IndexedDB transaction failed: The quota has been exceeded.'), { code: 'E_STORAGE' });
     const message = failureMessage('E_STORAGE', error, '兜底');
@@ -45,7 +45,7 @@ describe('统计页的待重算入口', () => {
   });
 });
 
-describe('P5 statistics panel accessibility', () => {
+describe('statistics panel accessibility', () => {
   const failed = { kind: 'failed', message: '统计失败', retryable: true, showsOldResult: false };
   test('heading level is h2 and the failure summary is focusable and linked to the date field', () => {
     const wrapper = mount(StatsPanel, { props: { data: null, calculation: failed as never, cityNames: new Map(), busy: false } });
@@ -65,7 +65,7 @@ describe('P5 statistics panel accessibility', () => {
   });
 });
 
-describe('P5 record form error association', () => {
+describe('record form error association', () => {
   beforeEach(() => { document.body.innerHTML = ''; });
   test('invalid draft links fields to one alert summary and moves focus there on submit', async () => {
     const wrapper = mount(RecordsPanel, {
@@ -101,7 +101,7 @@ describe('P5 record form error association', () => {
     expect(source('../src/records/RecordsPanel.vue')).not.toContain('message?: string;');
   });
   test('the panel no longer claims overlap is allowed and statistics deduplicate intervals', () => {
-    // 决策 #42 取代旧 D 口径：保存时扣除已记录区间并拆分，页面不得再出现「放行 + 统计去重」文案。
+    // 保存时扣除已记录区间并拆分，页面不得再出现「放行 + 统计去重」文案。
     const text = source('../src/records/RecordsPanel.vue');
     for (const stale of ['保存不会拦截', '统计按区间去重', '按区间重叠规则校验', '保存后统计不会重复计算']) {
       expect(text).not.toContain(stale);
@@ -125,7 +125,7 @@ describe('P5 record form error association', () => {
   });
 });
 
-describe('P5 delete confirmation releases focus to the persisted section', () => {
+describe('delete confirmation releases focus to the persisted section', () => {
   beforeEach(() => { document.body.innerHTML = ''; });
 
   test('record delete focuses the records section, not the row button the parent then unmounts', async () => {
@@ -184,7 +184,7 @@ describe('P5 delete confirmation releases focus to the persisted section', () =>
   });
 });
 
-describe('P5 backup import focus path', () => {
+describe('backup import focus path', () => {
   const state = { phase: 'confirming', message: '', preview: { warning: '整份替换警告', existingRecords: 1, incomingRecords: 2 } };
   test('focus lands on the confirm button and Esc cancels without stealing it back', async () => {
     const wrapper = mount(BackupPanel, { attachTo: document.body, props: { state: state as never, today: '2024-01-01', exporting: false } });
@@ -227,7 +227,7 @@ describe('P5 backup import focus path', () => {
   });
 });
 
-describe('P5 pending list heading levels', () => {
+describe('pending list heading levels', () => {
   test('pending records use h3 under the advanced panel h2', () => {
     const wrapper = mount(PendingList, { props: { items: [{ recordId: 'r1', layer: 'advanced', reason: 'snapshot-mapping-required', message: '来自其他快照' }] } });
     expect(wrapper.find('h3#adv-pending').exists()).toBe(true);
@@ -236,7 +236,7 @@ describe('P5 pending list heading levels', () => {
   });
 });
 
-describe('P5 map station target and focus ring', () => {
+describe('map station target and focus ring', () => {
   test('hit circle is enlarged and the global focus outline is no longer suppressed', () => {
     const text = source('../src/map/TransitMap.vue');
     expect(text).toContain('r="22"');
@@ -246,7 +246,7 @@ describe('P5 map station target and focus ring', () => {
   });
 });
 
-describe('P5 layout guard styles', () => {
+describe('layout guard styles', () => {
   test('danger buttons, global sr-only and tab styles exist', () => {
     expect(source('../src/advanced/PendingList.vue')).toContain('.danger { background: #fff; border-color: #8a1c1c; color: #8a1c1c; }');
     const css = source('../src/style.css');
@@ -286,7 +286,7 @@ vi.mock('../src/integration/workspace', async importOriginal => {
   } };
 });
 
-describe('P5 App shell accessibility', () => {
+describe('App shell accessibility', () => {
   const wrappers: ReturnType<typeof mount>[] = [];
   const render = () => { const wrapper = mount(App); wrappers.push(wrapper); return wrapper; };
   beforeEach(() => {
@@ -301,7 +301,7 @@ describe('P5 App shell accessibility', () => {
     const wrapper = render();
     await flushPromises();
     expect(wrapper.find('#content').attributes('tabindex')).toBe('-1');
-    expect(wrapper.text()).toContain('ADR-0010');
+    expect(wrapper.text()).toContain('单写者约束');
   });
 
   test('status is announced once, aria-controls only points at a rendered panel, title follows the view', async () => {

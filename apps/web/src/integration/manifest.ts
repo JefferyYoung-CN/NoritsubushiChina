@@ -1,5 +1,5 @@
 /**
- * 浏览器启动所需的资产清单（P5 收口 S8）。
+ * 浏览器启动所需的资产清单。
  *
  * `tools/prepare-web-assets.mjs` 生成 `apps/web/.generated/input-asset.ts`，只带一份
  * 封套的 `url` + `sha256`。这里把生成结果归一化成加载器可消费的清单，并明确区分两类

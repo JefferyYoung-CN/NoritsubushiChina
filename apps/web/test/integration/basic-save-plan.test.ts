@@ -1,7 +1,7 @@
 import { describe, expect, test } from 'vitest';
 import { toLastSave } from '../../src/integration/workspace';
 
-describe('基础保存回执映射（决策 #42）', () => {
+describe('基础保存回执映射', () => {
   test('逐段搬运计划字段与真实记录 id', () => {
     const plan = {
       total: 4,
