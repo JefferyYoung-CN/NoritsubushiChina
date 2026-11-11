@@ -13,7 +13,7 @@ function parsed(value, field) {
 
 function checkDataUse(dataUse, manifest) {
   object(dataUse, 'dataUse');
-  requireValue(dataUse.schema_version === 'guangfo-development-use.v1', 'E_SCHEMA', 'dataUse.schema_version', 'Unsupported data-use version');
+  requireValue(dataUse.schema_version === 'noritsubushi-development-use.v1', 'E_SCHEMA', 'dataUse.schema_version', 'Unsupported data-use version');
   requireValue(dataUse.snapshot_id === manifest.snapshot_id && dataUse.snapshot_as_of === manifest.snapshot_as_of &&
     dataUse.knowledge_through === manifest.knowledge_through, 'E_SOURCE_VERSION', 'dataUse', 'Data-use identity differs from manifest');
   requireValue(dataUse.source_status === 'real-internal-test', 'E_SOURCE_STATUS', 'dataUse.source_status', 'Development input must be real-internal-test');
@@ -39,7 +39,7 @@ function checkDataUse(dataUse, manifest) {
 // status column; nothing here infers one from a missing service window.
 function policiesFromSuspensions(suspensions, manifest) {
   object(suspensions, 'suspensions');
-  requireValue(suspensions.schema_version === 'guangfo-suspension-review.v1', 'E_SCHEMA', 'suspensions.schema_version', 'Unsupported suspension version');
+  requireValue(suspensions.schema_version === 'noritsubushi-suspension-review.v1', 'E_SCHEMA', 'suspensions.schema_version', 'Unsupported suspension version');
   // Suspension declarations are bound to the same source snapshot and business
   // horizon as the manifest; otherwise this envelope would silently apply
   // another snapshot's temporary suspensions to the decoded network.
@@ -80,7 +80,7 @@ function supplementaryClosures(bundle, manifest) {
   const review = parsed(bundle.closureReview, 'closureReview');
   fields(review, ['schema_version', 'base_snapshot_id', 'base_reader_sha256', 'base_suspensions_sha256',
     'confirmed_at', 'decision_status', 'decision_source', 'declarations'], [], 'closureReview');
-  requireValue(review.schema_version === 'guangfo-section-closure-review.v1' && review.decision_status === 'approved',
+  requireValue(review.schema_version === 'noritsubushi-section-closure-review.v1' && review.decision_status === 'approved',
     'E_STATUS', 'closureReview', 'Expected approved section closure review');
   requireValue(review.base_snapshot_id === manifest.snapshot_id &&
     review.base_reader_sha256 === manifest.files['reader-payload.json'].sha256 &&
@@ -104,7 +104,7 @@ function supplementaryClosures(bundle, manifest) {
 function decodeDevelopmentInput(bundle) {
   object(bundle, 'bundle');
   const manifest = parsed(bundle.manifest, 'manifest');
-  requireValue(manifest.schema_version === 'guangfo-development-input.v1', 'E_SCHEMA', 'manifest.schema_version', 'Unsupported development input version');
+  requireValue(manifest.schema_version === 'noritsubushi-development-input.v1', 'E_SCHEMA', 'manifest.schema_version', 'Unsupported development input version');
   text(manifest.snapshot_id, 'manifest.snapshot_id');
   day(manifest.snapshot_as_of, 'manifest.snapshot_as_of');
   day(manifest.knowledge_through, 'manifest.knowledge_through');

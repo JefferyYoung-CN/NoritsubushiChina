@@ -8,7 +8,7 @@ import { BoundaryError, day, fields, independent, object, parseJson, requireValu
 import { sha256 } from './validation.mjs';
 
 const SCHEMA = 'phase1.application-input.reduced.v1';
-const MANIFEST_SCHEMA = 'guangfo-reduced-scenario.v1';
+const MANIFEST_SCHEMA = 'noritsubushi-reduced-scenario.v1';
 const SIMULATED = 'simulated';
 const REAL = 'real-internal-test';
 // Only files that actually exist in the reduced archive are embedded. Every one

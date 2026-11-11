@@ -161,7 +161,7 @@ export async function generate() {
     'LICENSE-OSM.md': DEMO_NOTICE,
   };
   const manifestText = JSON.stringify({
-    schema_version: 'guangfo-reduced-scenario.v1',
+    schema_version: 'noritsubushi-reduced-scenario.v1',
     source_status: 'simulated',
     release_ready: false,
     snapshot_id: SNAPSHOT_ID,
