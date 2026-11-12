@@ -37,7 +37,7 @@ export function makeSection(
 }
 
 export function makeNetwork(overrides: Partial<TransitNetwork> = {}): TransitNetwork {
-  return {
+  const network: TransitNetwork = {
     snapshotId: 'fixture',
     snapshotAsOf: '2024-04-01T00:00:00Z',
     knowledgeThrough: '2024-04-01',
@@ -59,6 +59,12 @@ export function makeNetwork(overrides: Partial<TransitNetwork> = {}): TransitNet
     policies: { noMileageSections: [], closures: [], suspensions: [] },
     ...overrides,
   };
+  // 解码器保证每个车站都带办客历史；夹具按同样口径补齐，让消歧输入与真实数据同源。
+  const passengerPeriods = overrides.passengerPeriods
+    ?? network.stations.map(station => ({
+      stationId: station.id, kind: 'passenger' as const, from: '1900-01-01', until: null,
+    }));
+  return { ...network, passengerPeriods };
 }
 
 /** 两站一线的最小网络；坐标传 null 时用于验证缺坐标禁用态。 */

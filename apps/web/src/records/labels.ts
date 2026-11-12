@@ -114,6 +114,10 @@ function displayName(network: TransitNetwork, station: { readonly id: string; re
 /**
  * 为全网每个站点生成稳定、可读且组内唯一的标签；`onDate` 决定按哪天的站名分组与显示。
  *
+ * 分组只在「该日期可选、该日期办客」的车站集合内进行：非办客车站与当日已停办的车站
+ * 不参与消歧，也不会让办客站背上限定词（advanced-dependencies §6.3）。不传 `onDate` 时
+ * 静态口径取「办理过客运」的车站集合。两处范围外的车站仍返回裸站名，供线路图等界面显示。
+ *
  * 消歧顺序：先按规范化站名分组；初始标签只有站名，只要组内还有冲突，就按
  * 城市 → 运营方 → 服务线路集合（经过的线路名）的顺序，**只追加当时能拆开剩余冲突的字段**，
  * 全部能区分后立即停止；全部字段仍拆不开时用 station_code 做最后安全回退。字段值缺失时
@@ -124,10 +128,23 @@ function displayName(network: TransitNetwork, station: { readonly id: string; re
  * 只有「站名、城市、运营方、线路集合全同、仅制式不同」的冲突会少这一层，当前快照没有
  * 这种数据；补数据字段后应在 ADDABLE_FIELDS 的 operators 与 lines 之间插入。
  */
+/** 参与消歧的候选车站：日期口径为当日办客，静态口径为办理过客运的车站。 */
+function disambiguationScope(network: TransitNetwork, onDate?: string): Set<string> {
+  const selectable = new Set<string>();
+  for (const row of network.passengerPeriods) {
+    if (row.kind !== 'passenger') continue;
+    if (onDate !== undefined && !active(row, onDate)) continue;
+    selectable.add(row.stationId);
+  }
+  return selectable;
+}
+
 export function buildStationLabels(network: TransitNetwork, onDate?: string): Map<string, StationLabel> {
   const features = stationFeatures(network);
+  const scope = disambiguationScope(network, onDate);
   const groups = new Map<string, TransitNetwork['stations'][number][]>();
   for (const station of network.stations) {
+    if (!scope.has(station.id)) continue;
     const name = normalizeStationName(displayName(network, station, onDate));
     const rows = groups.get(name) ?? [];
     rows.push(station);
@@ -175,6 +192,12 @@ export function buildStationLabels(network: TransitNetwork, onDate?: string): Ma
         disambiguated: true,
       });
     }
+  }
+  // 范围外的车站不参与分组，但仍要能显示：取当日站名作裸标签。
+  for (const station of network.stations) {
+    if (scope.has(station.id)) continue;
+    const name = normalizeStationName(displayName(network, station, onDate));
+    labels.set(station.id, { id: station.id, name, label: name, disambiguated: false });
   }
   return labels;
 }

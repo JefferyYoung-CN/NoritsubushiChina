@@ -289,3 +289,52 @@ describe('单站标签与按站取区间', () => {
     expect(sectionsAtStation(network, 'missing')).toEqual([]);
   });
 });
+
+describe('消歧只在可选、办客的车站集合内进行', () => {
+  /** 两座同名车站，另一座换乘站接起两条线；办客历史由各用例给出。 */
+  function collidingNetwork(periods: TransitNetwork['passengerPeriods']): TransitNetwork {
+    return makeNetwork({
+      cities: [{ id: 'c1', name: '示例城' }],
+      operators: [{ id: 'o1', cityId: 'c1', name: '示例地铁' }],
+      stations: [station('s1', '同名站'), station('s2', '同名站'), station('s3', '换乘')],
+      lines: [line('l1', '1号线'), line('l2', '2号线')],
+      sections: [makeSection('sec1', 'l1', 's1', 's3'), makeSection('sec2', 'l2', 's2', 's3')],
+      services: [service('sv1', 'o1'), service('sv2', 'o1')],
+      memberships: [membership('sv1', 'sec1'), membership('sv2', 'sec2')],
+      passengerPeriods: periods,
+    });
+  }
+
+  test('非办客车站不参与分组，也不让办客站背上限定词', () => {
+    const labels = buildStationLabels(collidingNetwork([
+      { stationId: 's1', kind: 'passenger', ...PERIOD },
+      { stationId: 's2', kind: 'non_passenger', ...PERIOD },
+      { stationId: 's3', kind: 'passenger', ...PERIOD },
+    ]));
+    expect(labels.get('s1')).toEqual({ id: 's1', name: '同名站', label: '同名站', disambiguated: false });
+    expect(labels.get('s2')).toEqual({ id: 's2', name: '同名站', label: '同名站', disambiguated: false });
+  });
+
+  test('当日已停办的车站不参与当日分组，停办之前仍参与', () => {
+    const network = collidingNetwork([
+      { stationId: 's1', kind: 'passenger', ...PERIOD },
+      { stationId: 's2', kind: 'passenger', from: '2000-01-01', until: '2024-01-01' },
+      { stationId: 's3', kind: 'passenger', ...PERIOD },
+    ]);
+    const after = buildStationLabels(network, '2024-06-01');
+    expect(after.get('s1')!.label).toBe('同名站');
+    expect(after.get('s2')).toEqual({ id: 's2', name: '同名站', label: '同名站', disambiguated: false });
+    const before = buildStationLabels(network, '2023-06-01');
+    expect(before.get('s1')!.label).toBe('同名站（1号线）');
+    expect(before.get('s2')!.label).toBe('同名站（2号线）');
+  });
+
+  test('静态口径没有日期，只纳入办理过客运的车站', () => {
+    const labels = buildStationLabels(collidingNetwork([
+      { stationId: 's1', kind: 'passenger', from: '2000-01-01', until: '2020-01-01' },
+      { stationId: 's2', kind: 'non_passenger', ...PERIOD },
+      { stationId: 's3', kind: 'passenger', ...PERIOD },
+    ]));
+    expect(labels.get('s1')).toEqual({ id: 's1', name: '同名站', label: '同名站', disambiguated: false });
+  });
+});

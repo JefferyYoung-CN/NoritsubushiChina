@@ -22,6 +22,12 @@ function network(): TransitNetwork {
       { serviceId: 'sv1', sectionId: 'sec1', sequence: 0 },
       { serviceId: 'sv2', sectionId: 'sec2', sequence: 0 },
     ],
+    // 解码器保证每个车站都带办客历史，消歧只在当日办客的车站集合内进行。
+    passengerPeriods: [
+      { stationId: 's1', kind: 'passenger', from: '2000-01-01', until: null },
+      { stationId: 's2', kind: 'passenger', from: '2000-01-01', until: null },
+      { stationId: 's3', kind: 'passenger', from: '2000-01-01', until: null },
+    ],
   } as unknown as TransitNetwork;
 }
 
