@@ -5,7 +5,7 @@ import SearchSelect from '../../src/components/SearchSelect.vue';
 const options = [
   { id: 'a', label: '示例站 · 示例城 · A' },
   { id: 'b', label: '示例站 · 示例市 · B' },
-  { id: 'c', label: '体育西路', description: '3 号线' },
+  { id: 'c', label: '示例体育馆 · 示例城 · C', description: '示例线 · C' },
 ];
 const wrappers: ReturnType<typeof mount>[] = [];
 afterEach(() => { wrappers.splice(0).forEach(wrapper => wrapper.unmount()); document.body.innerHTML = ''; });
@@ -77,7 +77,7 @@ describe('输入检索后下拉选择', () => {
     expect(wrapper.emitted('update:modelValue')).toBeUndefined();
     await wrapper.get('button').trigger('click');
     expect(wrapper.findAll('[role="option"]')).toHaveLength(3);
-    await input.setValue('3 号线');
+    await input.setValue('示例线');
     expect(wrapper.findAll('[role="option"]')).toHaveLength(1);
   });
 

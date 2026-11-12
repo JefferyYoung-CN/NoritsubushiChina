@@ -16,7 +16,7 @@ function track<T extends ReturnType<typeof mount>>(wrapper: T): T {
 const OPTIONS = [
   { id: 'a', label: '示例站 · 示例城 · A' },
   { id: 'b', label: '示例站 · 示例市 · B' },
-  { id: 'c', label: '体育西路', description: '3 号线' },
+  { id: 'c', label: '示例体育馆 · 示例城 · C', description: '示例线 · C' },
 ];
 
 describe('组合框聚焦不再重复播报结果数（A 组）', () => {
