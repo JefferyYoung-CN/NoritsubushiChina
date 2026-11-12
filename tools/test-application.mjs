@@ -13,8 +13,8 @@ import { fileURLToPath } from 'node:url';
 // dataset; checks bound to a licensed data snapshot live in the private
 // workspace. Grow this suite by adding demo-compatible tests, never by
 // weakening an assertion.
-const EXPECTED_TEST_FILES = 2;
-const EXPECTED_TESTS = 13;
+const EXPECTED_TEST_FILES = 3;
+const EXPECTED_TESTS = 16;
 
 const directory = new URL('../packages/application/test/', import.meta.url);
 const tests = readdirSync(directory).filter(name => name.endsWith('.test.mjs')).sort();

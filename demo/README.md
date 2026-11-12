@@ -6,6 +6,9 @@
 - 没有从维护者的内部数据包复制任何内容，也不包含任何源自 OpenStreetMap 的数据或署名；
 - 虚构名称当然可能与真实地名偶然重合；这不代表任何数据含义。
 
+This is the **test** dataset: the automated gates run on it because it is small and fast.
+The richer network used to demonstrate the app lives in [`../demo-showcase/`](../demo-showcase/README.md).
+
 ## 布局
 
 ```text

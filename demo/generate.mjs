@@ -1,4 +1,4 @@
-// Synthetic demo dataset generator.
+// Synthetic demo dataset generator (small dataset for the automated gates).
 //
 // Every fact in this directory is invented for demonstration and testing: the
 // city, operator, line and station names, the topology, the mileage and the
@@ -9,23 +9,16 @@
 //   node demo/generate.mjs
 //
 // It writes a reduced (simulated) scenario archive plus the browser envelope
-// that tools/prepare-web-assets.mjs publishes for local development.
-import { createHash } from 'node:crypto';
-import { mkdir, writeFile } from 'node:fs/promises';
-import { join } from 'node:path';
+// that tools/prepare-web-assets.mjs publishes for local development. The richer
+// feature-tour network lives in demo-showcase/ and uses the same builder.
 import { fileURLToPath } from 'node:url';
-import { decodeReducedEnvelope } from '../packages/application/reduced-input.mjs';
+import { writeReducedScenario } from './lib/scenario-files.mjs';
 
 const demoRoot = fileURLToPath(new URL('.', import.meta.url));
-const scenarioDirectory = join(demoRoot, 'scenarios', 'demo-reduced');
-const envelopeDirectory = join(demoRoot, 'envelopes');
 
 export const SNAPSHOT_ID = 'simulated-demo-0001';
 const SNAPSHOT_AS_OF = '2024-06-01';
 const KNOWLEDGE_THROUGH = '2030-12-31';
-
-const sha256 = text => createHash('sha256').update(text, 'utf8').digest('hex');
-const fileEntry = text => ({ bytes: Buffer.byteLength(text, 'utf8'), sha256: sha256(text) });
 
 const PERIOD = { valid_from: '2018-01-01', valid_to: null };
 const DEMO_NOTICE = `# Demo data notice
@@ -154,55 +147,21 @@ const policies = {
 };
 
 export async function generate() {
-  const files = {
-    'source-use.json': JSON.stringify(sourceUse, null, 2),
-    'policies.json': JSON.stringify(policies, null, 2),
-    'reader-payload.json': JSON.stringify(reader, null, 2),
-    'LICENSE-OSM.md': DEMO_NOTICE,
-  };
-  const manifestText = JSON.stringify({
-    schema_version: 'noritsubushi-reduced-scenario.v1',
-    source_status: 'simulated',
-    release_ready: false,
-    snapshot_id: SNAPSHOT_ID,
-    snapshot_as_of: SNAPSHOT_AS_OF,
-    knowledge_through: KNOWLEDGE_THROUGH,
-    coverage_from: SNAPSHOT_AS_OF,
-    coverage_to: KNOWLEDGE_THROUGH,
-    synthetic: true,
-    notice: 'Synthetic demo dataset; see demo/README.md. No real data is included.',
-    files: Object.fromEntries(Object.entries(files).map(([name, text]) => [name, fileEntry(text)])),
-  }, null, 2);
-
-  const envelopeText = JSON.stringify({
-    schema_version: 'phase1.application-input.reduced.v1',
-    manifest: manifestText,
-    sourceUse: files['source-use.json'],
-    policies: files['policies.json'],
-    reader: files['reader-payload.json'],
-    license: files['LICENSE-OSM.md'],
+  return writeReducedScenario({
+    root: demoRoot,
+    scenario: 'demo-reduced',
+    snapshotId: SNAPSHOT_ID,
+    snapshotAsOf: SNAPSHOT_AS_OF,
+    knowledgeThrough: KNOWLEDGE_THROUGH,
+    reader,
+    sourceUse,
+    policies,
+    reviewedMapping: {
+      [SNAPSHOT_ID]: { snapshots: [], stationSplits: [], throughServicePairs: [] },
+    },
+    notice: DEMO_NOTICE,
+    manifestNotice: 'Synthetic demo dataset; see demo/README.md. No real data is included.',
   });
-
-  // Refuse to commit demo data the real decoder would reject.
-  const decoded = await decodeReducedEnvelope(envelopeText, sha256(envelopeText));
-  if (decoded.network.snapshotId !== SNAPSHOT_ID || decoded.network.stations.length !== stations.length ||
-    decoded.network.sections.length !== sections.length || decoded.network.services.length !== services.length) {
-    throw new Error('Generated demo envelope does not decode to the intended synthetic network');
-  }
-
-  const reviewedMapping = {
-    [SNAPSHOT_ID]: { snapshots: [], stationSplits: [], throughServicePairs: [] },
-  };
-
-  await mkdir(scenarioDirectory, { recursive: true });
-  await mkdir(envelopeDirectory, { recursive: true });
-  for (const [name, text] of Object.entries(files)) await writeFile(join(scenarioDirectory, name), text);
-  await writeFile(join(scenarioDirectory, 'manifest.json'), manifestText);
-  await writeFile(join(envelopeDirectory, 'reduced-envelope.json'), envelopeText);
-  await writeFile(join(envelopeDirectory, 'reviewed-mapping.json'), JSON.stringify(reviewedMapping, null, 2));
-
-  return { envelopeDigest: sha256(envelopeText), envelopeBytes: Buffer.byteLength(envelopeText, 'utf8'),
-    stations: stations.length, sections: sections.length, services: services.length, snapshotId: SNAPSHOT_ID };
 }
 
 if (process.argv[1] && fileURLToPath(import.meta.url) === process.argv[1]) {

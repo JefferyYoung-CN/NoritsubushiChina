@@ -8,9 +8,11 @@
   "packageManager": "npm@10.8.2",
   "scripts": {
     "prepare:assets": "node tools/prepare-web-assets.mjs",
+    "prepare:showcase": "node tools/prepare-web-assets.mjs --data-root demo-showcase",
     "demo:generate": "node demo/generate.mjs",
-    "dev": "npm run prepare:assets && npm run dev --workspace @noritsubushi/web --",
-    "build": "npm run typecheck && npm run build --workspace @noritsubushi/web",
+    "demo:generate:showcase": "node demo-showcase/generate.mjs",
+    "dev": "npm run prepare:showcase && npm run dev --workspace @noritsubushi/web --",
+    "build": "npm run typecheck && npm run prepare:showcase && npm run build --workspace @noritsubushi/web",
     "preview": "npm run preview --workspace @noritsubushi/web --",
     "typecheck": "npm run prepare:assets && npm run typecheck --workspace @noritsubushi/web",
     "test": "npm run test:application && npm run test:ui",

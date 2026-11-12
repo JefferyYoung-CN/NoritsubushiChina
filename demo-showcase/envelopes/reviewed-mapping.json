@@ -1,0 +1,16 @@
+{
+  "simulated-showcase-0001": {
+    "snapshots": [],
+    "stationSplits": [],
+    "throughServicePairs": [
+      [
+        "show-service-3",
+        "show-service-3b"
+      ],
+      [
+        "show-service-4",
+        "show-service-5"
+      ]
+    ]
+  }
+}

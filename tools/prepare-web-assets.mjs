@@ -5,6 +5,7 @@
 // the demo dataset and for a private data root supplied by the maintainers:
 //
 //   node tools/prepare-web-assets.mjs
+//   node tools/prepare-web-assets.mjs --data-root demo-showcase
 //   NORITSU_DATA_ROOT=<data-root> node tools/prepare-web-assets.mjs
 //
 // A data root must provide:
@@ -24,9 +25,15 @@ import { decodeReducedEnvelope } from '../packages/application/reduced-input.mjs
 const root = fileURLToPath(new URL('../', import.meta.url));
 const publicDirectory = resolve(root, 'apps/web/public/application-input');
 const generatedDirectory = resolve(root, 'apps/web/.generated');
-const dataRoot = process.env.NORITSU_DATA_ROOT
-  ? resolve(root, process.env.NORITSU_DATA_ROOT)
-  : resolve(root, 'demo');
+const args = process.argv.slice(2);
+const flagIndex = args.indexOf('--data-root');
+const flagValue = flagIndex >= 0 ? args[flagIndex + 1] : undefined;
+if (flagIndex >= 0 && (flagValue === undefined || flagValue.startsWith('--'))) {
+  throw new Error('--data-root needs a directory, relative to the repository root');
+}
+// The flag wins over NORITSU_DATA_ROOT so a script can pin one dataset per run.
+const requestedRoot = flagValue ?? process.env.NORITSU_DATA_ROOT;
+const dataRoot = requestedRoot ? resolve(root, requestedRoot) : resolve(root, 'demo');
 const envelopeDirectory = join(dataRoot, 'envelopes');
 const digest = text => createHash('sha256').update(text, 'utf8').digest('hex');
 

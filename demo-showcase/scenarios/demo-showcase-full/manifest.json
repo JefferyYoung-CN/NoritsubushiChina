@@ -1,0 +1,30 @@
+{
+  "schema_version": "noritsubushi-reduced-scenario.v1",
+  "source_status": "simulated",
+  "release_ready": false,
+  "snapshot_id": "simulated-showcase-0001",
+  "snapshot_as_of": "2024-06-01",
+  "knowledge_through": "2030-12-31",
+  "coverage_from": "2024-06-01",
+  "coverage_to": "2030-12-31",
+  "synthetic": true,
+  "notice": "Synthetic showcase dataset; see demo-showcase/README.md. No real data is included.",
+  "files": {
+    "source-use.json": {
+      "bytes": 599,
+      "sha256": "864e1c437d9a71fa4ffb1b2a0b4bde371e7d4324219d00df28042758d094f42a"
+    },
+    "policies.json": {
+      "bytes": 776,
+      "sha256": "f01a3f3b2f0ea6efb6e57170a6656c4b2fb16d23d5856800d278fe5cc10a5a81"
+    },
+    "reader-payload.json": {
+      "bytes": 69698,
+      "sha256": "edb133d411a5cfe2d3bd34172f1417d22724b605170ef3dc6e0cb7f736795c07"
+    },
+    "LICENSE-OSM.md": {
+      "bytes": 554,
+      "sha256": "37f82c6d7be158a112cd28080aa313aa4f7499346b72b755f6e0fe705b67e1a8"
+    }
+  }
+}

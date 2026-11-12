@@ -2,7 +2,7 @@
 
 用于浏览和搜索交通网络、在地图上绘制路网、在浏览器中记录基础行程与高级行程、计算完成度统计，以及导出/导入备份的 Vue 3 单页应用。记录存储在本地 IndexedDB 中；应用从不写入服务器。
 
-应用加载经过校验的应用数据信封（envelope）。在公开仓库中，信封由 `demo/` 的合成演示数据集构建；授权数据流水线不在本仓库中。
+应用加载经过校验的应用数据信封（envelope）。在公开仓库中，信封由合成演示数据集构建：`npm run dev` 与 `npm run build` 发布展示数据集 `demo-showcase/`，自动检查沿用 `demo/`；授权数据流水线不在本仓库中。
 
 ## 要求
 
@@ -16,7 +16,7 @@
 
 ```bash
 npm ci --ignore-scripts
-npm run dev          # 生成演示资源，然后在 http://127.0.0.1:5173 启动 Vite
+npm run dev          # 发布展示数据资源，然后在 http://127.0.0.1:5173 启动 Vite
 npm run typecheck    # vue-tsc --noEmit
 npm test             # 应用测试 + Web 测试
 npm run build        # 先类型检查，再 vite build
@@ -37,7 +37,9 @@ Web Crypto 需要安全上下文；`http://127.0.0.1` 和 `http://localhost` 满
 | `NORITSU_DATA_ROOT` | `demo` | 数据根，相对仓库根（也可用绝对路径）。 |
 | `NORITSU_DEMO_SCENARIO` | `demo-reduced` | 演示测试使用的场景目录，位于 `<data root>/scenarios/` 下。 |
 
-数据根必须提供 `envelopes/reduced-envelope.json`，也可提供 `envelopes/development-envelope.json` 和 `envelopes/reviewed-mapping.json`。`demo/README.md` 说明了演示目录结构。信封损坏或无法校验时，命令会带着诊断信息停止，而不会把它送进浏览器。
+`npm run dev` 与 `npm run build` 用 `--data-root demo-showcase` 覆盖默认数据根；`npm run typecheck`、`npm test` 与 `npm run verify:gates` 沿用默认的 `demo`。命令行参数优先于 `NORITSU_DATA_ROOT`（`node tools/prepare-web-assets.mjs --data-root <dir>`）。
+
+数据根必须提供 `envelopes/reduced-envelope.json`，也可提供 `envelopes/development-envelope.json` 和 `envelopes/reviewed-mapping.json`。`demo/README.md` 与 `demo-showcase/README.md` 说明了两份演示目录的结构。信封损坏或无法校验时，命令会带着诊断信息停止，而不会把它送进浏览器。
 
 ## 测试
 

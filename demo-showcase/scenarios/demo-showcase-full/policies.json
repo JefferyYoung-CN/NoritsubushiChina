@@ -1,0 +1,38 @@
+{
+  "schema_version": "demo-reduced-policies.v1",
+  "no_mileage_operators": [
+    "show-op-express"
+  ],
+  "permanent_closures": [
+    {
+      "physical_line_id": "show-l6",
+      "closed_from": "2024-03-01"
+    },
+    {
+      "physical_line_id": "show-l2",
+      "closed_from": "2024-05-01",
+      "physical_section_ids": [
+        "show-l2-s09"
+      ]
+    }
+  ],
+  "temporary_suspensions": [
+    {
+      "physical_line_id": "show-l1",
+      "suspend_from": "2024-03-01",
+      "resume_at": null,
+      "physical_section_ids": [
+        "show-l1-s11",
+        "show-l1-s12"
+      ]
+    },
+    {
+      "physical_line_id": "show-l4",
+      "suspend_from": "2023-11-01",
+      "resume_at": "2024-02-01",
+      "physical_section_ids": [
+        "show-l4-s03"
+      ]
+    }
+  ]
+}

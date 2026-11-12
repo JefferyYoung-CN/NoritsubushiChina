@@ -1,0 +1,2731 @@
+{
+  "schema_version": "phase1.transit-reader.v1",
+  "snapshot_id": "simulated-showcase-0001",
+  "source_status": "simulated",
+  "as_of": "2024-06-01",
+  "entities": {
+    "cities": [
+      {
+        "id": "show-city-a",
+        "name": "示例城"
+      },
+      {
+        "id": "show-city-b",
+        "name": "邻江城"
+      }
+    ],
+    "operators": [
+      {
+        "id": "show-op-metro",
+        "name": "示例轨道交通",
+        "type": "metro_company",
+        "city_id": "show-city-a"
+      },
+      {
+        "id": "show-op-express",
+        "name": "示例城市快线",
+        "type": "metro_company",
+        "city_id": "show-city-b"
+      },
+      {
+        "id": "show-op-intercity",
+        "name": "示例城际铁路",
+        "type": "intercity_company",
+        "city_id": null
+      }
+    ],
+    "stations": [
+      {
+        "id": "show-s01",
+        "station_code": "S01",
+        "name": "青松",
+        "city_id": "show-city-a",
+        "lat": 31.216,
+        "lng": 121.372
+      },
+      {
+        "id": "show-s02",
+        "station_code": "S02",
+        "name": "云岭",
+        "city_id": "show-city-a",
+        "lat": 31.216,
+        "lng": 121.378
+      },
+      {
+        "id": "show-s03",
+        "station_code": "S03",
+        "name": "石桥",
+        "city_id": "show-city-a",
+        "lat": 31.216,
+        "lng": 121.384
+      },
+      {
+        "id": "show-s04",
+        "station_code": "S04",
+        "name": "河湾",
+        "city_id": "show-city-a",
+        "lat": 31.216,
+        "lng": 121.39
+      },
+      {
+        "id": "show-s05",
+        "station_code": "S05",
+        "name": "白鹭",
+        "city_id": "show-city-a",
+        "lat": 31.216,
+        "lng": 121.396
+      },
+      {
+        "id": "show-s06",
+        "station_code": "S06",
+        "name": "东浦",
+        "city_id": "show-city-a",
+        "lat": 31.216,
+        "lng": 121.402
+      },
+      {
+        "id": "show-s07",
+        "station_code": "S07",
+        "name": "松林",
+        "city_id": "show-city-a",
+        "lat": 31.216,
+        "lng": 121.408
+      },
+      {
+        "id": "show-s08",
+        "station_code": "S08",
+        "name": "望江",
+        "city_id": "show-city-a",
+        "lat": 31.216,
+        "lng": 121.414
+      },
+      {
+        "id": "show-s09",
+        "station_code": "S09",
+        "name": "枫岸",
+        "city_id": "show-city-a",
+        "lat": 31.216,
+        "lng": 121.42
+      },
+      {
+        "id": "show-s10",
+        "station_code": "S10",
+        "name": "芦滩",
+        "city_id": "show-city-a",
+        "lat": 31.216,
+        "lng": 121.426
+      },
+      {
+        "id": "show-s11",
+        "station_code": "S11",
+        "name": "潮汐",
+        "city_id": "show-city-a",
+        "lat": 31.216,
+        "lng": 121.432
+      },
+      {
+        "id": "show-s12",
+        "station_code": "S12",
+        "name": "灯塔",
+        "city_id": "show-city-a",
+        "lat": 31.216,
+        "lng": 121.438
+      },
+      {
+        "id": "show-s13",
+        "station_code": "S13",
+        "name": "沙洲",
+        "city_id": "show-city-a",
+        "lat": 31.216,
+        "lng": 121.444
+      },
+      {
+        "id": "show-s14",
+        "station_code": "S14",
+        "name": "北岭",
+        "city_id": "show-city-a",
+        "lat": 31.216,
+        "lng": 121.45
+      },
+      {
+        "id": "show-s15",
+        "station_code": "S15",
+        "name": "竹洲",
+        "city_id": "show-city-a",
+        "lat": 31.216,
+        "lng": 121.456
+      },
+      {
+        "id": "show-s16",
+        "station_code": "S16",
+        "name": "苔原",
+        "city_id": "show-city-a",
+        "lat": 31.216,
+        "lng": 121.462
+      },
+      {
+        "id": "show-s17",
+        "station_code": "S17",
+        "name": "北闸",
+        "city_id": "show-city-a",
+        "lat": 31.192,
+        "lng": 121.414
+      },
+      {
+        "id": "show-s18",
+        "station_code": "S18",
+        "name": "冷泉",
+        "city_id": "show-city-a",
+        "lat": 31.198,
+        "lng": 121.414
+      },
+      {
+        "id": "show-s19",
+        "station_code": "S19",
+        "name": "高岭",
+        "city_id": "show-city-a",
+        "lat": 31.204,
+        "lng": 121.414
+      },
+      {
+        "id": "show-s20",
+        "station_code": "S20",
+        "name": "栗林",
+        "city_id": "show-city-a",
+        "lat": 31.21,
+        "lng": 121.414
+      },
+      {
+        "id": "show-s21",
+        "station_code": "S21",
+        "name": "沙坪",
+        "city_id": "show-city-a",
+        "lat": 31.222,
+        "lng": 121.414
+      },
+      {
+        "id": "show-s22",
+        "station_code": "S22",
+        "name": "木野",
+        "city_id": "show-city-a",
+        "lat": 31.228,
+        "lng": 121.414
+      },
+      {
+        "id": "show-s23",
+        "station_code": "S23",
+        "name": "石鼓",
+        "city_id": "show-city-a",
+        "lat": 31.234,
+        "lng": 121.414
+      },
+      {
+        "id": "show-s24",
+        "station_code": "S24",
+        "name": "砖塘",
+        "city_id": "show-city-a",
+        "lat": 31.24,
+        "lng": 121.414
+      },
+      {
+        "id": "show-s25",
+        "station_code": "S25",
+        "name": "长坡",
+        "city_id": "show-city-a",
+        "lat": 31.246,
+        "lng": 121.414
+      },
+      {
+        "id": "show-s26",
+        "station_code": "S26",
+        "name": "溪口",
+        "city_id": "show-city-b",
+        "lat": 31.252,
+        "lng": 121.414
+      },
+      {
+        "id": "show-s27",
+        "station_code": "S27",
+        "name": "江口",
+        "city_id": "show-city-b",
+        "lat": 31.258,
+        "lng": 121.414
+      },
+      {
+        "id": "show-s28",
+        "station_code": "S28",
+        "name": "环东",
+        "city_id": "show-city-a",
+        "lat": 31.222,
+        "lng": 121.402
+      },
+      {
+        "id": "show-s29",
+        "station_code": "S29",
+        "name": "环南",
+        "city_id": "show-city-a",
+        "lat": 31.234,
+        "lng": 121.408
+      },
+      {
+        "id": "show-s30",
+        "station_code": "S30",
+        "name": "环西",
+        "city_id": "show-city-a",
+        "lat": 31.246,
+        "lng": 121.402
+      },
+      {
+        "id": "show-s31",
+        "station_code": "S31",
+        "name": "望湖",
+        "city_id": "show-city-a",
+        "lat": 31.252,
+        "lng": 121.39
+      },
+      {
+        "id": "show-s32",
+        "station_code": "S32",
+        "name": "北岸",
+        "city_id": "show-city-a",
+        "lat": 31.252,
+        "lng": 121.378
+      },
+      {
+        "id": "show-s33",
+        "station_code": "S33",
+        "name": "柳堤",
+        "city_id": "show-city-a",
+        "lat": 31.24,
+        "lng": 121.366
+      },
+      {
+        "id": "show-s34",
+        "station_code": "S34",
+        "name": "青洲",
+        "city_id": "show-city-a",
+        "lat": 31.228,
+        "lng": 121.366
+      },
+      {
+        "id": "show-s35",
+        "station_code": "S35",
+        "name": "竹园",
+        "city_id": "show-city-a",
+        "lat": 31.222,
+        "lng": 121.378
+      },
+      {
+        "id": "show-s36",
+        "station_code": "S36",
+        "name": "松林",
+        "city_id": "show-city-a",
+        "lat": 31.21,
+        "lng": 121.384
+      },
+      {
+        "id": "show-s37",
+        "station_code": "S37",
+        "name": "西关",
+        "city_id": "show-city-a",
+        "lat": 31.246,
+        "lng": 121.372
+      },
+      {
+        "id": "show-s38",
+        "station_code": "S38",
+        "name": "石阶",
+        "city_id": "show-city-a",
+        "lat": 31.24,
+        "lng": 121.384
+      },
+      {
+        "id": "show-s39",
+        "station_code": "S39",
+        "name": "云台",
+        "city_id": "show-city-a",
+        "lat": 31.234,
+        "lng": 121.396
+      },
+      {
+        "id": "show-s40",
+        "station_code": "S40",
+        "name": "樟门",
+        "city_id": "show-city-a",
+        "lat": 31.228,
+        "lng": 121.408
+      },
+      {
+        "id": "show-s41",
+        "station_code": "S41",
+        "name": "木桥",
+        "city_id": "show-city-a",
+        "lat": 31.222,
+        "lng": 121.42
+      },
+      {
+        "id": "show-s42",
+        "station_code": "S42",
+        "name": "东岳",
+        "city_id": "show-city-a",
+        "lat": 31.21,
+        "lng": 121.444
+      },
+      {
+        "id": "show-s43",
+        "station_code": "S43",
+        "name": "沙嘴",
+        "city_id": "show-city-a",
+        "lat": 31.204,
+        "lng": 121.456
+      },
+      {
+        "id": "show-s44",
+        "station_code": "S44",
+        "name": "芦湾",
+        "city_id": "show-city-a",
+        "lat": 31.198,
+        "lng": 121.468
+      },
+      {
+        "id": "show-s45",
+        "station_code": "S45",
+        "name": "东堤",
+        "city_id": "show-city-a",
+        "lat": 31.192,
+        "lng": 121.48
+      },
+      {
+        "id": "show-s46",
+        "station_code": "S46",
+        "name": "梅岭",
+        "city_id": "show-city-a",
+        "lat": 31.234,
+        "lng": 121.42
+      },
+      {
+        "id": "show-s47",
+        "station_code": "S47",
+        "name": "江堤",
+        "city_id": "show-city-a",
+        "lat": 31.246,
+        "lng": 121.42
+      },
+      {
+        "id": "show-s48",
+        "station_code": "S48",
+        "name": "石浦",
+        "city_id": "show-city-a",
+        "lat": 31.258,
+        "lng": 121.42
+      },
+      {
+        "id": "show-s49",
+        "station_code": "S49",
+        "name": "芦洲",
+        "city_id": "show-city-a",
+        "lat": 31.27,
+        "lng": 121.432
+      },
+      {
+        "id": "show-s50",
+        "station_code": "S50",
+        "name": "北营",
+        "city_id": "show-city-b",
+        "lat": 31.192,
+        "lng": 121.492
+      },
+      {
+        "id": "show-s51",
+        "station_code": "S51",
+        "name": "前塘",
+        "city_id": "show-city-b",
+        "lat": 31.198,
+        "lng": 121.492
+      },
+      {
+        "id": "show-s52",
+        "station_code": "S52",
+        "name": "中营",
+        "city_id": "show-city-b",
+        "lat": 31.204,
+        "lng": 121.492
+      },
+      {
+        "id": "show-s53",
+        "station_code": "S53",
+        "name": "后塘",
+        "city_id": "show-city-b",
+        "lat": 31.21,
+        "lng": 121.492
+      },
+      {
+        "id": "show-s54",
+        "station_code": "S54",
+        "name": "南营",
+        "city_id": "show-city-b",
+        "lat": 31.216,
+        "lng": 121.492
+      },
+      {
+        "id": "show-s55",
+        "station_code": "S55",
+        "name": "江岸",
+        "city_id": "show-city-b",
+        "lat": 31.222,
+        "lng": 121.492
+      },
+      {
+        "id": "show-s56",
+        "station_code": "S56",
+        "name": "西郊",
+        "city_id": "show-city-a",
+        "lat": 31.282,
+        "lng": 121.384
+      },
+      {
+        "id": "show-s57",
+        "station_code": "S57",
+        "name": "北岭",
+        "city_id": "show-city-a",
+        "lat": 31.27,
+        "lng": 121.396
+      },
+      {
+        "id": "show-s58",
+        "station_code": "S58",
+        "name": "谢家桥",
+        "city_id": "show-city-a",
+        "lat": 31.24,
+        "lng": 121.432
+      },
+      {
+        "id": "show-s59",
+        "station_code": "S59",
+        "name": "北岸",
+        "city_id": "show-city-b",
+        "lat": 31.234,
+        "lng": 121.456
+      },
+      {
+        "id": "show-s60",
+        "station_code": "S60",
+        "name": "南埠",
+        "city_id": "show-city-b",
+        "lat": 31.21,
+        "lng": 121.504
+      },
+      {
+        "id": "show-s61",
+        "station_code": "S61",
+        "name": "旧城",
+        "city_id": "show-city-a",
+        "lat": 31.192,
+        "lng": 121.384
+      },
+      {
+        "id": "show-s62",
+        "station_code": "S62",
+        "name": "老闸",
+        "city_id": "show-city-a",
+        "lat": 31.198,
+        "lng": 121.396
+      },
+      {
+        "id": "show-s63",
+        "station_code": "S63",
+        "name": "砖窑",
+        "city_id": "show-city-a",
+        "lat": 31.204,
+        "lng": 121.408
+      },
+      {
+        "id": "show-s64",
+        "station_code": "S64",
+        "name": "石灰",
+        "city_id": "show-city-a",
+        "lat": 31.21,
+        "lng": 121.42
+      }
+    ],
+    "physical_lines": [
+      {
+        "id": "show-l1",
+        "name": "一号线",
+        "valid_from": "2019-01-01",
+        "valid_to": null,
+        "is_loop": false,
+        "loop_fold_station_id": null,
+        "direction_labels": [
+          {
+            "label": "青松 → 苔原",
+            "from_station_id": "show-s01",
+            "to_station_id": null
+          },
+          {
+            "label": "苔原 → 青松",
+            "from_station_id": "show-s16",
+            "to_station_id": null
+          }
+        ]
+      },
+      {
+        "id": "show-l2",
+        "name": "二号线",
+        "valid_from": "2019-01-01",
+        "valid_to": null,
+        "is_loop": false,
+        "loop_fold_station_id": null,
+        "direction_labels": [
+          {
+            "label": "北闸 → 江口",
+            "from_station_id": "show-s17",
+            "to_station_id": null
+          },
+          {
+            "label": "江口 → 北闸",
+            "from_station_id": "show-s27",
+            "to_station_id": null
+          }
+        ]
+      },
+      {
+        "id": "show-loop",
+        "name": "环线",
+        "valid_from": "2019-01-01",
+        "valid_to": null,
+        "is_loop": true,
+        "loop_fold_station_id": "show-s04",
+        "direction_labels": [
+          {
+            "label": "环线内环（河湾 → 环东）",
+            "from_station_id": "show-s04",
+            "to_station_id": "show-s28"
+          },
+          {
+            "label": "环线外环（苔径 → 河湾）",
+            "from_station_id": "show-s36",
+            "to_station_id": "show-s04"
+          }
+        ]
+      },
+      {
+        "id": "show-l3",
+        "name": "三号线",
+        "valid_from": "2019-01-01",
+        "valid_to": null,
+        "is_loop": false,
+        "loop_fold_station_id": null,
+        "direction_labels": [
+          {
+            "label": "西关 → 东堤",
+            "from_station_id": "show-s37",
+            "to_station_id": null
+          },
+          {
+            "label": "东堤 → 西关",
+            "from_station_id": "show-s45",
+            "to_station_id": null
+          }
+        ]
+      },
+      {
+        "id": "show-l4",
+        "name": "城市快线",
+        "valid_from": "2019-01-01",
+        "valid_to": null,
+        "is_loop": false,
+        "loop_fold_station_id": null,
+        "direction_labels": [
+          {
+            "label": "北营 → 江岸",
+            "from_station_id": "show-s50",
+            "to_station_id": null
+          },
+          {
+            "label": "江岸 → 北营",
+            "from_station_id": "show-s55",
+            "to_station_id": null
+          }
+        ]
+      },
+      {
+        "id": "show-l5",
+        "name": "城际线",
+        "valid_from": "2019-01-01",
+        "valid_to": null,
+        "is_loop": false,
+        "loop_fold_station_id": null,
+        "direction_labels": [
+          {
+            "label": "西郊 → 南埠",
+            "from_station_id": "show-s56",
+            "to_station_id": null
+          },
+          {
+            "label": "南埠 → 西郊",
+            "from_station_id": "show-s60",
+            "to_station_id": null
+          }
+        ]
+      },
+      {
+        "id": "show-l6",
+        "name": "六号线",
+        "valid_from": "2019-01-01",
+        "valid_to": "2024-03-01",
+        "is_loop": false,
+        "loop_fold_station_id": null,
+        "direction_labels": [
+          {
+            "label": "旧城 → 石灰",
+            "from_station_id": "show-s61",
+            "to_station_id": null
+          },
+          {
+            "label": "石灰 → 旧城",
+            "from_station_id": "show-s64",
+            "to_station_id": null
+          }
+        ]
+      }
+    ],
+    "physical_sections": [
+      {
+        "id": "show-l1-s01",
+        "physical_line_id": "show-l1",
+        "from_station_id": "show-s01",
+        "to_station_id": "show-s02",
+        "valid_from": "2019-01-01",
+        "valid_to": null,
+        "length_m": 900,
+        "length_source": "showcase-synthetic"
+      },
+      {
+        "id": "show-l1-s02",
+        "physical_line_id": "show-l1",
+        "from_station_id": "show-s02",
+        "to_station_id": "show-s03",
+        "valid_from": "2019-01-01",
+        "valid_to": null,
+        "length_m": 980,
+        "length_source": "showcase-synthetic"
+      },
+      {
+        "id": "show-l1-s03",
+        "physical_line_id": "show-l1",
+        "from_station_id": "show-s03",
+        "to_station_id": "show-s04",
+        "valid_from": "2019-01-01",
+        "valid_to": null,
+        "length_m": 1060,
+        "length_source": "showcase-synthetic"
+      },
+      {
+        "id": "show-l1-s04",
+        "physical_line_id": "show-l1",
+        "from_station_id": "show-s04",
+        "to_station_id": "show-s05",
+        "valid_from": "2019-01-01",
+        "valid_to": null,
+        "length_m": 1140,
+        "length_source": "showcase-synthetic"
+      },
+      {
+        "id": "show-l1-s05",
+        "physical_line_id": "show-l1",
+        "from_station_id": "show-s05",
+        "to_station_id": "show-s06",
+        "valid_from": "2019-01-01",
+        "valid_to": null,
+        "length_m": 1220,
+        "length_source": "showcase-synthetic"
+      },
+      {
+        "id": "show-l1-s06",
+        "physical_line_id": "show-l1",
+        "from_station_id": "show-s06",
+        "to_station_id": "show-s07",
+        "valid_from": "2019-01-01",
+        "valid_to": null,
+        "length_m": 1300,
+        "length_source": "showcase-synthetic"
+      },
+      {
+        "id": "show-l1-s07",
+        "physical_line_id": "show-l1",
+        "from_station_id": "show-s07",
+        "to_station_id": "show-s08",
+        "valid_from": "2019-01-01",
+        "valid_to": null,
+        "length_m": 1380,
+        "length_source": "showcase-synthetic"
+      },
+      {
+        "id": "show-l1-s08",
+        "physical_line_id": "show-l1",
+        "from_station_id": "show-s08",
+        "to_station_id": "show-s09",
+        "valid_from": "2019-01-01",
+        "valid_to": null,
+        "length_m": 1460,
+        "length_source": "showcase-synthetic"
+      },
+      {
+        "id": "show-l1-s09",
+        "physical_line_id": "show-l1",
+        "from_station_id": "show-s09",
+        "to_station_id": "show-s10",
+        "valid_from": "2019-01-01",
+        "valid_to": null,
+        "length_m": 1540,
+        "length_source": "showcase-synthetic"
+      },
+      {
+        "id": "show-l1-s10",
+        "physical_line_id": "show-l1",
+        "from_station_id": "show-s10",
+        "to_station_id": "show-s11",
+        "valid_from": "2019-01-01",
+        "valid_to": null,
+        "length_m": 1620,
+        "length_source": "showcase-synthetic"
+      },
+      {
+        "id": "show-l1-s11",
+        "physical_line_id": "show-l1",
+        "from_station_id": "show-s11",
+        "to_station_id": "show-s12",
+        "valid_from": "2019-01-01",
+        "valid_to": null,
+        "length_m": 1700,
+        "length_source": "showcase-synthetic"
+      },
+      {
+        "id": "show-l1-s12",
+        "physical_line_id": "show-l1",
+        "from_station_id": "show-s12",
+        "to_station_id": "show-s13",
+        "valid_from": "2019-01-01",
+        "valid_to": null,
+        "length_m": 1780,
+        "length_source": "showcase-synthetic"
+      },
+      {
+        "id": "show-l1-s13",
+        "physical_line_id": "show-l1",
+        "from_station_id": "show-s13",
+        "to_station_id": "show-s14",
+        "valid_from": "2019-01-01",
+        "valid_to": null,
+        "length_m": 1860,
+        "length_source": "showcase-synthetic"
+      },
+      {
+        "id": "show-l1-s14",
+        "physical_line_id": "show-l1",
+        "from_station_id": "show-s14",
+        "to_station_id": "show-s15",
+        "valid_from": "2019-01-01",
+        "valid_to": null,
+        "length_m": 1940,
+        "length_source": "showcase-synthetic"
+      },
+      {
+        "id": "show-l1-s15",
+        "physical_line_id": "show-l1",
+        "from_station_id": "show-s15",
+        "to_station_id": "show-s16",
+        "valid_from": "2019-01-01",
+        "valid_to": null,
+        "length_m": 2020,
+        "length_source": "showcase-synthetic"
+      },
+      {
+        "id": "show-l2-s01",
+        "physical_line_id": "show-l2",
+        "from_station_id": "show-s17",
+        "to_station_id": "show-s18",
+        "valid_from": "2019-01-01",
+        "valid_to": null,
+        "length_m": 940,
+        "length_source": "showcase-synthetic"
+      },
+      {
+        "id": "show-l2-s02",
+        "physical_line_id": "show-l2",
+        "from_station_id": "show-s18",
+        "to_station_id": "show-s19",
+        "valid_from": "2019-01-01",
+        "valid_to": null,
+        "length_m": 1020,
+        "length_source": "showcase-synthetic"
+      },
+      {
+        "id": "show-l2-s03",
+        "physical_line_id": "show-l2",
+        "from_station_id": "show-s19",
+        "to_station_id": "show-s20",
+        "valid_from": "2019-01-01",
+        "valid_to": null,
+        "length_m": 1100,
+        "length_source": "showcase-synthetic"
+      },
+      {
+        "id": "show-l2-s04",
+        "physical_line_id": "show-l2",
+        "from_station_id": "show-s20",
+        "to_station_id": "show-s08",
+        "valid_from": "2019-01-01",
+        "valid_to": null,
+        "length_m": 1180,
+        "length_source": "showcase-synthetic"
+      },
+      {
+        "id": "show-l2-s05",
+        "physical_line_id": "show-l2",
+        "from_station_id": "show-s08",
+        "to_station_id": "show-s21",
+        "valid_from": "2019-01-01",
+        "valid_to": null,
+        "length_m": 1260,
+        "length_source": "showcase-synthetic"
+      },
+      {
+        "id": "show-l2-s06",
+        "physical_line_id": "show-l2",
+        "from_station_id": "show-s21",
+        "to_station_id": "show-s22",
+        "valid_from": "2019-01-01",
+        "valid_to": null,
+        "length_m": 1340,
+        "length_source": "showcase-synthetic"
+      },
+      {
+        "id": "show-l2-s07",
+        "physical_line_id": "show-l2",
+        "from_station_id": "show-s22",
+        "to_station_id": "show-s23",
+        "valid_from": "2019-01-01",
+        "valid_to": null,
+        "length_m": 1420,
+        "length_source": "showcase-synthetic"
+      },
+      {
+        "id": "show-l2-s08",
+        "physical_line_id": "show-l2",
+        "from_station_id": "show-s23",
+        "to_station_id": "show-s24",
+        "valid_from": "2019-01-01",
+        "valid_to": null,
+        "length_m": 1500,
+        "length_source": "showcase-synthetic"
+      },
+      {
+        "id": "show-l2-s09",
+        "physical_line_id": "show-l2",
+        "from_station_id": "show-s24",
+        "to_station_id": "show-s25",
+        "valid_from": "2019-01-01",
+        "valid_to": "2024-05-01",
+        "length_m": 1580,
+        "length_source": "showcase-synthetic"
+      },
+      {
+        "id": "show-l2-s10",
+        "physical_line_id": "show-l2",
+        "from_station_id": "show-s25",
+        "to_station_id": "show-s26",
+        "valid_from": "2019-01-01",
+        "valid_to": null,
+        "length_m": 1660,
+        "length_source": "showcase-synthetic"
+      },
+      {
+        "id": "show-l2-s11",
+        "physical_line_id": "show-l2",
+        "from_station_id": "show-s26",
+        "to_station_id": "show-s27",
+        "valid_from": "2019-01-01",
+        "valid_to": null,
+        "length_m": 1740,
+        "length_source": "showcase-synthetic"
+      },
+      {
+        "id": "show-loop-s01",
+        "physical_line_id": "show-loop",
+        "from_station_id": "show-s04",
+        "to_station_id": "show-s28",
+        "valid_from": "2019-01-01",
+        "valid_to": null,
+        "length_m": 980,
+        "length_source": "showcase-synthetic"
+      },
+      {
+        "id": "show-loop-s02",
+        "physical_line_id": "show-loop",
+        "from_station_id": "show-s28",
+        "to_station_id": "show-s29",
+        "valid_from": "2019-01-01",
+        "valid_to": null,
+        "length_m": 1060,
+        "length_source": "showcase-synthetic"
+      },
+      {
+        "id": "show-loop-s03",
+        "physical_line_id": "show-loop",
+        "from_station_id": "show-s29",
+        "to_station_id": "show-s30",
+        "valid_from": "2019-01-01",
+        "valid_to": null,
+        "length_m": 1140,
+        "length_source": "showcase-synthetic"
+      },
+      {
+        "id": "show-loop-s04",
+        "physical_line_id": "show-loop",
+        "from_station_id": "show-s30",
+        "to_station_id": "show-s31",
+        "valid_from": "2019-01-01",
+        "valid_to": null,
+        "length_m": 1220,
+        "length_source": "showcase-synthetic"
+      },
+      {
+        "id": "show-loop-s05",
+        "physical_line_id": "show-loop",
+        "from_station_id": "show-s31",
+        "to_station_id": "show-s32",
+        "valid_from": "2019-01-01",
+        "valid_to": null,
+        "length_m": 1300,
+        "length_source": "showcase-synthetic"
+      },
+      {
+        "id": "show-loop-s06",
+        "physical_line_id": "show-loop",
+        "from_station_id": "show-s32",
+        "to_station_id": "show-s33",
+        "valid_from": "2019-01-01",
+        "valid_to": null,
+        "length_m": 1380,
+        "length_source": "showcase-synthetic"
+      },
+      {
+        "id": "show-loop-s07",
+        "physical_line_id": "show-loop",
+        "from_station_id": "show-s33",
+        "to_station_id": "show-s34",
+        "valid_from": "2019-01-01",
+        "valid_to": null,
+        "length_m": 1460,
+        "length_source": "showcase-synthetic"
+      },
+      {
+        "id": "show-loop-s08",
+        "physical_line_id": "show-loop",
+        "from_station_id": "show-s34",
+        "to_station_id": "show-s35",
+        "valid_from": "2019-01-01",
+        "valid_to": null,
+        "length_m": 1540,
+        "length_source": "showcase-synthetic"
+      },
+      {
+        "id": "show-loop-s09",
+        "physical_line_id": "show-loop",
+        "from_station_id": "show-s35",
+        "to_station_id": "show-s36",
+        "valid_from": "2019-01-01",
+        "valid_to": null,
+        "length_m": 1620,
+        "length_source": "showcase-synthetic"
+      },
+      {
+        "id": "show-loop-s10",
+        "physical_line_id": "show-loop",
+        "from_station_id": "show-s36",
+        "to_station_id": "show-s04",
+        "valid_from": "2019-01-01",
+        "valid_to": null,
+        "length_m": 1700,
+        "length_source": "showcase-synthetic"
+      },
+      {
+        "id": "show-l3-s01",
+        "physical_line_id": "show-l3",
+        "from_station_id": "show-s37",
+        "to_station_id": "show-s38",
+        "valid_from": "2019-01-01",
+        "valid_to": null,
+        "length_m": 1020,
+        "length_source": "showcase-synthetic"
+      },
+      {
+        "id": "show-l3-s02",
+        "physical_line_id": "show-l3",
+        "from_station_id": "show-s38",
+        "to_station_id": "show-s39",
+        "valid_from": "2019-01-01",
+        "valid_to": null,
+        "length_m": 1100,
+        "length_source": "showcase-synthetic"
+      },
+      {
+        "id": "show-l3-s03",
+        "physical_line_id": "show-l3",
+        "from_station_id": "show-s39",
+        "to_station_id": "show-s40",
+        "valid_from": "2019-01-01",
+        "valid_to": null,
+        "length_m": 1180,
+        "length_source": "showcase-synthetic"
+      },
+      {
+        "id": "show-l3-s04",
+        "physical_line_id": "show-l3",
+        "from_station_id": "show-s40",
+        "to_station_id": "show-s41",
+        "valid_from": "2019-01-01",
+        "valid_to": null,
+        "length_m": 1260,
+        "length_source": "showcase-synthetic"
+      },
+      {
+        "id": "show-l3-s05",
+        "physical_line_id": "show-l3",
+        "from_station_id": "show-s41",
+        "to_station_id": "show-s11",
+        "valid_from": "2019-01-01",
+        "valid_to": null,
+        "length_m": 1340,
+        "length_source": "showcase-synthetic"
+      },
+      {
+        "id": "show-l3-s06",
+        "physical_line_id": "show-l3",
+        "from_station_id": "show-s11",
+        "to_station_id": "show-s42",
+        "valid_from": "2019-01-01",
+        "valid_to": null,
+        "length_m": 1420,
+        "length_source": "showcase-synthetic"
+      },
+      {
+        "id": "show-l3-s07",
+        "physical_line_id": "show-l3",
+        "from_station_id": "show-s42",
+        "to_station_id": "show-s43",
+        "valid_from": "2019-01-01",
+        "valid_to": null,
+        "length_m": 1500,
+        "length_source": "showcase-synthetic"
+      },
+      {
+        "id": "show-l3-s08",
+        "physical_line_id": "show-l3",
+        "from_station_id": "show-s43",
+        "to_station_id": "show-s44",
+        "valid_from": "2019-01-01",
+        "valid_to": null,
+        "length_m": 1580,
+        "length_source": "showcase-synthetic"
+      },
+      {
+        "id": "show-l3-s09",
+        "physical_line_id": "show-l3",
+        "from_station_id": "show-s44",
+        "to_station_id": "show-s45",
+        "valid_from": "2019-01-01",
+        "valid_to": null,
+        "length_m": 1660,
+        "length_source": "showcase-synthetic"
+      },
+      {
+        "id": "show-l3-s10",
+        "physical_line_id": "show-l3",
+        "from_station_id": "show-s41",
+        "to_station_id": "show-s46",
+        "valid_from": "2019-01-01",
+        "valid_to": null,
+        "length_m": 1020,
+        "length_source": "showcase-synthetic"
+      },
+      {
+        "id": "show-l3-s11",
+        "physical_line_id": "show-l3",
+        "from_station_id": "show-s46",
+        "to_station_id": "show-s47",
+        "valid_from": "2019-01-01",
+        "valid_to": null,
+        "length_m": 1100,
+        "length_source": "showcase-synthetic"
+      },
+      {
+        "id": "show-l3-s12",
+        "physical_line_id": "show-l3",
+        "from_station_id": "show-s47",
+        "to_station_id": "show-s48",
+        "valid_from": "2019-01-01",
+        "valid_to": null,
+        "length_m": 1180,
+        "length_source": "showcase-synthetic"
+      },
+      {
+        "id": "show-l3-s13",
+        "physical_line_id": "show-l3",
+        "from_station_id": "show-s48",
+        "to_station_id": "show-s49",
+        "valid_from": "2019-01-01",
+        "valid_to": null,
+        "length_m": 1260,
+        "length_source": "showcase-synthetic"
+      },
+      {
+        "id": "show-l4-s01",
+        "physical_line_id": "show-l4",
+        "from_station_id": "show-s50",
+        "to_station_id": "show-s51",
+        "valid_from": "2019-01-01",
+        "valid_to": null,
+        "length_m": null,
+        "length_source": null
+      },
+      {
+        "id": "show-l4-s02",
+        "physical_line_id": "show-l4",
+        "from_station_id": "show-s51",
+        "to_station_id": "show-s52",
+        "valid_from": "2019-01-01",
+        "valid_to": null,
+        "length_m": null,
+        "length_source": null
+      },
+      {
+        "id": "show-l4-s03",
+        "physical_line_id": "show-l4",
+        "from_station_id": "show-s52",
+        "to_station_id": "show-s53",
+        "valid_from": "2019-01-01",
+        "valid_to": null,
+        "length_m": null,
+        "length_source": null
+      },
+      {
+        "id": "show-l4-s04",
+        "physical_line_id": "show-l4",
+        "from_station_id": "show-s53",
+        "to_station_id": "show-s54",
+        "valid_from": "2019-01-01",
+        "valid_to": null,
+        "length_m": null,
+        "length_source": null
+      },
+      {
+        "id": "show-l4-s05",
+        "physical_line_id": "show-l4",
+        "from_station_id": "show-s54",
+        "to_station_id": "show-s55",
+        "valid_from": "2019-01-01",
+        "valid_to": null,
+        "length_m": null,
+        "length_source": null
+      },
+      {
+        "id": "show-l5-s01",
+        "physical_line_id": "show-l5",
+        "from_station_id": "show-s56",
+        "to_station_id": "show-s57",
+        "valid_from": "2019-01-01",
+        "valid_to": null,
+        "length_m": 1100,
+        "length_source": "showcase-synthetic"
+      },
+      {
+        "id": "show-l5-s02",
+        "physical_line_id": "show-l5",
+        "from_station_id": "show-s57",
+        "to_station_id": "show-s25",
+        "valid_from": "2019-01-01",
+        "valid_to": null,
+        "length_m": 1180,
+        "length_source": "showcase-synthetic"
+      },
+      {
+        "id": "show-l5-s03",
+        "physical_line_id": "show-l5",
+        "from_station_id": "show-s25",
+        "to_station_id": "show-s58",
+        "valid_from": "2019-01-01",
+        "valid_to": null,
+        "length_m": 1260,
+        "length_source": "showcase-synthetic"
+      },
+      {
+        "id": "show-l5-s04",
+        "physical_line_id": "show-l5",
+        "from_station_id": "show-s58",
+        "to_station_id": "show-s59",
+        "valid_from": "2019-01-01",
+        "valid_to": null,
+        "length_m": 1340,
+        "length_source": "showcase-synthetic"
+      },
+      {
+        "id": "show-l5-s05",
+        "physical_line_id": "show-l5",
+        "from_station_id": "show-s59",
+        "to_station_id": "show-s55",
+        "valid_from": "2019-01-01",
+        "valid_to": null,
+        "length_m": 1420,
+        "length_source": "showcase-synthetic"
+      },
+      {
+        "id": "show-l5-s06",
+        "physical_line_id": "show-l5",
+        "from_station_id": "show-s55",
+        "to_station_id": "show-s60",
+        "valid_from": "2019-01-01",
+        "valid_to": null,
+        "length_m": 1500,
+        "length_source": "showcase-synthetic"
+      },
+      {
+        "id": "show-l6-s01",
+        "physical_line_id": "show-l6",
+        "from_station_id": "show-s61",
+        "to_station_id": "show-s62",
+        "valid_from": "2019-01-01",
+        "valid_to": "2024-03-01",
+        "length_m": 1140,
+        "length_source": "showcase-synthetic"
+      },
+      {
+        "id": "show-l6-s02",
+        "physical_line_id": "show-l6",
+        "from_station_id": "show-s62",
+        "to_station_id": "show-s63",
+        "valid_from": "2019-01-01",
+        "valid_to": "2024-03-01",
+        "length_m": 1220,
+        "length_source": "showcase-synthetic"
+      },
+      {
+        "id": "show-l6-s03",
+        "physical_line_id": "show-l6",
+        "from_station_id": "show-s63",
+        "to_station_id": "show-s64",
+        "valid_from": "2019-01-01",
+        "valid_to": "2024-03-01",
+        "length_m": 1300,
+        "length_source": "showcase-synthetic"
+      }
+    ],
+    "service_lines": [
+      {
+        "id": "show-service-1",
+        "name": "一号线",
+        "operator_id": "show-op-metro",
+        "valid_from": "2019-01-01",
+        "valid_to": null,
+        "direction_labels": [
+          {
+            "label": "青松 → 苔原",
+            "from_station_id": "show-s01",
+            "to_station_id": null
+          },
+          {
+            "label": "苔原 → 青松",
+            "from_station_id": "show-s16",
+            "to_station_id": null
+          }
+        ]
+      },
+      {
+        "id": "show-service-2",
+        "name": "二号线",
+        "operator_id": "show-op-metro",
+        "valid_from": "2019-01-01",
+        "valid_to": null,
+        "direction_labels": [
+          {
+            "label": "北闸 → 江口",
+            "from_station_id": "show-s17",
+            "to_station_id": null
+          },
+          {
+            "label": "江口 → 北闸",
+            "from_station_id": "show-s27",
+            "to_station_id": null
+          }
+        ]
+      },
+      {
+        "id": "show-service-loop",
+        "name": "环线",
+        "operator_id": "show-op-metro",
+        "valid_from": "2019-01-01",
+        "valid_to": null,
+        "direction_labels": [
+          {
+            "label": "环线内环（河湾 → 环东）",
+            "from_station_id": "show-s04",
+            "to_station_id": "show-s28"
+          },
+          {
+            "label": "环线外环（苔径 → 河湾）",
+            "from_station_id": "show-s36",
+            "to_station_id": "show-s04"
+          }
+        ]
+      },
+      {
+        "id": "show-service-3",
+        "name": "三号线",
+        "operator_id": "show-op-metro",
+        "valid_from": "2019-01-01",
+        "valid_to": null,
+        "direction_labels": [
+          {
+            "label": "西关 → 东堤",
+            "from_station_id": "show-s37",
+            "to_station_id": null
+          },
+          {
+            "label": "东堤 → 西关",
+            "from_station_id": "show-s45",
+            "to_station_id": null
+          }
+        ]
+      },
+      {
+        "id": "show-service-3b",
+        "name": "三号线支线",
+        "operator_id": "show-op-metro",
+        "valid_from": "2019-01-01",
+        "valid_to": null,
+        "direction_labels": [
+          {
+            "label": "西关 → 芦洲",
+            "from_station_id": "show-s37",
+            "to_station_id": null
+          },
+          {
+            "label": "芦洲 → 西关",
+            "from_station_id": "show-s49",
+            "to_station_id": null
+          }
+        ]
+      },
+      {
+        "id": "show-service-4",
+        "name": "城市快线",
+        "operator_id": "show-op-express",
+        "valid_from": "2019-01-01",
+        "valid_to": null,
+        "direction_labels": [
+          {
+            "label": "北营 → 江岸",
+            "from_station_id": "show-s50",
+            "to_station_id": null
+          },
+          {
+            "label": "江岸 → 北营",
+            "from_station_id": "show-s55",
+            "to_station_id": null
+          }
+        ]
+      },
+      {
+        "id": "show-service-5",
+        "name": "城际线",
+        "operator_id": "show-op-intercity",
+        "valid_from": "2019-01-01",
+        "valid_to": null,
+        "direction_labels": [
+          {
+            "label": "西郊 → 南埠",
+            "from_station_id": "show-s56",
+            "to_station_id": null
+          },
+          {
+            "label": "南埠 → 西郊",
+            "from_station_id": "show-s60",
+            "to_station_id": null
+          }
+        ]
+      },
+      {
+        "id": "show-service-6",
+        "name": "六号线",
+        "operator_id": "show-op-metro",
+        "valid_from": "2019-01-01",
+        "valid_to": "2024-03-01",
+        "direction_labels": [
+          {
+            "label": "旧城 → 石灰",
+            "from_station_id": "show-s61",
+            "to_station_id": null
+          },
+          {
+            "label": "石灰 → 旧城",
+            "from_station_id": "show-s64",
+            "to_station_id": null
+          }
+        ]
+      }
+    ],
+    "service_line_sections": [
+      {
+        "service_line_id": "show-service-1",
+        "physical_section_id": "show-l1-s01",
+        "seq": 0,
+        "valid_from": "2019-01-01",
+        "valid_to": null
+      },
+      {
+        "service_line_id": "show-service-1",
+        "physical_section_id": "show-l1-s02",
+        "seq": 1,
+        "valid_from": "2019-01-01",
+        "valid_to": null
+      },
+      {
+        "service_line_id": "show-service-1",
+        "physical_section_id": "show-l1-s03",
+        "seq": 2,
+        "valid_from": "2019-01-01",
+        "valid_to": null
+      },
+      {
+        "service_line_id": "show-service-1",
+        "physical_section_id": "show-l1-s04",
+        "seq": 3,
+        "valid_from": "2019-01-01",
+        "valid_to": null
+      },
+      {
+        "service_line_id": "show-service-1",
+        "physical_section_id": "show-l1-s05",
+        "seq": 4,
+        "valid_from": "2019-01-01",
+        "valid_to": null
+      },
+      {
+        "service_line_id": "show-service-1",
+        "physical_section_id": "show-l1-s06",
+        "seq": 5,
+        "valid_from": "2019-01-01",
+        "valid_to": null
+      },
+      {
+        "service_line_id": "show-service-1",
+        "physical_section_id": "show-l1-s07",
+        "seq": 6,
+        "valid_from": "2019-01-01",
+        "valid_to": null
+      },
+      {
+        "service_line_id": "show-service-1",
+        "physical_section_id": "show-l1-s08",
+        "seq": 7,
+        "valid_from": "2019-01-01",
+        "valid_to": null
+      },
+      {
+        "service_line_id": "show-service-1",
+        "physical_section_id": "show-l1-s09",
+        "seq": 8,
+        "valid_from": "2019-01-01",
+        "valid_to": null
+      },
+      {
+        "service_line_id": "show-service-1",
+        "physical_section_id": "show-l1-s10",
+        "seq": 9,
+        "valid_from": "2019-01-01",
+        "valid_to": null
+      },
+      {
+        "service_line_id": "show-service-1",
+        "physical_section_id": "show-l1-s11",
+        "seq": 10,
+        "valid_from": "2019-01-01",
+        "valid_to": null
+      },
+      {
+        "service_line_id": "show-service-1",
+        "physical_section_id": "show-l1-s12",
+        "seq": 11,
+        "valid_from": "2019-01-01",
+        "valid_to": null
+      },
+      {
+        "service_line_id": "show-service-1",
+        "physical_section_id": "show-l1-s13",
+        "seq": 12,
+        "valid_from": "2019-01-01",
+        "valid_to": null
+      },
+      {
+        "service_line_id": "show-service-1",
+        "physical_section_id": "show-l1-s14",
+        "seq": 13,
+        "valid_from": "2019-01-01",
+        "valid_to": null
+      },
+      {
+        "service_line_id": "show-service-1",
+        "physical_section_id": "show-l1-s15",
+        "seq": 14,
+        "valid_from": "2019-01-01",
+        "valid_to": null
+      },
+      {
+        "service_line_id": "show-service-2",
+        "physical_section_id": "show-l2-s01",
+        "seq": 0,
+        "valid_from": "2019-01-01",
+        "valid_to": null
+      },
+      {
+        "service_line_id": "show-service-2",
+        "physical_section_id": "show-l2-s02",
+        "seq": 1,
+        "valid_from": "2019-01-01",
+        "valid_to": null
+      },
+      {
+        "service_line_id": "show-service-2",
+        "physical_section_id": "show-l2-s03",
+        "seq": 2,
+        "valid_from": "2019-01-01",
+        "valid_to": null
+      },
+      {
+        "service_line_id": "show-service-2",
+        "physical_section_id": "show-l2-s04",
+        "seq": 3,
+        "valid_from": "2019-01-01",
+        "valid_to": null
+      },
+      {
+        "service_line_id": "show-service-2",
+        "physical_section_id": "show-l2-s05",
+        "seq": 4,
+        "valid_from": "2019-01-01",
+        "valid_to": null
+      },
+      {
+        "service_line_id": "show-service-2",
+        "physical_section_id": "show-l2-s06",
+        "seq": 5,
+        "valid_from": "2019-01-01",
+        "valid_to": null
+      },
+      {
+        "service_line_id": "show-service-2",
+        "physical_section_id": "show-l2-s07",
+        "seq": 6,
+        "valid_from": "2019-01-01",
+        "valid_to": null
+      },
+      {
+        "service_line_id": "show-service-2",
+        "physical_section_id": "show-l2-s08",
+        "seq": 7,
+        "valid_from": "2019-01-01",
+        "valid_to": null
+      },
+      {
+        "service_line_id": "show-service-2",
+        "physical_section_id": "show-l2-s09",
+        "seq": 8,
+        "valid_from": "2019-01-01",
+        "valid_to": "2024-05-01"
+      },
+      {
+        "service_line_id": "show-service-2",
+        "physical_section_id": "show-l2-s10",
+        "seq": 9,
+        "valid_from": "2019-01-01",
+        "valid_to": null
+      },
+      {
+        "service_line_id": "show-service-2",
+        "physical_section_id": "show-l2-s11",
+        "seq": 10,
+        "valid_from": "2019-01-01",
+        "valid_to": null
+      },
+      {
+        "service_line_id": "show-service-loop",
+        "physical_section_id": "show-loop-s01",
+        "seq": 0,
+        "valid_from": "2019-01-01",
+        "valid_to": null
+      },
+      {
+        "service_line_id": "show-service-loop",
+        "physical_section_id": "show-loop-s02",
+        "seq": 1,
+        "valid_from": "2019-01-01",
+        "valid_to": null
+      },
+      {
+        "service_line_id": "show-service-loop",
+        "physical_section_id": "show-loop-s03",
+        "seq": 2,
+        "valid_from": "2019-01-01",
+        "valid_to": null
+      },
+      {
+        "service_line_id": "show-service-loop",
+        "physical_section_id": "show-loop-s04",
+        "seq": 3,
+        "valid_from": "2019-01-01",
+        "valid_to": null
+      },
+      {
+        "service_line_id": "show-service-loop",
+        "physical_section_id": "show-loop-s05",
+        "seq": 4,
+        "valid_from": "2019-01-01",
+        "valid_to": null
+      },
+      {
+        "service_line_id": "show-service-loop",
+        "physical_section_id": "show-loop-s06",
+        "seq": 5,
+        "valid_from": "2019-01-01",
+        "valid_to": null
+      },
+      {
+        "service_line_id": "show-service-loop",
+        "physical_section_id": "show-loop-s07",
+        "seq": 6,
+        "valid_from": "2019-01-01",
+        "valid_to": null
+      },
+      {
+        "service_line_id": "show-service-loop",
+        "physical_section_id": "show-loop-s08",
+        "seq": 7,
+        "valid_from": "2019-01-01",
+        "valid_to": null
+      },
+      {
+        "service_line_id": "show-service-loop",
+        "physical_section_id": "show-loop-s09",
+        "seq": 8,
+        "valid_from": "2019-01-01",
+        "valid_to": null
+      },
+      {
+        "service_line_id": "show-service-loop",
+        "physical_section_id": "show-loop-s10",
+        "seq": 9,
+        "valid_from": "2019-01-01",
+        "valid_to": null
+      },
+      {
+        "service_line_id": "show-service-3",
+        "physical_section_id": "show-l3-s01",
+        "seq": 0,
+        "valid_from": "2019-01-01",
+        "valid_to": null
+      },
+      {
+        "service_line_id": "show-service-3",
+        "physical_section_id": "show-l3-s02",
+        "seq": 1,
+        "valid_from": "2019-01-01",
+        "valid_to": null
+      },
+      {
+        "service_line_id": "show-service-3",
+        "physical_section_id": "show-l3-s03",
+        "seq": 2,
+        "valid_from": "2019-01-01",
+        "valid_to": null
+      },
+      {
+        "service_line_id": "show-service-3",
+        "physical_section_id": "show-l3-s04",
+        "seq": 3,
+        "valid_from": "2019-01-01",
+        "valid_to": null
+      },
+      {
+        "service_line_id": "show-service-3",
+        "physical_section_id": "show-l3-s05",
+        "seq": 4,
+        "valid_from": "2019-01-01",
+        "valid_to": null
+      },
+      {
+        "service_line_id": "show-service-3",
+        "physical_section_id": "show-l3-s06",
+        "seq": 5,
+        "valid_from": "2019-01-01",
+        "valid_to": null
+      },
+      {
+        "service_line_id": "show-service-3",
+        "physical_section_id": "show-l3-s07",
+        "seq": 6,
+        "valid_from": "2019-01-01",
+        "valid_to": null
+      },
+      {
+        "service_line_id": "show-service-3",
+        "physical_section_id": "show-l3-s08",
+        "seq": 7,
+        "valid_from": "2019-01-01",
+        "valid_to": null
+      },
+      {
+        "service_line_id": "show-service-3",
+        "physical_section_id": "show-l3-s09",
+        "seq": 8,
+        "valid_from": "2019-01-01",
+        "valid_to": null
+      },
+      {
+        "service_line_id": "show-service-3b",
+        "physical_section_id": "show-l3-s01",
+        "seq": 0,
+        "valid_from": "2019-01-01",
+        "valid_to": null
+      },
+      {
+        "service_line_id": "show-service-3b",
+        "physical_section_id": "show-l3-s02",
+        "seq": 1,
+        "valid_from": "2019-01-01",
+        "valid_to": null
+      },
+      {
+        "service_line_id": "show-service-3b",
+        "physical_section_id": "show-l3-s03",
+        "seq": 2,
+        "valid_from": "2019-01-01",
+        "valid_to": null
+      },
+      {
+        "service_line_id": "show-service-3b",
+        "physical_section_id": "show-l3-s04",
+        "seq": 3,
+        "valid_from": "2019-01-01",
+        "valid_to": null
+      },
+      {
+        "service_line_id": "show-service-3b",
+        "physical_section_id": "show-l3-s10",
+        "seq": 4,
+        "valid_from": "2019-01-01",
+        "valid_to": null
+      },
+      {
+        "service_line_id": "show-service-3b",
+        "physical_section_id": "show-l3-s11",
+        "seq": 5,
+        "valid_from": "2019-01-01",
+        "valid_to": null
+      },
+      {
+        "service_line_id": "show-service-3b",
+        "physical_section_id": "show-l3-s12",
+        "seq": 6,
+        "valid_from": "2019-01-01",
+        "valid_to": null
+      },
+      {
+        "service_line_id": "show-service-3b",
+        "physical_section_id": "show-l3-s13",
+        "seq": 7,
+        "valid_from": "2019-01-01",
+        "valid_to": null
+      },
+      {
+        "service_line_id": "show-service-4",
+        "physical_section_id": "show-l4-s01",
+        "seq": 0,
+        "valid_from": "2019-01-01",
+        "valid_to": null
+      },
+      {
+        "service_line_id": "show-service-4",
+        "physical_section_id": "show-l4-s02",
+        "seq": 1,
+        "valid_from": "2019-01-01",
+        "valid_to": null
+      },
+      {
+        "service_line_id": "show-service-4",
+        "physical_section_id": "show-l4-s03",
+        "seq": 2,
+        "valid_from": "2019-01-01",
+        "valid_to": null
+      },
+      {
+        "service_line_id": "show-service-4",
+        "physical_section_id": "show-l4-s04",
+        "seq": 3,
+        "valid_from": "2019-01-01",
+        "valid_to": null
+      },
+      {
+        "service_line_id": "show-service-4",
+        "physical_section_id": "show-l4-s05",
+        "seq": 4,
+        "valid_from": "2019-01-01",
+        "valid_to": null
+      },
+      {
+        "service_line_id": "show-service-5",
+        "physical_section_id": "show-l5-s01",
+        "seq": 0,
+        "valid_from": "2019-01-01",
+        "valid_to": null
+      },
+      {
+        "service_line_id": "show-service-5",
+        "physical_section_id": "show-l5-s02",
+        "seq": 1,
+        "valid_from": "2019-01-01",
+        "valid_to": null
+      },
+      {
+        "service_line_id": "show-service-5",
+        "physical_section_id": "show-l5-s03",
+        "seq": 2,
+        "valid_from": "2019-01-01",
+        "valid_to": null
+      },
+      {
+        "service_line_id": "show-service-5",
+        "physical_section_id": "show-l5-s04",
+        "seq": 3,
+        "valid_from": "2019-01-01",
+        "valid_to": null
+      },
+      {
+        "service_line_id": "show-service-5",
+        "physical_section_id": "show-l5-s05",
+        "seq": 4,
+        "valid_from": "2019-01-01",
+        "valid_to": null
+      },
+      {
+        "service_line_id": "show-service-5",
+        "physical_section_id": "show-l5-s06",
+        "seq": 5,
+        "valid_from": "2019-01-01",
+        "valid_to": null
+      },
+      {
+        "service_line_id": "show-service-6",
+        "physical_section_id": "show-l6-s01",
+        "seq": 0,
+        "valid_from": "2019-01-01",
+        "valid_to": "2024-03-01"
+      },
+      {
+        "service_line_id": "show-service-6",
+        "physical_section_id": "show-l6-s02",
+        "seq": 1,
+        "valid_from": "2019-01-01",
+        "valid_to": "2024-03-01"
+      },
+      {
+        "service_line_id": "show-service-6",
+        "physical_section_id": "show-l6-s03",
+        "seq": 2,
+        "valid_from": "2019-01-01",
+        "valid_to": "2024-03-01"
+      }
+    ],
+    "station_names": [
+      {
+        "station_id": "show-s01",
+        "name": "青松",
+        "valid_from": "2019-01-01",
+        "valid_to": null
+      },
+      {
+        "station_id": "show-s02",
+        "name": "云岭",
+        "valid_from": "2019-01-01",
+        "valid_to": null
+      },
+      {
+        "station_id": "show-s03",
+        "name": "石桥",
+        "valid_from": "2019-01-01",
+        "valid_to": null
+      },
+      {
+        "station_id": "show-s04",
+        "name": "河湾",
+        "valid_from": "2019-01-01",
+        "valid_to": null
+      },
+      {
+        "station_id": "show-s05",
+        "name": "白鹭",
+        "valid_from": "2019-01-01",
+        "valid_to": null
+      },
+      {
+        "station_id": "show-s06",
+        "name": "东浦",
+        "valid_from": "2019-01-01",
+        "valid_to": null
+      },
+      {
+        "station_id": "show-s07",
+        "name": "松林",
+        "valid_from": "2019-01-01",
+        "valid_to": null
+      },
+      {
+        "station_id": "show-s08",
+        "name": "望江",
+        "valid_from": "2019-01-01",
+        "valid_to": null
+      },
+      {
+        "station_id": "show-s09",
+        "name": "枫岸",
+        "valid_from": "2019-01-01",
+        "valid_to": null
+      },
+      {
+        "station_id": "show-s10",
+        "name": "芦滩",
+        "valid_from": "2019-01-01",
+        "valid_to": null
+      },
+      {
+        "station_id": "show-s11",
+        "name": "潮汐",
+        "valid_from": "2019-01-01",
+        "valid_to": null
+      },
+      {
+        "station_id": "show-s12",
+        "name": "灯塔",
+        "valid_from": "2019-01-01",
+        "valid_to": null
+      },
+      {
+        "station_id": "show-s13",
+        "name": "沙洲",
+        "valid_from": "2019-01-01",
+        "valid_to": null
+      },
+      {
+        "station_id": "show-s14",
+        "name": "北岭",
+        "valid_from": "2019-01-01",
+        "valid_to": null
+      },
+      {
+        "station_id": "show-s15",
+        "name": "竹洲",
+        "valid_from": "2019-01-01",
+        "valid_to": null
+      },
+      {
+        "station_id": "show-s16",
+        "name": "苔原",
+        "valid_from": "2019-01-01",
+        "valid_to": null
+      },
+      {
+        "station_id": "show-s17",
+        "name": "北闸",
+        "valid_from": "2019-01-01",
+        "valid_to": null
+      },
+      {
+        "station_id": "show-s18",
+        "name": "冷泉",
+        "valid_from": "2019-01-01",
+        "valid_to": null
+      },
+      {
+        "station_id": "show-s19",
+        "name": "高岭",
+        "valid_from": "2019-01-01",
+        "valid_to": null
+      },
+      {
+        "station_id": "show-s20",
+        "name": "栗林",
+        "valid_from": "2019-01-01",
+        "valid_to": null
+      },
+      {
+        "station_id": "show-s21",
+        "name": "石桥",
+        "valid_from": "2019-01-01",
+        "valid_to": "2022-05-31"
+      },
+      {
+        "station_id": "show-s21",
+        "name": "沙坪",
+        "valid_from": "2022-06-01",
+        "valid_to": null
+      },
+      {
+        "station_id": "show-s22",
+        "name": "木野",
+        "valid_from": "2019-01-01",
+        "valid_to": null
+      },
+      {
+        "station_id": "show-s23",
+        "name": "石鼓",
+        "valid_from": "2019-01-01",
+        "valid_to": null
+      },
+      {
+        "station_id": "show-s24",
+        "name": "砖塘",
+        "valid_from": "2019-01-01",
+        "valid_to": null
+      },
+      {
+        "station_id": "show-s25",
+        "name": "长坡",
+        "valid_from": "2019-01-01",
+        "valid_to": null
+      },
+      {
+        "station_id": "show-s26",
+        "name": "溪口",
+        "valid_from": "2019-01-01",
+        "valid_to": null
+      },
+      {
+        "station_id": "show-s27",
+        "name": "江口",
+        "valid_from": "2019-01-01",
+        "valid_to": null
+      },
+      {
+        "station_id": "show-s28",
+        "name": "环东",
+        "valid_from": "2019-01-01",
+        "valid_to": null
+      },
+      {
+        "station_id": "show-s29",
+        "name": "环南",
+        "valid_from": "2019-01-01",
+        "valid_to": null
+      },
+      {
+        "station_id": "show-s30",
+        "name": "环西",
+        "valid_from": "2019-01-01",
+        "valid_to": null
+      },
+      {
+        "station_id": "show-s31",
+        "name": "望湖",
+        "valid_from": "2019-01-01",
+        "valid_to": null
+      },
+      {
+        "station_id": "show-s32",
+        "name": "北岸",
+        "valid_from": "2019-01-01",
+        "valid_to": null
+      },
+      {
+        "station_id": "show-s33",
+        "name": "柳堤",
+        "valid_from": "2019-01-01",
+        "valid_to": null
+      },
+      {
+        "station_id": "show-s34",
+        "name": "青洲",
+        "valid_from": "2019-01-01",
+        "valid_to": null
+      },
+      {
+        "station_id": "show-s35",
+        "name": "竹园",
+        "valid_from": "2019-01-01",
+        "valid_to": null
+      },
+      {
+        "station_id": "show-s36",
+        "name": "松林",
+        "valid_from": "2019-01-01",
+        "valid_to": null
+      },
+      {
+        "station_id": "show-s37",
+        "name": "西关",
+        "valid_from": "2019-01-01",
+        "valid_to": null
+      },
+      {
+        "station_id": "show-s38",
+        "name": "石阶",
+        "valid_from": "2019-01-01",
+        "valid_to": null
+      },
+      {
+        "station_id": "show-s39",
+        "name": "云台",
+        "valid_from": "2019-01-01",
+        "valid_to": null
+      },
+      {
+        "station_id": "show-s40",
+        "name": "樟门",
+        "valid_from": "2019-01-01",
+        "valid_to": null
+      },
+      {
+        "station_id": "show-s41",
+        "name": "木桥",
+        "valid_from": "2019-01-01",
+        "valid_to": null
+      },
+      {
+        "station_id": "show-s42",
+        "name": "东岳",
+        "valid_from": "2019-01-01",
+        "valid_to": null
+      },
+      {
+        "station_id": "show-s43",
+        "name": "沙嘴",
+        "valid_from": "2019-01-01",
+        "valid_to": null
+      },
+      {
+        "station_id": "show-s44",
+        "name": "芦湾",
+        "valid_from": "2019-01-01",
+        "valid_to": null
+      },
+      {
+        "station_id": "show-s45",
+        "name": "东堤",
+        "valid_from": "2019-01-01",
+        "valid_to": null
+      },
+      {
+        "station_id": "show-s46",
+        "name": "梅岭",
+        "valid_from": "2019-01-01",
+        "valid_to": null
+      },
+      {
+        "station_id": "show-s47",
+        "name": "江堤",
+        "valid_from": "2019-01-01",
+        "valid_to": null
+      },
+      {
+        "station_id": "show-s48",
+        "name": "石浦",
+        "valid_from": "2019-01-01",
+        "valid_to": null
+      },
+      {
+        "station_id": "show-s49",
+        "name": "芦洲",
+        "valid_from": "2019-01-01",
+        "valid_to": null
+      },
+      {
+        "station_id": "show-s50",
+        "name": "北营",
+        "valid_from": "2019-01-01",
+        "valid_to": null
+      },
+      {
+        "station_id": "show-s51",
+        "name": "前塘",
+        "valid_from": "2019-01-01",
+        "valid_to": null
+      },
+      {
+        "station_id": "show-s52",
+        "name": "中营",
+        "valid_from": "2019-01-01",
+        "valid_to": null
+      },
+      {
+        "station_id": "show-s53",
+        "name": "后塘",
+        "valid_from": "2019-01-01",
+        "valid_to": null
+      },
+      {
+        "station_id": "show-s54",
+        "name": "南营",
+        "valid_from": "2019-01-01",
+        "valid_to": null
+      },
+      {
+        "station_id": "show-s55",
+        "name": "江岸",
+        "valid_from": "2019-01-01",
+        "valid_to": null
+      },
+      {
+        "station_id": "show-s56",
+        "name": "西郊",
+        "valid_from": "2019-01-01",
+        "valid_to": null
+      },
+      {
+        "station_id": "show-s57",
+        "name": "北岭",
+        "valid_from": "2019-01-01",
+        "valid_to": null
+      },
+      {
+        "station_id": "show-s58",
+        "name": "谢家桥",
+        "valid_from": "2019-01-01",
+        "valid_to": null
+      },
+      {
+        "station_id": "show-s59",
+        "name": "北岸",
+        "valid_from": "2019-01-01",
+        "valid_to": null
+      },
+      {
+        "station_id": "show-s60",
+        "name": "南埠",
+        "valid_from": "2019-01-01",
+        "valid_to": null
+      },
+      {
+        "station_id": "show-s61",
+        "name": "旧城",
+        "valid_from": "2019-01-01",
+        "valid_to": null
+      },
+      {
+        "station_id": "show-s62",
+        "name": "老闸",
+        "valid_from": "2019-01-01",
+        "valid_to": null
+      },
+      {
+        "station_id": "show-s63",
+        "name": "砖窑",
+        "valid_from": "2019-01-01",
+        "valid_to": null
+      },
+      {
+        "station_id": "show-s64",
+        "name": "石灰",
+        "valid_from": "2019-01-01",
+        "valid_to": null
+      }
+    ],
+    "station_service_periods": [
+      {
+        "station_id": "show-s01",
+        "kind": "passenger",
+        "valid_from": "2019-01-01",
+        "valid_to": null
+      },
+      {
+        "station_id": "show-s02",
+        "kind": "passenger",
+        "valid_from": "2019-01-01",
+        "valid_to": null
+      },
+      {
+        "station_id": "show-s03",
+        "kind": "passenger",
+        "valid_from": "2019-01-01",
+        "valid_to": null
+      },
+      {
+        "station_id": "show-s04",
+        "kind": "passenger",
+        "valid_from": "2019-01-01",
+        "valid_to": null
+      },
+      {
+        "station_id": "show-s05",
+        "kind": "passenger",
+        "valid_from": "2019-01-01",
+        "valid_to": null
+      },
+      {
+        "station_id": "show-s06",
+        "kind": "passenger",
+        "valid_from": "2019-01-01",
+        "valid_to": null
+      },
+      {
+        "station_id": "show-s07",
+        "kind": "passenger",
+        "valid_from": "2019-01-01",
+        "valid_to": null
+      },
+      {
+        "station_id": "show-s08",
+        "kind": "passenger",
+        "valid_from": "2019-01-01",
+        "valid_to": null
+      },
+      {
+        "station_id": "show-s09",
+        "kind": "passenger",
+        "valid_from": "2019-01-01",
+        "valid_to": null
+      },
+      {
+        "station_id": "show-s10",
+        "kind": "passenger",
+        "valid_from": "2019-01-01",
+        "valid_to": null
+      },
+      {
+        "station_id": "show-s11",
+        "kind": "passenger",
+        "valid_from": "2019-01-01",
+        "valid_to": null
+      },
+      {
+        "station_id": "show-s12",
+        "kind": "passenger",
+        "valid_from": "2019-01-01",
+        "valid_to": null
+      },
+      {
+        "station_id": "show-s13",
+        "kind": "passenger",
+        "valid_from": "2019-01-01",
+        "valid_to": null
+      },
+      {
+        "station_id": "show-s14",
+        "kind": "passenger",
+        "valid_from": "2019-01-01",
+        "valid_to": null
+      },
+      {
+        "station_id": "show-s15",
+        "kind": "passenger",
+        "valid_from": "2019-01-01",
+        "valid_to": null
+      },
+      {
+        "station_id": "show-s16",
+        "kind": "passenger",
+        "valid_from": "2019-01-01",
+        "valid_to": null
+      },
+      {
+        "station_id": "show-s17",
+        "kind": "passenger",
+        "valid_from": "2019-01-01",
+        "valid_to": null
+      },
+      {
+        "station_id": "show-s18",
+        "kind": "passenger",
+        "valid_from": "2019-01-01",
+        "valid_to": null
+      },
+      {
+        "station_id": "show-s19",
+        "kind": "passenger",
+        "valid_from": "2019-01-01",
+        "valid_to": null
+      },
+      {
+        "station_id": "show-s20",
+        "kind": "passenger",
+        "valid_from": "2019-01-01",
+        "valid_to": null
+      },
+      {
+        "station_id": "show-s21",
+        "kind": "passenger",
+        "valid_from": "2019-01-01",
+        "valid_to": null
+      },
+      {
+        "station_id": "show-s22",
+        "kind": "passenger",
+        "valid_from": "2019-01-01",
+        "valid_to": null
+      },
+      {
+        "station_id": "show-s23",
+        "kind": "passenger",
+        "valid_from": "2019-01-01",
+        "valid_to": null
+      },
+      {
+        "station_id": "show-s24",
+        "kind": "passenger",
+        "valid_from": "2019-01-01",
+        "valid_to": null
+      },
+      {
+        "station_id": "show-s25",
+        "kind": "passenger",
+        "valid_from": "2019-01-01",
+        "valid_to": null
+      },
+      {
+        "station_id": "show-s26",
+        "kind": "passenger",
+        "valid_from": "2019-01-01",
+        "valid_to": null
+      },
+      {
+        "station_id": "show-s27",
+        "kind": "passenger",
+        "valid_from": "2019-01-01",
+        "valid_to": null
+      },
+      {
+        "station_id": "show-s28",
+        "kind": "passenger",
+        "valid_from": "2019-01-01",
+        "valid_to": null
+      },
+      {
+        "station_id": "show-s29",
+        "kind": "passenger",
+        "valid_from": "2019-01-01",
+        "valid_to": null
+      },
+      {
+        "station_id": "show-s30",
+        "kind": "passenger",
+        "valid_from": "2019-01-01",
+        "valid_to": null
+      },
+      {
+        "station_id": "show-s31",
+        "kind": "passenger",
+        "valid_from": "2019-01-01",
+        "valid_to": null
+      },
+      {
+        "station_id": "show-s32",
+        "kind": "passenger",
+        "valid_from": "2019-01-01",
+        "valid_to": null
+      },
+      {
+        "station_id": "show-s33",
+        "kind": "passenger",
+        "valid_from": "2019-01-01",
+        "valid_to": null
+      },
+      {
+        "station_id": "show-s34",
+        "kind": "passenger",
+        "valid_from": "2019-01-01",
+        "valid_to": null
+      },
+      {
+        "station_id": "show-s35",
+        "kind": "passenger",
+        "valid_from": "2019-01-01",
+        "valid_to": null
+      },
+      {
+        "station_id": "show-s36",
+        "kind": "passenger",
+        "valid_from": "2019-01-01",
+        "valid_to": null
+      },
+      {
+        "station_id": "show-s37",
+        "kind": "passenger",
+        "valid_from": "2019-01-01",
+        "valid_to": null
+      },
+      {
+        "station_id": "show-s38",
+        "kind": "passenger",
+        "valid_from": "2019-01-01",
+        "valid_to": null
+      },
+      {
+        "station_id": "show-s39",
+        "kind": "passenger",
+        "valid_from": "2019-01-01",
+        "valid_to": null
+      },
+      {
+        "station_id": "show-s40",
+        "kind": "passenger",
+        "valid_from": "2019-01-01",
+        "valid_to": null
+      },
+      {
+        "station_id": "show-s41",
+        "kind": "passenger",
+        "valid_from": "2019-01-01",
+        "valid_to": null
+      },
+      {
+        "station_id": "show-s42",
+        "kind": "passenger",
+        "valid_from": "2019-01-01",
+        "valid_to": null
+      },
+      {
+        "station_id": "show-s43",
+        "kind": "passenger",
+        "valid_from": "2019-01-01",
+        "valid_to": null
+      },
+      {
+        "station_id": "show-s44",
+        "kind": "passenger",
+        "valid_from": "2019-01-01",
+        "valid_to": null
+      },
+      {
+        "station_id": "show-s45",
+        "kind": "passenger",
+        "valid_from": "2019-01-01",
+        "valid_to": null
+      },
+      {
+        "station_id": "show-s46",
+        "kind": "passenger",
+        "valid_from": "2019-01-01",
+        "valid_to": null
+      },
+      {
+        "station_id": "show-s47",
+        "kind": "passenger",
+        "valid_from": "2019-01-01",
+        "valid_to": null
+      },
+      {
+        "station_id": "show-s48",
+        "kind": "passenger",
+        "valid_from": "2019-01-01",
+        "valid_to": null
+      },
+      {
+        "station_id": "show-s49",
+        "kind": "passenger",
+        "valid_from": "2019-01-01",
+        "valid_to": null
+      },
+      {
+        "station_id": "show-s50",
+        "kind": "passenger",
+        "valid_from": "2019-01-01",
+        "valid_to": null
+      },
+      {
+        "station_id": "show-s51",
+        "kind": "passenger",
+        "valid_from": "2019-01-01",
+        "valid_to": null
+      },
+      {
+        "station_id": "show-s52",
+        "kind": "passenger",
+        "valid_from": "2019-01-01",
+        "valid_to": null
+      },
+      {
+        "station_id": "show-s53",
+        "kind": "passenger",
+        "valid_from": "2019-01-01",
+        "valid_to": null
+      },
+      {
+        "station_id": "show-s54",
+        "kind": "passenger",
+        "valid_from": "2019-01-01",
+        "valid_to": null
+      },
+      {
+        "station_id": "show-s55",
+        "kind": "passenger",
+        "valid_from": "2019-01-01",
+        "valid_to": null
+      },
+      {
+        "station_id": "show-s56",
+        "kind": "passenger",
+        "valid_from": "2019-01-01",
+        "valid_to": null
+      },
+      {
+        "station_id": "show-s57",
+        "kind": "passenger",
+        "valid_from": "2019-01-01",
+        "valid_to": null
+      },
+      {
+        "station_id": "show-s58",
+        "kind": "non_passenger",
+        "valid_from": "2019-01-01",
+        "valid_to": null
+      },
+      {
+        "station_id": "show-s59",
+        "kind": "passenger",
+        "valid_from": "2019-01-01",
+        "valid_to": null
+      },
+      {
+        "station_id": "show-s60",
+        "kind": "passenger",
+        "valid_from": "2019-01-01",
+        "valid_to": null
+      },
+      {
+        "station_id": "show-s61",
+        "kind": "passenger",
+        "valid_from": "2019-01-01",
+        "valid_to": "2024-03-01"
+      },
+      {
+        "station_id": "show-s62",
+        "kind": "passenger",
+        "valid_from": "2019-01-01",
+        "valid_to": "2024-03-01"
+      },
+      {
+        "station_id": "show-s63",
+        "kind": "passenger",
+        "valid_from": "2019-01-01",
+        "valid_to": "2024-03-01"
+      },
+      {
+        "station_id": "show-s64",
+        "kind": "passenger",
+        "valid_from": "2019-01-01",
+        "valid_to": "2024-03-01"
+      }
+    ],
+    "section_mappings": [],
+    "topology_events": []
+  }
+}
