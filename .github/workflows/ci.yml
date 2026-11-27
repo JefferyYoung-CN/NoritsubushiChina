@@ -1,0 +1,38 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ci-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  check:
+    name: check
+    runs-on: ubuntu-24.04
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Setup Node.js 24
+        uses: actions/setup-node@v4
+        with:
+          node-version: 24
+          cache: npm
+      - name: 工具链版本
+        run: node --version && npm --version
+      - name: 安装依赖
+        run: npm ci --ignore-scripts
+      - name: 类型检查
+        run: npm run typecheck
+      - name: 测试
+        run: npm test
+      - name: 门禁
+        run: npm run verify:gates
+      - name: 构建
+        run: npm run build
