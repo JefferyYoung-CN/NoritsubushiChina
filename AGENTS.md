@@ -49,7 +49,10 @@ npm run demo:generate
 
 - 改动一律提交到 `dev`；`dev` 上的推送不触发 CI，省额度也少噪音。
 - 一个阶段的开发完成时，开 PR `dev` → `main`：CI 这时才跑，通过后合并。
-- `main` 只接收阶段性合并，不直接在上面开发。
+- `main` 只接收阶段性合并，不直接在上面开发；**不要直接推 `main`**——分支保护要求 `check` 通过，直推会被拒（`GH006`）。
+- 合并后把 `main` 合回 `dev`（`git checkout dev && git merge main`），避免长期分叉；这一步不触发 CI。
+- CI 红了先看 GitHub Actions 里红的步骤：日志会写到文件与行号，可直接定位。
+- 触发条件只有两条：推送到 `main`、面向 `main` 的 `pull_request`。其它分支的推送不跑任何检查。
 
 ## Git 与评审
 
